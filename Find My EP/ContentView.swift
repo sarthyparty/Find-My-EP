@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    var calc = school.shortestPath(start: intersects[0], end: intersects[3], visited: [])
     var body: some View {
-        Text("RohitPrty!")
+        Text(String(calc))
             .padding()
     }
 }
