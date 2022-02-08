@@ -11,8 +11,8 @@ import SwiftUI
 struct Find_My_EPApp: App {
     init() {
         for hall in halls {
-          intersects[hall.start].hallways.append(hall)
-          intersects[hall.end].hallways.append(hall)
+          intersects[hall.start].halls.append(hall)
+          intersects[hall.end].halls.append(hall)
         }
     }
     

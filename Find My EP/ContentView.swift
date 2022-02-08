@@ -8,10 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
-    var calc = school.shortestPath(start: intersects[0], end: intersects[3], visited: [])
+    @State private var startID = ""
+    @State private var endID = ""
+    @State private var dist = 0
     var body: some View {
-        Text(String(calc))
-            .padding()
+        VStack(alignment: .leading) {
+            TextField("Enter start ID (0-5)", text: $startID)
+            TextField("Enter end ID (0-5)", text: $endID)
+            Button("Calculate") {
+                dist = school.shortestPath(start: intersects[Int(startID) ?? 0], end: intersects[Int(endID) ?? 5], visited: [Int(startID) ?? 0]).dist
+            }
+            Text(String(dist))
+        }
     }
 }
 
