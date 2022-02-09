@@ -9,7 +9,7 @@ import Foundation
 
 struct Room {
     var name: String
-    var dist: Int
+    var startDist: Int
     var hall: Int
 }
 
@@ -29,60 +29,110 @@ struct Intersection {
 class School {
     var inters: [Intersection]
     var halls: [Hall]
+    var rooms: [Room]
     
-    init(halls: [Hall], inters: [Intersection]) {
+    init(halls: [Hall], inters: [Intersection], rooms: [Room]) {
         self.halls = halls
         self.inters = inters
+        self.rooms = rooms
     }
     
-    func getToHall(start: Hall, end: Hall, visited: [Hall]) {
-        
-    }
-    
-    func findPath(start: Room, end: Room) {
-        
-    }
-
-    func inList(check: Int, lst: [Int]) -> Bool {
-      for val in lst {
-        if check == val {
-          return true
+    func findPath(start: Room, end: Room) -> (dist: Int, halls: [Hall], inters: [Int]) {
+        // if rooms are
+        if start.hall == end.hall {
+            return (start.startDist - end.startDist,[],[])
         }
-      }
-      return false
+        
+        let startHall = halls[start.hall]
+        let endHall = halls[end.hall]
+        
+        // startHall start to endHall start
+        let res1 = shortestPath(start: inters[startHall.start], end: inters[endHall.start], visited: [])
+        
+        // startHall start to endHall end
+        let res2 = shortestPath(start: inters[startHall.start], end: inters[endHall.end], visited: [])
+        
+        // startHall end to endHall start
+        let res3 = shortestPath(start: inters[startHall.end], end: inters[endHall.start], visited: [])
+        
+        // startHall end to endHall end
+        let res4 = shortestPath(start: inters[startHall.end], end: inters[endHall.end], visited: [])
+        
+        let dist1 = res1.dist + start.startDist + end.startDist
+        let dist2 = res2.dist + start.startDist + (endHall.length - end.startDist)
+        let dist3 = res1.dist + (startHall.length - start.startDist) + end.startDist
+        let dist4 = res2.dist + (startHall.length - start.startDist) + (endHall.length - end.startDist)
+        
+        if dist1 <= dist2 && dist1 <= dist3 && dist1 <= dist4 {
+            return (dist1, res1.hallways, res1.inters)
+        } else if dist2 <= dist1 && dist2 <= dist3 && dist2 <= dist4 {
+            return (dist2, res2.hallways, res2.inters)
+        } else if dist3 <= dist1 && dist3 <= dist2 && dist3 <= dist4 {
+            return (dist3, res3.hallways, res3.inters)
+        } else {
+            return (dist4, res4.hallways, res4.inters)
+        }
     }
     
-    func shortestPath(start: Intersection, end: Intersection, visited: [Int]) -> (hallways: [Hall], dist: Int) {
+    func inList(check: Int, lst: [Int]) -> Bool {
+        for val in lst {
+            if check == val {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func shortestPath(start: Intersection, end: Intersection, visited: [Int]) -> (inters: [Int], hallways: [Hall], dist: Int) {
         if (start.id == end.id) {
-            return ([],0);
+            return (visited,[],0);
+        }
+        var visits = visited
+        if (visits.isEmpty) {
+            visits.append(start.id)
         }
         var ret_hallways: [Hall] = []
+        var ret_inters: [Int] = []
         var minDist = 1000000000000
         for hallway in start.halls {
             if hallway.end != start.id && !inList(check: hallway.end,lst: visited) {
-                var temp_visited = visited
+                var temp_visited = visits
                 temp_visited.append(hallway.end)
                 let result = shortestPath(start: inters[hallway.end], end: end, visited: temp_visited)
                 let temp = hallway.length + result.dist
                 if (temp < minDist) {
                     minDist = temp
                     ret_hallways = result.hallways
+                    ret_hallways.append(hallway)
+                    ret_inters = result.inters
                 }
             } else if !inList(check: hallway.start, lst: visited) {
-                var temp_visited = visited
+                var temp_visited = visits
                 temp_visited.append(hallway.start)
                 let result = shortestPath(start: inters[hallway.start], end: end, visited: temp_visited)
                 let temp = hallway.length + result.dist
                 if (temp < minDist) {
                     minDist = temp
                     ret_hallways = result.hallways
+                    ret_hallways.append(hallway)
+                    ret_inters = result.inters
                 }
             }
         }
-        return (ret_hallways, minDist)
+        return (ret_inters, ret_hallways, minDist)
     }
     
 }
+
+var rooms = [Room(name: "Room 1", startDist: 10, hall: 0),
+             Room(name: "Room 2", startDist: 10, hall: 1),
+             Room(name: "Room 3", startDist: 25, hall: 3),
+             Room(name: "Room 4", startDist: 7, hall: 5),
+             Room(name: "Room 5", startDist: 190, hall: 7),
+             Room(name: "Room 6", startDist: 15, hall: 2),
+             Room(name: "Room 7", startDist: 25, hall: 0),
+             Room(name: "Room 8", startDist: 35, hall: 4),
+             Room(name: "Room 9", startDist: 70, hall: 4)]
 
 var halls = [Hall(start: 0, end: 1, length: 50, id: 0, rooms: []),
              Hall(start: 1, end: 2, length: 70, id: 1, rooms: []),
@@ -103,5 +153,5 @@ var intersects = [Intersection(halls: [], id: 0),
 
 
 
-var school = School(halls: halls, inters: intersects)
+var school = School(halls: halls, inters: intersects, rooms: rooms)
 

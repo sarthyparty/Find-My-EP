@@ -14,6 +14,9 @@ struct Find_My_EPApp: App {
           intersects[hall.start].halls.append(hall)
           intersects[hall.end].halls.append(hall)
         }
+        for room in rooms {
+            halls[room.hall].rooms.append(room)
+        }
     }
     
     var body: some Scene {
