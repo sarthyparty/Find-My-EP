@@ -40,7 +40,7 @@ class School {
     func findPath(start: Room, end: Room) -> (dist: Int, halls: [Hall], inters: [Int]) {
         // if rooms are
         if start.hall == end.hall {
-            return (start.startDist - end.startDist,[],[])
+            return (abs(start.startDist - end.startDist),[],[])
         }
         
         let startHall = halls[start.hall]
@@ -60,8 +60,8 @@ class School {
         
         let dist1 = res1.dist + start.startDist + end.startDist
         let dist2 = res2.dist + start.startDist + (endHall.length - end.startDist)
-        let dist3 = res1.dist + (startHall.length - start.startDist) + end.startDist
-        let dist4 = res2.dist + (startHall.length - start.startDist) + (endHall.length - end.startDist)
+        let dist3 = res3.dist + (startHall.length - start.startDist) + end.startDist
+        let dist4 = res4.dist + (startHall.length - start.startDist) + (endHall.length - end.startDist)
         
         if dist1 <= dist2 && dist1 <= dist3 && dist1 <= dist4 {
             return (dist1, res1.hallways, res1.inters)
@@ -84,10 +84,14 @@ class School {
     }
     
     func shortestPath(start: Intersection, end: Intersection, visited: [Int]) -> (inters: [Int], hallways: [Hall], dist: Int) {
-        if (start.id == end.id) {
-            return (visited,[],0);
-        }
         var visits = visited
+        if (start.id == end.id) {
+            if (visits.isEmpty) {
+                visits.append(start.id)
+            }
+            return (visits,[],0);
+        }
+        
         if (visits.isEmpty) {
             visits.append(start.id)
         }

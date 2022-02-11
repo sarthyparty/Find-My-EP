@@ -28,17 +28,15 @@ struct ContentView: View {
                 hallways = "Hallway IDs (Reversed): " + hallways
                 inters = ""
                 for inter in res.inters {
-                    inters+=String(inter) + ", "
+                    inters+=String(inter + 1) + ", "
                 }
-                inters = "Intersection IDs: " + inters
-                print(school.halls)
+                inters = "Intersection to cross: " + inters
                 
             }
             Image("Map_GPS")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-            Text(String(dist))
-            Text(hallways)
+            Text("Total Distance: " + String(dist))
             Text(inters)
         }
     }
