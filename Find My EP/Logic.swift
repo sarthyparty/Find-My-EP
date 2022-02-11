@@ -124,15 +124,16 @@ class School {
     
 }
 
-var rooms = [Room(name: "10", startDist: 10, hall: 0),
-             Room(name: "11", startDist: 10, hall: 1),
-             Room(name: "12", startDist: 25, hall: 3),
-             Room(name: "14", startDist: 7, hall: 5),
-             Room(name: "", startDist: 190, hall: 7),
-             Room(name: "Room 6", startDist: 15, hall: 2),
-             Room(name: "Room 7", startDist: 25, hall: 0),
-             Room(name: "Room 8", startDist: 35, hall: 4),
-             Room(name: "Room 9", startDist: 70, hall: 4)]
+var rooms = [Room(name: "10", startDist: 15, hall: 6),
+             Room(name: "11", startDist: 13, hall: 0),
+             Room(name: "12", startDist: 37, hall: 0),
+             Room(name: "13", startDist: 13, hall: 1),
+             Room(name: "14", startDist: 37, hall: 1),
+             Room(name: "15", startDist: 12, hall: 10),
+             Room(name: "16", startDist: 13, hall: 8),
+             Room(name: "17", startDist: 18, hall: 7),
+             Room(name: "18", startDist: 13, hall: 9),
+             Room(name: "19", startDist: 18, hall: 3)]
 
 var halls = [Hall(start: 0, end: 1, length: 50, id: 0, rooms: []),
              Hall(start: 1, end: 7, length: 50, id: 1, rooms: []),
@@ -155,7 +156,7 @@ var intersects = [Intersection(halls: [], id: 0),
                   Intersection(halls: [], id: 5),
                   Intersection(halls: [], id: 6),
                   Intersection(halls: [], id: 7),
-
+                  
 ]
 
 

@@ -34,6 +34,9 @@ struct ContentView: View {
                 print(school.halls)
                 
             }
+            Image("Map_GPS")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
             Text(String(dist))
             Text(hallways)
             Text(inters)
