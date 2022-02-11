@@ -16,10 +16,16 @@ struct ContentView: View {
     @State private var options = []
     var body: some View {
         VStack(alignment: .leading) {
-            TextField("Enter start ID (0-5)", text: $startID)
-            TextField("Enter end ID (0-5)", text: $endID)
+            TextField("Enter start room (10-19)", text: $startID)
+            TextField("Enter end room (10-19)", text: $endID)
             Button("Calculate") {
-                let res = school.findPath(start: rooms[Int(startID) ?? 0], end: rooms[Int(endID) ?? 5])
+                let start_int = Int(startID) ?? -1
+                let end_int = Int(endID) ?? -1
+                if (start_int < 10 || start_int > 19) || (end_int < 10 || end_int > 19) {
+                    inters = "Please enter a valid room number"
+                    return;
+                }
+                let res = school.findPath(start: rooms[start_int-10], end: rooms[end_int-10])
                 dist = res.dist
                 hallways = ""
                 for hall in res.halls {
