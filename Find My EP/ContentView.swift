@@ -13,6 +13,7 @@ struct ContentView: View {
     @State private var dist = 0
     @State private var hallways = ""
     @State private var inters = ""
+    @State private var options = []
     var body: some View {
         VStack(alignment: .leading) {
             TextField("Enter start ID (0-5)", text: $startID)

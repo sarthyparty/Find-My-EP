@@ -124,31 +124,38 @@ class School {
     
 }
 
-var rooms = [Room(name: "Room 1", startDist: 10, hall: 0),
-             Room(name: "Room 2", startDist: 10, hall: 1),
-             Room(name: "Room 3", startDist: 25, hall: 3),
-             Room(name: "Room 4", startDist: 7, hall: 5),
-             Room(name: "Room 5", startDist: 190, hall: 7),
+var rooms = [Room(name: "10", startDist: 10, hall: 0),
+             Room(name: "11", startDist: 10, hall: 1),
+             Room(name: "12", startDist: 25, hall: 3),
+             Room(name: "14", startDist: 7, hall: 5),
+             Room(name: "", startDist: 190, hall: 7),
              Room(name: "Room 6", startDist: 15, hall: 2),
              Room(name: "Room 7", startDist: 25, hall: 0),
              Room(name: "Room 8", startDist: 35, hall: 4),
              Room(name: "Room 9", startDist: 70, hall: 4)]
 
 var halls = [Hall(start: 0, end: 1, length: 50, id: 0, rooms: []),
-             Hall(start: 1, end: 2, length: 70, id: 1, rooms: []),
-             Hall(start: 0, end: 2, length: 50, id: 2, rooms: []),
-             Hall(start: 2, end: 3, length: 30, id: 3, rooms: []),
-             Hall(start: 1, end: 3, length: 90, id: 4, rooms: []),
-             Hall(start: 0, end: 5, length: 10, id: 5, rooms: []),
-             Hall(start: 2, end: 4, length: 40, id: 6, rooms: []),
-             Hall(start: 4, end: 5, length: 200, id: 7, rooms: [])]
+             Hall(start: 1, end: 7, length: 50, id: 1, rooms: []),
+             Hall(start: 0, end: 2, length: 20, id: 2, rooms: []),
+             Hall(start: 2, end: 3, length: 37, id: 3, rooms: []),
+             Hall(start: 1, end: 3, length: 20, id: 4, rooms: []),
+             Hall(start: 3, end: 4, length: 15, id: 5, rooms: []),
+             Hall(start: 2, end: 5, length: 30, id: 6, rooms: []),
+             Hall(start: 4, end: 5, length: 36, id: 7, rooms: []),
+             Hall(start: 5, end: 6, length: 25, id: 8, rooms: []),
+             Hall(start: 4, end: 6, length: 25, id: 9, rooms: []),
+             Hall(start: 6, end: 7, length: 25, id: 10, rooms: []),
+]
 
 var intersects = [Intersection(halls: [], id: 0),
                   Intersection(halls: [], id: 1),
                   Intersection(halls: [], id: 2),
                   Intersection(halls: [], id: 3),
                   Intersection(halls: [], id: 4),
-                  Intersection(halls: [], id: 5)
+                  Intersection(halls: [], id: 5),
+                  Intersection(halls: [], id: 6),
+                  Intersection(halls: [], id: 7),
+
 ]
 
 
