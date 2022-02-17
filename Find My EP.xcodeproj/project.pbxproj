@@ -15,6 +15,8 @@
 		D344910627AACF5C0018CF91 /* Find_My_EPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D344910527AACF5C0018CF91 /* Find_My_EPUITests.swift */; };
 		D344910827AACF5C0018CF91 /* Find_My_EPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D344910727AACF5C0018CF91 /* Find_My_EPUITestsLaunchTests.swift */; };
 		D3D43C0B27AC31D900E16880 /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D43C0A27AC31D900E16880 /* Logic.swift */; };
+		D3D43C0F27BABDEB00E16880 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D43C0E27BABDEB00E16880 /* Home.swift */; };
+		D3D43C1127BABDFB00E16880 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D43C1027BABDFB00E16880 /* Map.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		D344910527AACF5C0018CF91 /* Find_My_EPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Find_My_EPUITests.swift; sourceTree = "<group>"; };
 		D344910727AACF5C0018CF91 /* Find_My_EPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Find_My_EPUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D3D43C0A27AC31D900E16880 /* Logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
+		D3D43C0E27BABDEB00E16880 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		D3D43C1027BABDFB00E16880 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,9 +102,11 @@
 			children = (
 				D34490EA27AACF580018CF91 /* Find_My_EPApp.swift */,
 				D34490EC27AACF580018CF91 /* ContentView.swift */,
+				D3D43C0E27BABDEB00E16880 /* Home.swift */,
 				D34490EE27AACF5B0018CF91 /* Assets.xcassets */,
 				D34490F027AACF5B0018CF91 /* Preview Content */,
 				D3D43C0A27AC31D900E16880 /* Logic.swift */,
+				D3D43C1027BABDFB00E16880 /* Map.swift */,
 			);
 			path = "Find My EP";
 			sourceTree = "<group>";
@@ -260,8 +266,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3D43C1127BABDFB00E16880 /* Map.swift in Sources */,
 				D34490ED27AACF580018CF91 /* ContentView.swift in Sources */,
 				D3D43C0B27AC31D900E16880 /* Logic.swift in Sources */,
+				D3D43C0F27BABDEB00E16880 /* Home.swift in Sources */,
 				D34490EB27AACF580018CF91 /* Find_My_EPApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,7 +443,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = ephs2022.gps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -464,7 +472,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = ephs2022.gps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -480,7 +488,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 55BUX7R5P2;
+				DEVELOPMENT_TEAM = 883DK65VTV;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
@@ -500,7 +508,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 55BUX7R5P2;
+				DEVELOPMENT_TEAM = 883DK65VTV;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
@@ -519,7 +527,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 55BUX7R5P2;
+				DEVELOPMENT_TEAM = HCRHTZBMBG;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.edenpr.64000774.Find-My-EPUITests";
@@ -537,7 +545,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 55BUX7R5P2;
+				DEVELOPMENT_TEAM = HCRHTZBMBG;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.edenpr.64000774.Find-My-EPUITests";
