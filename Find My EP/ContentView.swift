@@ -40,8 +40,6 @@ struct ContentView: View {
                         inters+=String(inter + 1) + ", "
                     }
                     inters = "Intersection to cross: " + inters
-                    
-                    
                 }
                 .frame(maxWidth: .infinity)
                 Image("Map_GPS")
