@@ -14,9 +14,10 @@
 		D34490FC27AACF5C0018CF91 /* Find_My_EPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34490FB27AACF5C0018CF91 /* Find_My_EPTests.swift */; };
 		D344910627AACF5C0018CF91 /* Find_My_EPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D344910527AACF5C0018CF91 /* Find_My_EPUITests.swift */; };
 		D344910827AACF5C0018CF91 /* Find_My_EPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D344910727AACF5C0018CF91 /* Find_My_EPUITestsLaunchTests.swift */; };
+		D375D83327C6979900B5447A /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = D375D83227C6979900B5447A /* Map.swift */; };
 		D3D43C0B27AC31D900E16880 /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D43C0A27AC31D900E16880 /* Logic.swift */; };
 		D3D43C0F27BABDEB00E16880 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D43C0E27BABDEB00E16880 /* Home.swift */; };
-		D3D43C1127BABDFB00E16880 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D43C1027BABDFB00E16880 /* Map.swift */; };
+		D3D43C1127BABDFB00E16880 /* DirectionsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D43C1027BABDFB00E16880 /* DirectionsScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,9 +48,10 @@
 		D344910127AACF5C0018CF91 /* Find My EPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Find My EPUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D344910527AACF5C0018CF91 /* Find_My_EPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Find_My_EPUITests.swift; sourceTree = "<group>"; };
 		D344910727AACF5C0018CF91 /* Find_My_EPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Find_My_EPUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D375D83227C6979900B5447A /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		D3D43C0A27AC31D900E16880 /* Logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
 		D3D43C0E27BABDEB00E16880 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
-		D3D43C1027BABDFB00E16880 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		D3D43C1027BABDFB00E16880 /* DirectionsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +108,8 @@
 				D34490EE27AACF5B0018CF91 /* Assets.xcassets */,
 				D34490F027AACF5B0018CF91 /* Preview Content */,
 				D3D43C0A27AC31D900E16880 /* Logic.swift */,
-				D3D43C1027BABDFB00E16880 /* Map.swift */,
+				D3D43C1027BABDFB00E16880 /* DirectionsScreen.swift */,
+				D375D83227C6979900B5447A /* Map.swift */,
 			);
 			path = "Find My EP";
 			sourceTree = "<group>";
@@ -266,10 +269,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3D43C1127BABDFB00E16880 /* Map.swift in Sources */,
+				D3D43C1127BABDFB00E16880 /* DirectionsScreen.swift in Sources */,
 				D34490ED27AACF580018CF91 /* ContentView.swift in Sources */,
 				D3D43C0B27AC31D900E16880 /* Logic.swift in Sources */,
 				D3D43C0F27BABDEB00E16880 /* Home.swift in Sources */,
+				D375D83327C6979900B5447A /* Map.swift in Sources */,
 				D34490EB27AACF580018CF91 /* Find_My_EPApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

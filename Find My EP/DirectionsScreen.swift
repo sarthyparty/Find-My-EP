@@ -8,15 +8,20 @@
 import SwiftUI
 
 struct DirectionsScreen: View {
+    
     var stuff: (Int, [Hall], [Int])
+    var start: Int
+    var end: Int
+    
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Map(inters: <#T##[Int]#>)
+        return VStack(alignment: .leading) {
+            Map(inters: stuff.2, start: start, end: end)
             Text("Distance: " + String(stuff.0))
                 .frame(maxWidth: .infinity, alignment: .center)
             Text(list_to_string(lst: stuff.2))
                 .frame(maxWidth: .infinity, alignment: .center)
+                
         }
     }
     
@@ -27,16 +32,13 @@ struct DirectionsScreen: View {
         }
         return str
     }
-}
-
-struct Map: View {
-    var inters: [Int]
-    var body: some View {
-        VStack(alignment: .leading) {
-            Image("Map_GPS")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .background(Color.white)
+    
+    struct DirectionsScreen_Previews: PreviewProvider {
+        static var previews: some View {
+            DirectionsScreen(stuff: school.findPath(start: rooms[0], end: rooms[3]), start: 0, end: 3)
+                .previewInterfaceOrientation(.portrait)
         }
     }
 }
+
+
