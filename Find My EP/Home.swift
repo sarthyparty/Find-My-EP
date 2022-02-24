@@ -22,7 +22,7 @@ struct Home: View {
                         .multilineTextAlignment(.center)
                     TextField("Enter end room", text: $endID)
                         .multilineTextAlignment(.center)
-                    NavigationLink(destination: Map(stuff: school.findPath(start: rooms[Int(startID) ?? 0], end: rooms[Int(endID) ?? 5]))) {
+                    NavigationLink(destination: DirectionsScreen(stuff: school.findPath(start: rooms[Int(startID) ?? 0], end: rooms[Int(endID) ?? 5]), start: Int(startID) ?? 0, end: Int(endID) ?? 5)) {
                         Text("Show Map")
                     }
                     

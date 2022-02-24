@@ -11,6 +11,8 @@ struct Room {
     var name: String
     var startDist: Int
     var hall: Int
+    var x: Int
+    var y: Int
 }
 
 struct Hall {
@@ -24,6 +26,8 @@ struct Hall {
 struct Intersection {
     var halls: [Hall]
     var id: Int
+    var x: Int
+    var y: Int
 }
 
 class School {
@@ -128,16 +132,17 @@ class School {
     
 }
 
-var rooms = [Room(name: "10", startDist: 15, hall: 6),
-             Room(name: "11", startDist: 13, hall: 0),
-             Room(name: "12", startDist: 37, hall: 0),
-             Room(name: "13", startDist: 13, hall: 1),
-             Room(name: "14", startDist: 37, hall: 1),
-             Room(name: "15", startDist: 12, hall: 10),
-             Room(name: "16", startDist: 13, hall: 8),
-             Room(name: "17", startDist: 18, hall: 7),
-             Room(name: "18", startDist: 13, hall: 9),
-             Room(name: "19", startDist: 18, hall: 3)]
+var rooms = [Room(name: "10", startDist: 15, hall: 6, x: 66, y: 421),
+             Room(name: "11", startDist: 13, hall: 0, x: 141, y: 241),
+             Room(name: "12", startDist: 37, hall: 0, x: 268, y: 241),
+             Room(name: "13", startDist: 13, hall: 1, x: 353, y: 325),
+             Room(name: "14", startDist: 37, hall: 1, x: 353, y: 451),
+             Room(name: "15", startDist: 12, hall: 10, x: 283, y: 520),
+             Room(name: "16", startDist: 13, hall: 8, x: 141, y: 521),
+             Room(name: "17", startDist: 18, hall: 7, x: 137, y: 455),
+             Room(name: "18", startDist: 13, hall: 9, x: 211, y: 457),
+             Room(name: "19", startDist: 18, hall: 3, x: 154, y: 328)
+]
 
 var halls = [Hall(start: 0, end: 1, length: 50, id: 0, rooms: []),
              Hall(start: 1, end: 7, length: 50, id: 1, rooms: []),
@@ -152,16 +157,19 @@ var halls = [Hall(start: 0, end: 1, length: 50, id: 0, rooms: []),
              Hall(start: 6, end: 7, length: 25, id: 10, rooms: []),
 ]
 
-var intersects = [Intersection(halls: [], id: 0),
-                  Intersection(halls: [], id: 1),
-                  Intersection(halls: [], id: 2),
-                  Intersection(halls: [], id: 3),
-                  Intersection(halls: [], id: 4),
-                  Intersection(halls: [], id: 5),
-                  Intersection(halls: [], id: 6),
-                  Intersection(halls: [], id: 7),
+var intersects = [Intersection(halls: [], id: 0, x: 68, y: 244),
+                  Intersection(halls: [], id: 1, x: 352, y: 244),
+                  Intersection(halls: [], id: 2, x: 68, y: 327),
+                  Intersection(halls: [], id: 3, x: 265, y: 327),
+                  Intersection(halls: [], id: 4, x: 210, y: 393),
+                  Intersection(halls: [], id: 5, x: 68, y: 519),
+                  Intersection(halls: [], id: 6, x: 210, y: 519),
+                  Intersection(halls: [], id: 7, x: 352, y: 519),
                   
 ]
+
+
+
 
 
 
