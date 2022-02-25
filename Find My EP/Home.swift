@@ -28,6 +28,13 @@ struct Home: View {
                     
                 }
             }
+            .background(
+                Image("Ep Logo")
+                    .resizable()
+                    .edgesIgnoringSafeArea(.all)
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            
+            )
             .frame(maxWidth: .infinity, maxHeight: .infinity) // 1
             .accentColor(Color.green)
         }
