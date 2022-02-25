@@ -40,5 +40,3 @@ struct DirectionsScreen: View {
         }
     }
 }
-
-

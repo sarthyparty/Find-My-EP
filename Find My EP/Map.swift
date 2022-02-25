@@ -7,12 +7,17 @@
 
 import SwiftUI
 
+var screenSize: CGRect = UIScreen.main.bounds
+var screenWidth = screenSize.width
+var screenHeight = screenSize.height
+
 struct Map: View {
     var inters: [Int]
     var start: Int
     var end: Int
-    @State var scale: CGFloat = 1.5
-    @State var factor: CGFloat = 1.5
+    @State var scale: CGFloat = 1.0
+    @State var factor: CGFloat = 1.0
+    @State private var percentage: CGFloat = .zero
     var magnification: some Gesture {
         MagnificationGesture()
             .onChanged() { value in
@@ -48,20 +53,30 @@ struct Map: View {
                 .aspectRatio(contentMode: .fit)
                 .background(Color.white)
             Path { path in
-                path.move(to: CGPoint(x: rooms[start].x-25, y: rooms[start].y-100))
+                path.move(to: CGPoint(x: CGFloat(rooms[start].x)/414.0*screenWidth, y: (CGFloat(rooms[start].y-212)/896.0*screenHeight)))
                 for i in 0...inters.count-1 {
-                    path.addLine(to: CGPoint(x: intersects[inters[i]].x-25, y: intersects[inters[i]].y-100))
-                    path.move(to: CGPoint(x: intersects[inters[i]].x-25, y: intersects[inters[i]].y-100))
+                    path.addLine(to: CGPoint(x: CGFloat(intersects[inters[i]].x)/414.0*screenWidth, y: CGFloat(intersects[inters[i]].y-212)/896.0*screenHeight))
+                    path.move(to: CGPoint(x: CGFloat(intersects[inters[i]].x)/414.0*screenWidth, y: CGFloat(intersects[inters[i]].y-212)/896.0*screenHeight))
                 }
-                path.addLine(to: CGPoint(x: rooms[end].x-25, y: rooms[end].y-100))
+                path.addLine(to: CGPoint(x: CGFloat(rooms[end].x)/414.0*screenWidth, y: CGFloat(rooms[end].y-212)/896.0*screenHeight))
                 
             }
-            .stroke(.blue, lineWidth: 5)
-            Text(locString)
-                .background(Color.white)
+            .trim(from: 0, to: percentage)
+            .stroke(.blue, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
+            .animation(.easeInOut(duration: 4))
+            .onAppear {
+                withAnimation(.linear(duration: 4)) {
+                    self.percentage = 1.0
+                }
+            }
+//            Text("Screen width = \(screenWidth), screen height = \(screenHeight)")
+//                .background(Color.white)
         }
         .scaleEffect(scale)
         .gesture(magnification)
+        .aspectRatio(contentMode: .fit)
     }
     
 }
+
+
