@@ -21,7 +21,7 @@ struct DirectionsScreen: View {
                 .frame(maxWidth: .infinity, alignment: .center)
             Text(list_to_string(lst: stuff.2))
                 .frame(maxWidth: .infinity, alignment: .center)
-                
+            
         }
     }
     
@@ -33,10 +33,9 @@ struct DirectionsScreen: View {
         return str
     }
     
-    struct DirectionsScreen_Previews: PreviewProvider {
-        static var previews: some View {
-            DirectionsScreen(stuff: school.findPath(start: rooms[0], end: rooms[3]), start: 0, end: 3)
-                .previewInterfaceOrientation(.portrait)
-        }
-    }
+    //    struct DirectionsScreen_Previews: PreviewProvider {
+    //        static var previews: some View {
+    //            DirectionsScreen(stuff: school.findPath(start: rooms[0], end: rooms[3]), start: 0, end: 3)
+    //        }
+    //    }
 }

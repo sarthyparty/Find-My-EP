@@ -22,19 +22,13 @@ struct Home: View {
                         .multilineTextAlignment(.center)
                     TextField("Enter end room", text: $endID)
                         .multilineTextAlignment(.center)
-                    NavigationLink(destination: DirectionsScreen(stuff: school.findPath(start: rooms[Int(startID) ?? 0], end: rooms[Int(endID) ?? 5]), start: Int(startID) ?? 0, end: Int(endID) ?? 5)) {
+                    NavigationLink(destination: DirectionsScreen(stuff: school.findPath(start: rooms[(Int(startID) ?? 0) % 10], end: rooms[(Int(endID) ?? 5) % 10]), start: (Int(startID) ?? 0) % 10, end: (Int(endID) ?? 5) % 10)) {
                         Text("Show Map")
                     }
                     
                 }
             }
-            .background(
-                Image("Ep Logo")
-                    .resizable()
-                    .edgesIgnoringSafeArea(.all)
-                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
             
-            )
             .frame(maxWidth: .infinity, maxHeight: .infinity) // 1
             .accentColor(Color.green)
         }

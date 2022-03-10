@@ -140,7 +140,7 @@ var rooms = [Room(name: "10", startDist: 15, hall: 6, x: 66, y: 421),
              Room(name: "15", startDist: 12, hall: 10, x: 283, y: 520),
              Room(name: "16", startDist: 13, hall: 8, x: 141, y: 521),
              Room(name: "17", startDist: 18, hall: 7, x: 137, y: 455),
-             Room(name: "18", startDist: 13, hall: 9, x: 211, y: 457),
+             Room(name: "18", startDist: 13, hall: 9, x: 208, y: 457),
              Room(name: "19", startDist: 18, hall: 3, x: 154, y: 328)
 ]
 
@@ -161,7 +161,7 @@ var intersects = [Intersection(halls: [], id: 0, x: 68, y: 244),
                   Intersection(halls: [], id: 1, x: 352, y: 244),
                   Intersection(halls: [], id: 2, x: 68, y: 327),
                   Intersection(halls: [], id: 3, x: 265, y: 327),
-                  Intersection(halls: [], id: 4, x: 210, y: 393),
+                  Intersection(halls: [], id: 4, x: 208, y: 387),
                   Intersection(halls: [], id: 5, x: 68, y: 519),
                   Intersection(halls: [], id: 6, x: 210, y: 519),
                   Intersection(halls: [], id: 7, x: 352, y: 519),

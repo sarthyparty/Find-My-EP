@@ -15,6 +15,8 @@
 		D344910627AACF5C0018CF91 /* Find_My_EPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D344910527AACF5C0018CF91 /* Find_My_EPUITests.swift */; };
 		D344910827AACF5C0018CF91 /* Find_My_EPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D344910727AACF5C0018CF91 /* Find_My_EPUITestsLaunchTests.swift */; };
 		D375D83327C6979900B5447A /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = D375D83227C6979900B5447A /* Map.swift */; };
+		D3AB3F4F27CE804A004C587A /* Zoomable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AB3F4E27CE804A004C587A /* Zoomable.swift */; };
+		D3AB3F5127D27C3E004C587A /* PanGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AB3F5027D27C3E004C587A /* PanGesture.swift */; };
 		D3D43C0B27AC31D900E16880 /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D43C0A27AC31D900E16880 /* Logic.swift */; };
 		D3D43C0F27BABDEB00E16880 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D43C0E27BABDEB00E16880 /* Home.swift */; };
 		D3D43C1127BABDFB00E16880 /* DirectionsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D43C1027BABDFB00E16880 /* DirectionsScreen.swift */; };
@@ -49,6 +51,8 @@
 		D344910527AACF5C0018CF91 /* Find_My_EPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Find_My_EPUITests.swift; sourceTree = "<group>"; };
 		D344910727AACF5C0018CF91 /* Find_My_EPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Find_My_EPUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D375D83227C6979900B5447A /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		D3AB3F4E27CE804A004C587A /* Zoomable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zoomable.swift; sourceTree = "<group>"; };
+		D3AB3F5027D27C3E004C587A /* PanGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanGesture.swift; sourceTree = "<group>"; };
 		D3D43C0A27AC31D900E16880 /* Logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
 		D3D43C0E27BABDEB00E16880 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		D3D43C1027BABDFB00E16880 /* DirectionsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsScreen.swift; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 				D3D43C0A27AC31D900E16880 /* Logic.swift */,
 				D3D43C1027BABDFB00E16880 /* DirectionsScreen.swift */,
 				D375D83227C6979900B5447A /* Map.swift */,
+				D3AB3F4E27CE804A004C587A /* Zoomable.swift */,
+				D3AB3F5027D27C3E004C587A /* PanGesture.swift */,
 			);
 			path = "Find My EP";
 			sourceTree = "<group>";
@@ -270,7 +276,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3D43C1127BABDFB00E16880 /* DirectionsScreen.swift in Sources */,
+				D3AB3F5127D27C3E004C587A /* PanGesture.swift in Sources */,
 				D34490ED27AACF580018CF91 /* ContentView.swift in Sources */,
+				D3AB3F4F27CE804A004C587A /* Zoomable.swift in Sources */,
 				D3D43C0B27AC31D900E16880 /* Logic.swift in Sources */,
 				D3D43C0F27BABDEB00E16880 /* Home.swift in Sources */,
 				D375D83327C6979900B5447A /* Map.swift in Sources */,
@@ -362,7 +370,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -417,7 +425,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -433,7 +441,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Find My EP/Preview Content\"";
 				DEVELOPMENT_TEAM = 883DK65VTV;
 				ENABLE_PREVIEWS = YES;
@@ -443,11 +451,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = ephs2022.gps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -462,7 +471,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Find My EP/Preview Content\"";
 				DEVELOPMENT_TEAM = 883DK65VTV;
 				ENABLE_PREVIEWS = YES;
@@ -472,11 +481,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = ephs2022.gps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
