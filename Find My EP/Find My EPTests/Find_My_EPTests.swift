@@ -1,10 +1,3 @@
-//
-//  Find_My_EPTests.swift
-//  Find My EPTests
-//
-//  Created by 64000774 on 2/2/22.
-//
-
 import XCTest
 @testable import Find_My_EP
 

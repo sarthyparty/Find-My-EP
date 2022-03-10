@@ -1,10 +1,3 @@
-//
-//  Find_My_EPUITests.swift
-//  Find My EPUITests
-//
-//  Created by 64000774 on 2/2/22.
-//
-
 import XCTest
 
 class Find_My_EPUITests: XCTestCase {

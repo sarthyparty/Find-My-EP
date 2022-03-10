@@ -1,13 +1,7 @@
-//
-//  Logic.swift
-//  Find My EP
-//
-//  Created by 64000774 on 2/3/22.
-//
-
 import Foundation
 
-struct Room {
+struct Room: Identifiable, Hashable {
+    var id = UUID()
     var name: String
     var startDist: Int
     var hall: Int
@@ -128,16 +122,16 @@ class School {
     
 }
 
-var rooms = [Room(name: "10", startDist: 15, hall: 6),
-             Room(name: "11", startDist: 13, hall: 0),
-             Room(name: "12", startDist: 37, hall: 0),
-             Room(name: "13", startDist: 13, hall: 1),
-             Room(name: "14", startDist: 37, hall: 1),
-             Room(name: "15", startDist: 12, hall: 10),
-             Room(name: "16", startDist: 13, hall: 8),
-             Room(name: "17", startDist: 18, hall: 7),
-             Room(name: "18", startDist: 13, hall: 9),
-             Room(name: "19", startDist: 18, hall: 3)]
+var rooms = [Room(name: "Auditorium 10", startDist: 15, hall: 6),
+             Room(name: "Gym 11", startDist: 13, hall: 0),
+             Room(name: "East Commons 12", startDist: 37, hall: 0),
+             Room(name: "South Commons 13", startDist: 13, hall: 1),
+             Room(name: "ERC 14", startDist: 37, hall: 1),
+             Room(name: "SSRC 15", startDist: 12, hall: 10),
+             Room(name: "Random Room 16", startDist: 13, hall: 8),
+             Room(name: "Large Gym 17", startDist: 18, hall: 7),
+             Room(name: "Activities Center 18", startDist: 13, hall: 9),
+             Room(name: "Student Center South 19", startDist: 18, hall: 3)]
 
 var halls = [Hall(start: 0, end: 1, length: 50, id: 0, rooms: []),
              Hall(start: 1, end: 7, length: 50, id: 1, rooms: []),
@@ -163,6 +157,8 @@ var intersects = [Intersection(halls: [], id: 0),
                   
 ]
 
+
+var roomsToIDs = [String: Int]()
 
 
 var school = School(halls: halls, inters: intersects, rooms: rooms)

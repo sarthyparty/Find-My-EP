@@ -1,10 +1,3 @@
-//
-//  Map.swift
-//  Find My EP
-//
-//  Created by 64000774 on 2/14/22.
-//
-
 import SwiftUI
 
 struct Map: View {

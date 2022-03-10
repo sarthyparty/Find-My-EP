@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD24DA4D27DA5F5400ECA407 /* SearchBarEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD24DA4C27DA5F5400ECA407 /* SearchBarEnd.swift */; };
+		BD24DA4F27DA5FB400ECA407 /* SearchBarStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD24DA4E27DA5FB400ECA407 /* SearchBarStart.swift */; };
 		D34490EB27AACF580018CF91 /* Find_My_EPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34490EA27AACF580018CF91 /* Find_My_EPApp.swift */; };
 		D34490ED27AACF580018CF91 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34490EC27AACF580018CF91 /* ContentView.swift */; };
 		D34490EF27AACF5B0018CF91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D34490EE27AACF5B0018CF91 /* Assets.xcassets */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BD24DA4C27DA5F5400ECA407 /* SearchBarEnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarEnd.swift; sourceTree = "<group>"; };
+		BD24DA4E27DA5FB400ECA407 /* SearchBarStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarStart.swift; sourceTree = "<group>"; };
 		D34490E727AACF580018CF91 /* Find My EP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Find My EP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34490EA27AACF580018CF91 /* Find_My_EPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Find_My_EPApp.swift; sourceTree = "<group>"; };
 		D34490EC27AACF580018CF91 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,7 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				D34490E927AACF580018CF91 /* Find My EP */,
-				D34490FA27AACF5C0018CF91 /* Find My EPTests */,
 				D344910427AACF5C0018CF91 /* Find My EPUITests */,
 				D34490E827AACF580018CF91 /* Products */,
 			);
@@ -102,7 +105,10 @@
 			children = (
 				D34490EA27AACF580018CF91 /* Find_My_EPApp.swift */,
 				D34490EC27AACF580018CF91 /* ContentView.swift */,
+				BD24DA4E27DA5FB400ECA407 /* SearchBarStart.swift */,
+				BD24DA4C27DA5F5400ECA407 /* SearchBarEnd.swift */,
 				D3D43C0E27BABDEB00E16880 /* Home.swift */,
+				D34490FA27AACF5C0018CF91 /* Find My EPTests */,
 				D34490EE27AACF5B0018CF91 /* Assets.xcassets */,
 				D34490F027AACF5B0018CF91 /* Preview Content */,
 				D3D43C0A27AC31D900E16880 /* Logic.swift */,
@@ -266,10 +272,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD24DA4F27DA5FB400ECA407 /* SearchBarStart.swift in Sources */,
 				D3D43C1127BABDFB00E16880 /* Map.swift in Sources */,
 				D34490ED27AACF580018CF91 /* ContentView.swift in Sources */,
 				D3D43C0B27AC31D900E16880 /* Logic.swift in Sources */,
 				D3D43C0F27BABDEB00E16880 /* Home.swift in Sources */,
+				BD24DA4D27DA5F5400ECA407 /* SearchBarEnd.swift in Sources */,
 				D34490EB27AACF580018CF91 /* Find_My_EPApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

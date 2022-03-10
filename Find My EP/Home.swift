@@ -1,13 +1,7 @@
-//
-//  Home.swift
-//  Find My EP
-//
-//  Created by 64000774 on 2/14/22.
-//
-
 import SwiftUI
 
 struct Home: View {
+    
     @State private var startID = ""
     @State private var endID = ""
     @State private var dist = 0
@@ -22,15 +16,22 @@ struct Home: View {
                         .multilineTextAlignment(.center)
                     TextField("Enter end room", text: $endID)
                         .multilineTextAlignment(.center)
+        
                     NavigationLink(destination: Map(stuff: school.findPath(start: rooms[Int(startID) ?? 0], end: rooms[Int(endID) ?? 5]))) {
-                        Text("Show Map")
+                        HStack {
+                            Spacer()
+                            Text("Show Map")
+                            Spacer()
+                        }
                     }
                     
                 }
+                Spacer()
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity) // 1
-            .accentColor(Color.green)
         }
-        
+        .frame(maxWidth: .infinity, maxHeight: .infinity) // 1
+        .accentColor(Color.green)
     }
+    
 }
+
