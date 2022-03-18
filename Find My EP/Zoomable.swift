@@ -8,19 +8,11 @@
 import UIKit
 import SwiftUI
 
-
-
 struct ZoomableScrollView<Content: View>: UIViewRepresentable {
-    private var content: Content
-    private var scrollView: UIScrollView
-    private var zoomedYet: Bool
-    
-    init(@ViewBuilder content: () -> Content) {
-        self.content = content()
-        self.scrollView = UIScrollView()
-        zoomedYet = false
-
-    }
+    var content: Content
+    @Binding var currentScale: CGFloat
+    @Binding var currentOffset: CGPoint
+    var scrollView = UIScrollView()
     
     func makeUIView(context: Context) -> UIScrollView {
         // set up the UIScrollView
@@ -30,8 +22,7 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         scrollView.bouncesZoom = true
         scrollView.bounces = true
         scrollView.bounds = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)//CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
-//        scrollView.zoomScale = 1
-//        scrollView.zoom(to: CGRect(x: 100, y: 100, width: screenSize.width/4, height: screenSize.height/4), animated: true)
+        //        scrollView.zoom(to: CGRect(x: 100, y: 100, width: screenSize.width/4, height: screenSize.height/4), animated: true)
         
         // create a UIHostingController to hold our SwiftUI content
         let hostedView = context.coordinator.hostingController.view!
@@ -40,13 +31,17 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         hostedView.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
         hostedView.contentScaleFactor = scrollView.minimumZoomScale
         hostedView.center = CGPoint(x: screenSize.width/2, y: screenSize.height/2)
+        
+        let gesture = UITapGestureRecognizer(target: context.coordinator,
+                                             action: #selector(Coordinator.tapped))
         scrollView.addSubview(hostedView)
+        hostedView.addGestureRecognizer(gesture)
         
         return scrollView
     }
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(hostingController: UIHostingController(rootView: self.content))
+        return Coordinator(parent_: self, hostingController: UIHostingController(rootView: self.content))
     }
     
     func updateUIView(_ uiView: UIScrollView, context: Context) {
@@ -57,20 +52,91 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
     
     func setInitialZoom() {
         scrollView.zoom(to: CGRect(x: 100, y: 100, width: screenSize.width/4, height: screenSize.height/4), animated: true)
-
+        
     }
+    
     
     // MARK: - Coordinator
     
-    class Coordinator: NSObject, UIScrollViewDelegate {
+    class Coordinator: NSObject, UIScrollViewDelegate, UIGestureRecognizerDelegate {
         var hostingController: UIHostingController<Content>
+        var parent: ZoomableScrollView
         
-        init(hostingController: UIHostingController<Content>) {
+        init(parent_: ZoomableScrollView, hostingController: UIHostingController<Content>) {
+            self.parent = parent_
             self.hostingController = hostingController
         }
         
-        func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        func viewForZooming(in sv: UIScrollView) -> UIView? {
             return hostingController.view
         }
+        
+        func scrollViewDidZoom(_ sv: UIScrollView){
+            self.parent.currentScale = sv.zoomScale
+        }
+        
+        func scrollViewDidScroll(_ sv: UIScrollView){
+            self.parent.currentOffset = sv.contentOffset
+        }
+        
+        @objc func tapped(gesture:UITapGestureRecognizer) {
+            let point = gesture.location(in: gesture.view)
+            print(point)
+        }
     }
+}
+
+import SwiftUI
+
+struct UIScrollViewWrapper<Content: View>: UIViewControllerRepresentable {
+    
+    var content: () -> Content
+    
+    init(@ViewBuilder content: @escaping () -> Content) {
+        self.content = content
+    }
+    
+    func makeUIViewController(context: Context) -> UIScrollViewViewController {
+        let vc = UIScrollViewViewController()
+        vc.hostingController.rootView = AnyView(self.content())
+        return vc
+    }
+    
+    func updateUIViewController(_ viewController: UIScrollViewViewController, context: Context) {
+        viewController.hostingController.rootView = AnyView(self.content())
+    }
+}
+
+class UIScrollViewViewController: UIViewController {
+    
+    lazy var scrollView: UIScrollView = {
+        let v = UIScrollView()
+        v.isPagingEnabled = true
+        return v
+    }()
+    
+    var hostingController: UIHostingController<AnyView> = UIHostingController(rootView: AnyView(EmptyView()))
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.addSubview(self.scrollView)
+        self.pinEdges(of: self.scrollView, to: self.view)
+        
+        self.hostingController.willMove(toParent: self)
+        self.scrollView.addSubview(self.hostingController.view)
+        self.pinEdges(of: self.hostingController.view, to: self.scrollView)
+        self.hostingController.didMove(toParent: self)
+        
+    }
+    
+    func pinEdges(of viewA: UIView, to viewB: UIView) {
+        viewA.translatesAutoresizingMaskIntoConstraints = false
+        viewB.addConstraints([
+            viewA.leadingAnchor.constraint(equalTo: viewB.leadingAnchor),
+            viewA.trailingAnchor.constraint(equalTo: viewB.trailingAnchor),
+            viewA.topAnchor.constraint(equalTo: viewB.topAnchor),
+            viewA.bottomAnchor.constraint(equalTo: viewB.bottomAnchor),
+        ])
+    }
+    
 }

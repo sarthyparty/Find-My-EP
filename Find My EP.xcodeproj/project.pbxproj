@@ -17,6 +17,7 @@
 		D375D83327C6979900B5447A /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = D375D83227C6979900B5447A /* Map.swift */; };
 		D3AB3F4F27CE804A004C587A /* Zoomable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AB3F4E27CE804A004C587A /* Zoomable.swift */; };
 		D3AB3F5127D27C3E004C587A /* PanGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AB3F5027D27C3E004C587A /* PanGesture.swift */; };
+		D3CAB68F27E3950C00BD9CF6 /* ScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAB68E27E3950C00BD9CF6 /* ScrollableView.swift */; };
 		D3D43C0B27AC31D900E16880 /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D43C0A27AC31D900E16880 /* Logic.swift */; };
 		D3D43C0F27BABDEB00E16880 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D43C0E27BABDEB00E16880 /* Home.swift */; };
 		D3D43C1127BABDFB00E16880 /* DirectionsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D43C1027BABDFB00E16880 /* DirectionsScreen.swift */; };
@@ -54,6 +55,7 @@
 		D375D83227C6979900B5447A /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		D3AB3F4E27CE804A004C587A /* Zoomable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zoomable.swift; sourceTree = "<group>"; };
 		D3AB3F5027D27C3E004C587A /* PanGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanGesture.swift; sourceTree = "<group>"; };
+		D3CAB68E27E3950C00BD9CF6 /* ScrollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableView.swift; sourceTree = "<group>"; };
 		D3D43C0A27AC31D900E16880 /* Logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
 		D3D43C0E27BABDEB00E16880 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		D3D43C1027BABDFB00E16880 /* DirectionsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsScreen.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				D3AB3F4E27CE804A004C587A /* Zoomable.swift */,
 				D3AB3F5027D27C3E004C587A /* PanGesture.swift */,
 				D3E3D7C627DA6B32004EDF77 /* SearchBar.swift */,
+				D3CAB68E27E3950C00BD9CF6 /* ScrollableView.swift */,
 			);
 			path = "Find My EP";
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				D34490ED27AACF580018CF91 /* ContentView.swift in Sources */,
 				D3AB3F4F27CE804A004C587A /* Zoomable.swift in Sources */,
 				D3D43C0B27AC31D900E16880 /* Logic.swift in Sources */,
+				D3CAB68F27E3950C00BD9CF6 /* ScrollableView.swift in Sources */,
 				D3E3D7C727DA6B32004EDF77 /* SearchBar.swift in Sources */,
 				D3D43C0F27BABDEB00E16880 /* Home.swift in Sources */,
 				D375D83327C6979900B5447A /* Map.swift in Sources */,

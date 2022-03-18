@@ -103,7 +103,7 @@ struct ZoomGesture: UIViewRepresentable {
             return true
         }
         
-         @objc
+        @objc
         func handlePinch(sender: UIPinchGestureRecognizer) {
             
             
