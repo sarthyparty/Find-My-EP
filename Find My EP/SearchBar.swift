@@ -13,11 +13,16 @@ struct SearchBar: View {
     @Binding var searchText: String
     @Binding var isSearching: Bool
     
+    @Binding var isSearchingOther: Bool
+    
+    @FocusState var clickedOn: Bool
+    
     var body: some View {
         HStack {
             HStack {
                 TextField(searchBarText, text: $searchText)
                     .padding(.leading, 24)
+                    .focused($clickedOn)
             }
             .padding()
             .background(Color(.systemGray5))
@@ -25,6 +30,8 @@ struct SearchBar: View {
             .padding(.horizontal)
             .onTapGesture(perform: {
                 isSearching = true
+                isSearchingOther = false;
+                clickedOn = true
             })
             .overlay(
                 HStack {
@@ -47,7 +54,7 @@ struct SearchBar: View {
             if isSearching {
                 Button(action: {
                     isSearching = false
-                    searchText = ""
+                    clickedOn = false
                     
                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                     

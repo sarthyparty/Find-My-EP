@@ -19,56 +19,70 @@ struct ContentView: View {
     @State var isSearching = false
     @State var searchText2 = ""
     @State var isSearching2 = false
+    @State var firstButtonPressed = false
+    @State var secondButtonPressed = false
     
     var body: some View {
         NavigationView {
             ScrollView {
                 
-                SearchBar(searchBarText: "Enter start room number", searchText: $searchText, isSearching: $isSearching)
+                SearchBar(searchBarText: "Enter start room number", searchText: $searchText, isSearching: $isSearching, isSearchingOther: $isSearching2)
                 
-                ForEach(rooms.filter({ "\($0)".contains(searchText)}), id: \.self) { room in
-                    
-                    HStack {
-                        Button(action: {
-                            searchText = room.name
-                            startID = room.name
-                            isSearching = false
-                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                if (isSearching) {
+                    ForEach(rooms.filter({ "\($0)".contains(searchText)}), id: \.self) { room in
+                        
+                        HStack {
+                            Button(action: {
+                                searchText = room.name
+                                startID = room.name
+                                isSearching = false
+                                firstButtonPressed = true
+                                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                             }
-                            ,label: {
-                            Text(room.name)
-                        })
+                                   ,label: {
+                                Text(room.name)
+                            })
+                        }
+                        Spacer()
                     }
-                    Spacer()
-                }
-                .padding(3)
-                
-                Divider()
-                    .background(Color(.systemGray4))
-                    .padding(.leading)
-                
-                SearchBar(searchBarText: "Enter end room number", searchText: $searchText2, isSearching: $isSearching2)
-                
-                ForEach(rooms.filter({ "\($0)".contains(searchText2)}), id: \.self) { room in
+                    .padding(3)
                     
-                    HStack {
-                        Button(action: {
-                            searchText2 = room.name
-                            endID = room.name
-                            isSearching2 = false
-                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                            }
-                            ,label: {
-                            Text(room.name)
-                        })
-                    }
-                    Spacer()
+                    Divider()
+                        .background(Color(.systemGray4))
+                        .padding(.leading)
+                } else {
+                    HStack{}
                 }
-                .padding(3)
                 
-                Divider()
-                    .background(Color(.systemGray4))
-                    .padding(.leading)
+                Spacer()
+                
+                SearchBar(searchBarText: "Enter end room number", searchText: $searchText2, isSearching: $isSearching2, isSearchingOther: $isSearching)
+                
+                if(isSearching2) {
+                    ForEach(rooms.filter({ "\($0)".contains(searchText2)}), id: \.self) { room in
+                        
+                        HStack {
+                            Button(action: {
+                                searchText2 = room.name
+                                endID = room.name
+                                isSearching2 = false
+                                secondButtonPressed = true
+                                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                            }
+                                   ,label: {
+                                Text(room.name)
+                            })
+                        }
+                        Spacer()
+                    }
+                    .padding(3)
+                    
+                    Divider()
+                        .background(Color(.systemGray4))
+                        .padding(.leading)
+                }
+                
+                
                 NavigationLink(destination: DirectionsScreen(stuff: school.findPath(start: rooms[roomsToIDs[searchText] ?? 4], end: rooms[roomsToIDs[searchText2] ?? 9]), start: roomsToIDs[searchText] ?? 4, end: roomsToIDs[searchText2] ?? 9)) {
                     HStack {
                         Spacer()
@@ -76,13 +90,12 @@ struct ContentView: View {
                         Spacer()
                     }
                 }
+                .disabled(roomsToIDs[searchText] == nil || roomsToIDs[searchText2] == nil)
                 
-            }
-            
+            }.navigationTitle("Find My EP")
             
         }
-        .navigationTitle("Find My EP")
-       
+        
     }
     
 }
@@ -98,9 +111,3 @@ struct ContentView: View {
 //
 //    }
 //}
-
-
-
-
-
-
