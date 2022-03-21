@@ -37,6 +37,8 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         scrollView.addSubview(hostedView)
         hostedView.addGestureRecognizer(gesture)
         
+        scrollView.zoom(to: CGRect(x: 100, y: 100, width: screenSize.width/4, height: screenSize.height/4), animated: true)
+        
         return scrollView
     }
     
@@ -51,7 +53,7 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
     }
     
     func setInitialZoom() {
-        scrollView.zoom(to: CGRect(x: 100, y: 100, width: screenSize.width/4, height: screenSize.height/4), animated: true)
+        
         
     }
     
