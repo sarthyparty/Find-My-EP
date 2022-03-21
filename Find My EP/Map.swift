@@ -26,15 +26,9 @@ struct Map: View {
     
     var body: some View {
         let map = ZStack {
-            if scale < 4.0 {
-                Image("EPHS_low")
-                    .resizable()
-                    .background(Color.white)
-            } else {
-                Image("EPHS")
-                    .resizable()
-                    .background(Color.white)
-            }
+            Image("EPHS")
+                .resizable()
+                .background(Color.white)
             Path { path in
                 path.move(to: CGPoint(x: CGFloat(rooms[start].x)/414.0*screenWidth, y: (CGFloat(rooms[start].y-212)/896.0*screenHeight)))
                 if inters.count > 0 {
