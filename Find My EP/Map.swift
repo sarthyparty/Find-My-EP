@@ -25,10 +25,6 @@ struct Map: View {
     
     
     var body: some View {
-        let drag = DragGesture(minimumDistance: 0).onChanged { value in
-            dragLocation = value.location
-            print(dragLocation)
-        }
         let map = ZStack {
             if scale < 4.0 {
                 Image("EPHS_low")
@@ -58,7 +54,6 @@ struct Map: View {
                     self.percentage = 1
                 }
             })
-            Text("\(scale), x:\(offset.x), y:\(offset.y)")
             
         }
         .aspectRatio(contentMode: .fit)
