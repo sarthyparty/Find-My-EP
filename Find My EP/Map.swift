@@ -30,14 +30,14 @@ struct Map: View {
                 .resizable()
                 .background(Color.white)
             Path { path in
-                path.move(to: CGPoint(x: CGFloat(rooms[start].x), y: (CGFloat(rooms[start].y-314))))
+                path.move(to: CGPoint(x: CGFloat(rooms[start].x/428*screenWidth), y: (CGFloat((rooms[start].y-314)/926*screenHeight))))
                 if inters.count > 0 {
                     for i in 0...inters.count-1 {
-                        path.addLine(to: CGPoint(x: CGFloat(intersects[inters[i]].x), y: CGFloat(intersects[inters[i]].y-314)))
-                        path.move(to: CGPoint(x: CGFloat(intersects[inters[i]].x), y: CGFloat(intersects[inters[i]].y-314)))
+                        path.addLine(to: CGPoint(x: CGFloat(intersects[inters[i]].x/428*screenWidth), y: CGFloat((intersects[inters[i]].y-314)/926*screenHeight)))
+                        path.move(to: CGPoint(x: CGFloat(intersects[inters[i]].x/428*screenWidth), y: CGFloat((intersects[inters[i]].y-314)/926*screenHeight)))
                     }
                 }
-                path.addLine(to: CGPoint(x: CGFloat(rooms[end].x), y: CGFloat(rooms[end].y-314)))
+                path.addLine(to: CGPoint(x: CGFloat(rooms[end].x/428*screenWidth), y: CGFloat((rooms[end].y-314)/926*screenHeight)))
                 
             }
             .trim(from: 0, to: percentage)
