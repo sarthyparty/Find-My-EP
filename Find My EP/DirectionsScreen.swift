@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DirectionsScreen: View {
     
-    var stuff: (Int, [Hall], [Int])
+    var stuff: (Double, [Hall], [Int])
     var start: Int
     var end: Int
     
@@ -28,7 +28,7 @@ struct DirectionsScreen: View {
     func list_to_string(lst: [Int]) -> String {
         var str = "Intersections: "
         for num in lst {
-            str.append(String(num+1) + ", ")
+            str.append(String(num) + ", ")
         }
         return str
     }

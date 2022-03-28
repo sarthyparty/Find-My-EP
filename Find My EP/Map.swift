@@ -30,18 +30,18 @@ struct Map: View {
                 .resizable()
                 .background(Color.white)
             Path { path in
-                path.move(to: CGPoint(x: CGFloat(rooms[start].x)/414.0*screenWidth, y: (CGFloat(rooms[start].y-212)/896.0*screenHeight)))
+                path.move(to: CGPoint(x: CGFloat(rooms[start].x), y: (CGFloat(rooms[start].y-314))))
                 if inters.count > 0 {
                     for i in 0...inters.count-1 {
-                        path.addLine(to: CGPoint(x: CGFloat(intersects[inters[i]].x)/414.0*screenWidth, y: CGFloat(intersects[inters[i]].y-212)/896.0*screenHeight))
-                        path.move(to: CGPoint(x: CGFloat(intersects[inters[i]].x)/414.0*screenWidth, y: CGFloat(intersects[inters[i]].y-212)/896.0*screenHeight))
+                        path.addLine(to: CGPoint(x: CGFloat(intersects[inters[i]].x), y: CGFloat(intersects[inters[i]].y-314)))
+                        path.move(to: CGPoint(x: CGFloat(intersects[inters[i]].x), y: CGFloat(intersects[inters[i]].y-314)))
                     }
                 }
-                path.addLine(to: CGPoint(x: CGFloat(rooms[end].x)/414.0*screenWidth, y: CGFloat(rooms[end].y-212)/896.0*screenHeight))
+                path.addLine(to: CGPoint(x: CGFloat(rooms[end].x), y: CGFloat(rooms[end].y-314)))
                 
             }
             .trim(from: 0, to: percentage)
-            .stroke(.blue, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
+            .stroke(.blue, style: StrokeStyle(lineWidth: 1, lineCap: .round, lineJoin: .round))
             .animation(Animation.easeInOut(duration: 1.0), value: percentage)
             .onAppear(perform: {
                 withAnimation(.easeIn(duration: 2)) {

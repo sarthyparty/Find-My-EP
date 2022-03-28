@@ -22,7 +22,7 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         scrollView.bouncesZoom = true
         scrollView.bounces = true
         scrollView.bounds = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)//CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
-        //        scrollView.zoom(to: CGRect(x: 100, y: 100, width: screenSize.width/4, height: screenSize.height/4), animated: true)
+                scrollView.zoom(to: CGRect(x: 100, y: 100, width: screenSize.width/4, height: screenSize.height/4), animated: true)
         
         // create a UIHostingController to hold our SwiftUI content
         let hostedView = context.coordinator.hostingController.view!
@@ -37,7 +37,7 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         scrollView.addSubview(hostedView)
         hostedView.addGestureRecognizer(gesture)
         
-        scrollView.zoom(to: CGRect(x: 100, y: 100, width: screenSize.width/4, height: screenSize.height/4), animated: true)
+//        scrollView.zoom(to: CGRect(x: 100, y: 100, width: screenSize.width/4, height: screenSize.height/4), animated: true)
         
         return scrollView
     }
