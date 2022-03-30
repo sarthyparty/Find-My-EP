@@ -16,7 +16,7 @@ struct Map: View {
     var inters: [Int]
     var start: Int
     var end: Int
-    @State var scale: CGFloat = 1.0
+    @State var scale: CGFloat = 5.0
     @State private var percentage: CGFloat = .zero
     @State private var offset: CGPoint = .zero
     
@@ -26,9 +26,16 @@ struct Map: View {
     
     var body: some View {
         let map = ZStack {
-            Image("EPHS")
-                .resizable()
-                .background(Color.white)
+            if scale > 4 {
+                Image("EPHS")
+                    .resizable()
+                    .background(Color.white)
+            } else {
+                Image("EPHS_low")
+                    .resizable()
+                    .background(Color.white)
+            }
+            
             Path { path in
                 path.move(to: CGPoint(x: CGFloat(rooms[start].x/428*screenWidth), y: (CGFloat((rooms[start].y-314)/926*screenHeight))))
                 if inters.count > 0 {
@@ -51,7 +58,7 @@ struct Map: View {
             
         }
         .aspectRatio(contentMode: .fit)
-        ZoomableScrollView(content: map, currentScale: $scale, currentOffset: $offset)
+        ZoomableScrollView(content: map, currentScale: $scale, currentOffset: $offset, start: CGPoint(x: rooms[start].x, y: rooms[start].y))
         
         
         //        .offset(x: offset.width, y: offset.height)

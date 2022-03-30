@@ -13,6 +13,7 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
     @Binding var currentScale: CGFloat
     @Binding var currentOffset: CGPoint
     var scrollView = UIScrollView()
+    var start: CGPoint
     
     func makeUIView(context: Context) -> UIScrollView {
         // set up the UIScrollView
@@ -35,15 +36,7 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         scrollView.addSubview(hostedView)
         hostedView.addGestureRecognizer(gesture)
         
-        let x1 = 81
-        let x2 = 120
-        let y1 = 320
-        let y2 = 360
-        
-        print(Int(screenHeight)/(x2-x1)*x1/9)
-        print(Int(screenHeight)/(y2-y1)*y1/9)
-        
-        scrollView.zoom(to: CGRect(x: 1000, y: 200, width: 40, height: 40), animated: true)
+        scrollView.zoom(to: CGRect(x: (start.x-23)/428*screenWidth, y: (start.y-10)/926*screenHeight, width: 40/428*screenWidth, height: 40/926*screenHeight), animated: true)
         
         return scrollView
     }
@@ -89,7 +82,7 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         
         @objc func tapped(gesture:UITapGestureRecognizer) {
             let point = gesture.location(in: gesture.view)
-            print(point)
+            print(parent.currentOffset)
         }
     }
 }
