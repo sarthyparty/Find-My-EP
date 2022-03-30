@@ -159,12 +159,12 @@ var rooms = [
     Room(name: "138 Classroom", startDist: 34.75, hall: 3, x: 84.58, y: 404.08),
     Room(name: "137 Classroom", startDist: 13.37, hall: 5, x: 71.21, y: 399.25),
     Room(name: "136 Lab", startDist: 13.37, hall: 5, x: 71.21, y: 399.25),
-    Room(name: "121 Classroom", startDist: 2.4, hall: 12, x: 156.82, y: 356.11),
-    Room(name: "120 Classroom", startDist: 4.05, hall: 12, x: 158.47, y: 356.11),
-    Room(name: "119 Classroom", startDist: 4.05, hall: 12, x: 158.47, y: 356.11),
-    Room(name: "122 Classroom", startDist: 28.82, hall: 11, x: 154.42, y: 358.72),
-    Room(name: "123 Classroom", startDist: 12.68, hall: 11, x: 154.42, y: 374.86),
-    Room(name: "118 Classroom", startDist: 12.68, hall: 11, x: 154.42, y: 374.86),
+    Room(name: "121 Classroom", startDist: 2.4, hall: 12, x: 156.63, y: 354.11),
+    Room(name: "120 Classroom", startDist: 4.05, hall: 12, x: 158.47, y: 354.11),
+    Room(name: "119 Classroom", startDist: 4.05, hall: 12, x: 158.47, y: 354.11),
+    Room(name: "122 Classroom", startDist: 28.82, hall: 11, x: 154.42, y: 356.72),
+    Room(name: "123 Classroom", startDist: 12.68, hall: 11, x: 154.42, y: 372.86),
+    Room(name: "118 Classroom", startDist: 12.68, hall: 11, x: 154.42, y: 372.86),
     
 ]
 
@@ -179,8 +179,8 @@ var intersects = [Intersection(halls: [], id: 0, x: 98.25, y: 378.5),
                   Intersection(halls: [], id: 8, x: 159.79, y: 387.54),
                   Intersection(halls: [], id: 9, x: 159.79, y: 415.08),
                   Intersection(halls: [], id: 10, x: 119.33, y: 415.08),
-                  Intersection(halls: [], id: 11, x: 154.42, y: 356.11),
-                  Intersection(halls: [], id: 12, x: 167.01, y: 356.11),
+                  Intersection(halls: [], id: 11, x: 154.42, y: 354.11),
+                  Intersection(halls: [], id: 12, x: 167.01, y: 354.11),
                   
                   
 ]
