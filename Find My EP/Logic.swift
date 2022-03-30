@@ -158,7 +158,14 @@ var rooms = [
     Room(name: "139 Flex", startDist: 34.75, hall: 3, x: 84.58, y: 404.08),
     Room(name: "138 Classroom", startDist: 34.75, hall: 3, x: 84.58, y: 404.08),
     Room(name: "137 Classroom", startDist: 13.37, hall: 5, x: 71.21, y: 399.25),
-    Room(name: "136 Lab", startDist: 13.37, hall: 5, x: 71.21, y: 399.25)
+    Room(name: "136 Lab", startDist: 13.37, hall: 5, x: 71.21, y: 399.25),
+    Room(name: "121 Classroom", startDist: 2.4, hall: 12, x: 156.63, y: 354.11),
+    Room(name: "120 Classroom", startDist: 4.05, hall: 12, x: 158.47, y: 354.11),
+    Room(name: "119 Classroom", startDist: 4.05, hall: 12, x: 158.47, y: 354.11),
+    Room(name: "122 Classroom", startDist: 28.82, hall: 11, x: 154.42, y: 356.72),
+    Room(name: "123 Classroom", startDist: 12.68, hall: 11, x: 154.42, y: 372.86),
+    Room(name: "118 Classroom", startDist: 12.68, hall: 11, x: 154.42, y: 372.86),
+    
 ]
 
 var intersects = [Intersection(halls: [], id: 0, x: 98.25, y: 378.5),
@@ -171,7 +178,11 @@ var intersects = [Intersection(halls: [], id: 0, x: 98.25, y: 378.5),
                   Intersection(halls: [], id: 7, x: 154.42, y: 387.54),
                   Intersection(halls: [], id: 8, x: 159.79, y: 387.54),
                   Intersection(halls: [], id: 9, x: 159.79, y: 415.08),
-                  Intersection(halls: [], id: 10, x: 119.33, y: 415.08)
+                  Intersection(halls: [], id: 10, x: 119.33, y: 415.08),
+                  Intersection(halls: [], id: 11, x: 154.42, y: 354.11),
+                  Intersection(halls: [], id: 12, x: 167.01, y: 354.11),
+                  
+                  
 ]
 
 
@@ -186,7 +197,10 @@ var halls = [
     Hall(start: 7, end: 8, length: 5.37, id: 7),
     Hall(start: 8, end: 9, length: 27.54, id: 8),
     Hall(start: 9, end: 10, length: 40.46, id: 9),
-    Hall(start: 10, end: 3, length: 11.0, id: 10)
+    Hall(start: 10, end: 3, length: 11.0, id: 10),
+    Hall(start: 7, end: 11, length: 31.43, id: 11),
+    Hall(start: 11, end: 12, length: 12.59, id: 12),
+    
 ]
 
 
