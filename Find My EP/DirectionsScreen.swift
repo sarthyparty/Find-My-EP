@@ -17,12 +17,17 @@ struct DirectionsScreen: View {
     var body: some View {
         return VStack(alignment: .leading) {
             Map(inters: stuff.2, start: start, end: end)
-            Text("Distance: " + String(stuff.0))
-                .frame(maxWidth: .infinity, alignment: .center)
-            Text(list_to_string(lst: stuff.2))
+            Text("Time: " + to_min(seconds: stuff.0*0.64))
                 .frame(maxWidth: .infinity, alignment: .center)
             
         }
+    }
+    
+    func to_min(seconds: Double) -> String {
+        let time = Int(seconds)
+        let min = time/60
+        let sec = time % 60 * 60 / 100
+        return "Approximate Time: \(min) Minutes and \(sec) Seconds"
     }
     
     func list_to_string(lst: [Int]) -> String {
