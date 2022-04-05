@@ -9,14 +9,14 @@ import SwiftUI
 
 struct DirectionsScreen: View {
     
-    var stuff: (Double, [Hall], [Int])
+    var stuff: (Double, [Int])
     var start: Int
     var end: Int
     
     
     var body: some View {
         return VStack(alignment: .leading) {
-            Map(inters: stuff.2, start: start, end: end)
+            Map(inters: stuff.1, start: start, end: end)
             Text("Time: " + to_min(seconds: stuff.0*0.64))
                 .frame(maxWidth: .infinity, alignment: .center)
             

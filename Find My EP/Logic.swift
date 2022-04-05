@@ -20,11 +20,22 @@ struct Room: Identifiable, Hashable {
     var y: Double
 }
 
-struct Intersection {
+class Intersection {
     var halls: [Hall]
     var id: Int
     var x: Double
     var y: Double
+    var f = 0.0
+    var g = 0.0
+    var h = 0.0
+    var parent: Intersection? = nil
+    
+    init(halls: [Hall], id: Int, x: Double, y: Double) {
+        self.halls = halls
+        self.id = id
+        self.x = x
+        self.y = y
+    }
 }
 
 struct Hall {
@@ -46,26 +57,38 @@ class School {
         self.rooms = rooms
     }
     
-    func findPath(start: Room, end: Room) -> (dist: Double, halls: [Hall], inters: [Int]) {
+    func findPath(start: Room, end: Room) -> (dist: Double, inters: [Int]) {
         // if rooms are
         if start.hall == end.hall {
-            return (abs(start.startDist - end.startDist),[],[])
+            return (abs(start.startDist - end.startDist),[])
         }
         
         let startHall = halls[start.hall]
         let endHall = halls[end.hall]
         
+//        // startHall start to endHall start
+//        let res1 = shortestPath(start: inters[startHall.start], end: inters[endHall.start], visited: [])
+//
+//        // startHall start to endHall end
+//        let res2 = shortestPath(start: inters[startHall.start], end: inters[endHall.end], visited: [])
+//
+//        // startHall end to endHall start
+//        let res3 = shortestPath(start: inters[startHall.end], end: inters[endHall.start], visited: [])
+//
+//        // startHall end to endHall end
+//        let res4 = shortestPath(start: inters[startHall.end], end: inters[endHall.end], visited: [])
+        
         // startHall start to endHall start
-        let res1 = shortestPath(start: inters[startHall.start], end: inters[endHall.start], visited: [])
-        
+        let res1 = a_star_shortestPath(start: inters[startHall.start], end: inters[endHall.start])
+
         // startHall start to endHall end
-        let res2 = shortestPath(start: inters[startHall.start], end: inters[endHall.end], visited: [])
-        
+        let res2 = a_star_shortestPath(start: inters[startHall.start], end: inters[endHall.end])
+
         // startHall end to endHall start
-        let res3 = shortestPath(start: inters[startHall.end], end: inters[endHall.start], visited: [])
-        
+        let res3 = a_star_shortestPath(start: inters[startHall.end], end: inters[endHall.start])
+
         // startHall end to endHall end
-        let res4 = shortestPath(start: inters[startHall.end], end: inters[endHall.end], visited: [])
+        let res4 = a_star_shortestPath(start: inters[startHall.end], end: inters[endHall.end])
         
         let dist1 = res1.dist + start.startDist + end.startDist
         let dist2 = res2.dist + start.startDist + (endHall.length - end.startDist)
@@ -73,13 +96,17 @@ class School {
         let dist4 = res4.dist + (startHall.length - start.startDist) + (endHall.length - end.startDist)
         
         if dist1 <= dist2 && dist1 <= dist3 && dist1 <= dist4 {
-            return (dist1, res1.hallways, res1.inters)
+            print(res1.inters)
+            return (dist1, res1.inters)
         } else if dist2 <= dist1 && dist2 <= dist3 && dist2 <= dist4 {
-            return (dist2, res2.hallways, res2.inters)
+            print(res2.inters)
+            return (dist2, res2.inters)
         } else if dist3 <= dist1 && dist3 <= dist2 && dist3 <= dist4 {
-            return (dist3, res3.hallways, res3.inters)
+            print(res3.inters)
+            return (dist3, res3.inters)
         } else {
-            return (dist4, res4.hallways, res4.inters)
+            print(res4.inters)
+            return (dist4, res4.inters)
         }
     }
     
@@ -90,6 +117,84 @@ class School {
             }
         }
         return false
+    }
+    
+    func a_star_shortestPath(start: Intersection, end: Intersection) -> (dist: Double, inters: [Int]) {
+        var open = [Intersection]()
+        var closed = Array(repeating: false, count: intersects.count)
+        open.append(start)
+        
+        while !open.isEmpty {
+            var min = 0
+            for i in 0...(open.count-1) {
+                if open[i].f < open[min].f {
+                    min = i
+                }
+            }
+            var curr = open[min]
+            closed[open[min].id] = true
+            open.remove(at: min)
+            
+            if curr.id == end.id {
+                var path: [Int] = [Int]()
+                
+                let dist = curr.g
+                
+                path.append(curr.id)
+                
+                while curr.parent != nil {
+                    curr = curr.parent!
+                    path.append(curr.id)
+                }
+                
+                return (dist, path.reversed())
+                
+            }
+            
+            for hall in curr.halls {
+                var child = 0
+                if hall.start == curr.id {
+                    child = hall.end
+                } else {
+                    child = hall.start
+                }
+                
+                var found = false
+                
+                if closed[child] {
+                    continue
+                }
+                
+                for inter in open {
+                    if inter.id == child {
+                        found = true
+                        break
+                    }
+                }
+                
+                if found {
+                    continue
+                }
+                
+                var node = Intersection(halls: intersects[child].halls, id: child, x: intersects[child].x, y: intersects[child].y)
+                
+                node.h = dist(x1: intersects[child].x, y1: intersects[child].y, x2: end.x, y2: end.y)
+                node.g = hall.length + curr.g
+                node.f = node.h + node.g
+                node.parent = curr
+                
+                open.append(node)
+                
+                
+            }
+            
+            
+            
+            
+            
+            
+        }
+        return (0.0, [])
     }
     
     func shortestPath(start: Intersection, end: Intersection, visited: [Int]) -> (inters: [Int], hallways: [Hall], dist: Double) {

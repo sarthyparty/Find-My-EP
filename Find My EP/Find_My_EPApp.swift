@@ -23,6 +23,8 @@ struct Find_My_EPApp: App {
             rooms[i-1].startDist = dist(x1: intersects[hallway.start].x, y1: intersects[hallway.start].y, x2: rooms[i-1].x, y2: rooms[i-1].y)
             print("Room \(i-1): \(rooms[i-1].startDist)")
         }
+        
+        school.a_star_shortestPath(start: intersects[0], end: intersects[3])
     }
     
     var body: some Scene {
