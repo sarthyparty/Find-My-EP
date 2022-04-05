@@ -1,11 +1,15 @@
 # Find-My-EP
 
-Version 1.3
-- added Dropdown Menu and tracer line which shows directions on Demo Map
+# Version History
 
-Version 1.2
-- added App Icon
+### Version 1.3
+- Added dropdown menu 
 
-Version 1.1
-- added start and end positions
-- demo testing with a small map
+### Version 1.2
+- Added App Icon
+- Improved pathfinder
+
+### Version 1.1
+- Added start and end positions
+- Demo testing with a small map
+- Added a pathfinder that connects between two rooms
