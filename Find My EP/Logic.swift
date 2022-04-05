@@ -242,6 +242,7 @@ class School {
     
 }
 
+// Room(name: "", startDist: , hall: , x: , y: )
 var rooms = [
     Room(name: "130 Classroom", startDist: 8.71, hall: 0, x: 106.96, y: 378.5),
     Room(name: "129 Classroom", startDist: 11.38, hall: 0, x: 109.63, y: 378.5),
@@ -270,27 +271,41 @@ var rooms = [
     Room(name: "122 Classroom", startDist: 28.82, hall: 11, x: 154.42, y: 356.72),
     Room(name: "123 Classroom", startDist: 12.68, hall: 11, x: 154.42, y: 372.86),
     Room(name: "118 Classroom", startDist: 12.68, hall: 11, x: 154.42, y: 372.86),
+    Room(name: "144 Weight Room", startDist: 24.95, hall: 13, x: 119.33, y: 436.53),
+    Room(name: "143 Boys Locker", startDist: 39.87, hall: 13, x: 119.33, y: 451.95),
+    Room(name: "142 Girls Locker", startDist: 27.22, hall: 13, x: 119.33, y: 440.80),
+    Room(name: "145 Fitness Center", startDist: 13.76, hall: 13, x: 119.33, y: 426.90),
+    Room(name: "146 Training", startDist: 26.09, hall: 9, x: 145.42 , y: 416.53),
+    Room(name: "147 Boys Locker", startDist: 10.12, hall: 15, x: 166.51, y: 423.70),
+    Room(name: "151 Girls Locker", startDist: 10.12, hall: 15, x: 166.51, y: 423.70),
+    Room(name: "148 Boys Locker", startDist: 27.41, hall: 15, x: 166.51, y: 440.99),
+    Room(name: "150 Girls Locker", startDist: 27.41, hall: 15, x: 166.51, y: 440.99),
+    Room(name: "151A Office", startDist: 7.97, hall: 15, x: 166.51, y: 421.55),
     
 ]
 
-var intersects = [Intersection(halls: [], id: 0, x: 98.25, y: 378.5),
-                  Intersection(halls: [], id: 1, x: 119.33, y: 378.5),
-                  Intersection(halls: [], id: 2, x: 119.33, y: 387.54),
-                  Intersection(halls: [], id: 3, x: 119.33, y: 404.08),
-                  Intersection(halls: [], id: 4, x: 84.58, y: 404.08),
-                  Intersection(halls: [], id: 5, x: 84.58, y: 399.25),
-                  Intersection(halls: [], id: 6, x: 70.54, y: 399.25),
-                  Intersection(halls: [], id: 7, x: 154.42, y: 387.54),
-                  Intersection(halls: [], id: 8, x: 159.79, y: 387.54),
-                  Intersection(halls: [], id: 9, x: 159.79, y: 415.08),
-                  Intersection(halls: [], id: 10, x: 119.33, y: 415.08),
-                  Intersection(halls: [], id: 11, x: 154.42, y: 354.11),
-                  Intersection(halls: [], id: 12, x: 167.01, y: 354.11),
-                  
-                  
+// Intersection(halls: [], id: , x: , y: )
+var intersects = [
+    Intersection(halls: [], id: 0, x: 98.25, y: 378.5),
+    Intersection(halls: [], id: 1, x: 119.33, y: 378.5),
+    Intersection(halls: [], id: 2, x: 119.33, y: 387.54),
+    Intersection(halls: [], id: 3, x: 119.33, y: 404.08),
+    Intersection(halls: [], id: 4, x: 84.58, y: 404.08),
+    Intersection(halls: [], id: 5, x: 84.58, y: 399.25),
+    Intersection(halls: [], id: 6, x: 70.54, y: 399.25),
+    Intersection(halls: [], id: 7, x: 154.42, y: 387.54),
+    Intersection(halls: [], id: 8, x: 159.79, y: 387.54),
+    Intersection(halls: [], id: 9, x: 159.79, y: 416.53),
+    Intersection(halls: [], id: 10, x: 119.33, y: 416.53),
+    Intersection(halls: [], id: 11, x: 154.42, y: 354.11),
+    Intersection(halls: [], id: 12, x: 167.01, y: 354.11),
+    Intersection(halls: [], id: 13, x: 119.33, y: 452.95),
+    Intersection(halls: [], id: 14, x: 166.51, y: 416.53),
+    Intersection(halls: [], id: 15, x: 166.51 , y: 458.06),
+    
 ]
 
-
+// Hall(start: , end: , length: , id: )
 var halls = [
     Hall(start: 0, end: 1, length: 21.08, id: 0),
     Hall(start: 1, end: 2, length: 9.04, id: 1),
@@ -305,6 +320,9 @@ var halls = [
     Hall(start: 10, end: 3, length: 11.0, id: 10),
     Hall(start: 7, end: 11, length: 31.43, id: 11),
     Hall(start: 11, end: 12, length: 12.59, id: 12),
+    Hall(start: 10, end: 13, length: 39.87, id: 13),
+    Hall(start: 9, end: 14, length: 6.72, id: 14),
+    Hall(start: 14, end: 15, length: 42.98, id: 15),
     
 ]
 
