@@ -35,7 +35,7 @@ struct Hall {
     var rooms: [Room] = []
 }
 
-class School {
+class floor {
     var inters: [Intersection]
     var halls: [Hall]
     var rooms: [Room]
@@ -138,7 +138,7 @@ class School {
 }
 
 // Room(name: "", startDist: , hall: , x: , y: )
-var rooms = [
+var rooms1 = [
     Room(name: "130 Classroom", startDist: 8.71, hall: 0, x: 106.96, y: 378.5),
     Room(name: "129 Classroom", startDist: 11.38, hall: 0, x: 109.63, y: 378.5),
     Room(name: "131 Computer Lab", startDist: 8.08, hall: 1, x: 119.33, y: 386.58),
@@ -180,7 +180,7 @@ var rooms = [
 ]
 
 // Intersection(halls: [], id: , x: , y: )
-var intersects = [
+var intersects1 = [
     Intersection(halls: [], id: 0, x: 98.25, y: 378.5),
     Intersection(halls: [], id: 1, x: 119.33, y: 378.5),
     Intersection(halls: [], id: 2, x: 119.33, y: 387.54),
@@ -201,7 +201,7 @@ var intersects = [
 ]
 
 // Hall(start: , end: , length: , id: )
-var halls = [
+var halls1 = [
     Hall(start: 0, end: 1, length: 21.08, id: 0),
     Hall(start: 1, end: 2, length: 9.04, id: 1),
     Hall(start: 2, end: 3, length: 16.54, id: 2),
@@ -221,6 +221,17 @@ var halls = [
     
 ]
 
+var halls2 = [
+
+]
+
+var intersects2 = [
+
+]
+
+var rooms2 = [
+
+]
 
 
 var roomsToIDs = [String: Int]()
@@ -230,5 +241,5 @@ var roomsToIDs = [String: Int]()
 
 
 
-var school = School(halls: halls, inters: intersects, rooms: rooms)
+var firstFloor = floor(halls: halls1, inters: intersects1, rooms: rooms1)
 
