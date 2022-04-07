@@ -46,6 +46,12 @@ struct Hall {
     var rooms: [Room] = []
 }
 
+struct Stair {
+    var x: Double
+    var y: Double
+    var isFullStairs: Bool
+}
+
 class School {
     var inters: [Intersection]
     var halls: [Hall]
