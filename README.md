@@ -23,4 +23,4 @@
 ### Version 1.1
 - Added start and end positions
 - Demo testing with a small map
-- Added a pathfinder that connects between two rooms
+- Added a pathfinder that connects two rooms
