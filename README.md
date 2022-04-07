@@ -24,4 +24,4 @@
 - Added start and end positions
 - Demo testing with a small map
 - Added a pathfinder that connects two rooms
-img src="https://github.com/sarthyparty/Find-My-EP/blob/main/Version%201.1.png" width="321" height="695" /
+<img src="https://github.com/sarthyparty/Find-My-EP/blob/main/Version%201.1.png" width="321" height="695" />
