@@ -417,7 +417,7 @@ var halls2 = [
 
 
 
-var school = Floor(halls: halls2, inters: inters2, rooms: rooms2)
+var school = Floor(halls: halls, inters: intersects, rooms: rooms)
 
 var floor1 = Floor(halls: halls, inters: intersects, rooms: rooms)
 var floor2 = Floor(halls: halls, inters: intersects, rooms: rooms)
