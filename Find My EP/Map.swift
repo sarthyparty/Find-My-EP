@@ -27,11 +27,11 @@ struct Map: View {
     var body: some View {
         let map = ZStack {
             if scale > 4 {
-                Image("EPHS")
+                Image("EPHS_first_high")
                     .resizable()
                     .background(Color.white)
             } else {
-                Image("EPHS_low")
+                Image("EPHS_first_low")
                     .resizable()
                     .background(Color.white)
             }
