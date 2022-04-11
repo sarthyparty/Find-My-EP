@@ -53,6 +53,7 @@ struct Stair {
     var y: Double
     var isFull: Bool
     var inter: Intersection
+    var id: Int
 }
 
 class Floor {
@@ -251,7 +252,7 @@ class Floor {
     
 }
 
-func findPath(start: Room, end: Room) -> (dist: Double, inters_start: [Int], inters_end: [Int],  floor_start: Int, floor_end: Int, stair: Int) {
+func findPath(start: Room, end: Room) -> (dist: Double, inters_1: [Int], inters_2: [Int], inters_3: [Int], stair: Int) {
     var startfloor = floor3
     var endfloor = floor3
     
@@ -267,16 +268,33 @@ func findPath(start: Room, end: Room) -> (dist: Double, inters_start: [Int], int
         let endfloor = floor2
     }
     
+    var min_dist = startfloor.a_star_shortestPath(start: stairs[0].inter, end: startfloor.inters[startfloor.halls[start.hall].start])
+    
+    
     for stair in stairs {
         let res1_start = startfloor.a_star_shortestPath(start: stair.inter, end: startfloor.inters[startfloor.halls[start.hall].start])
         let res2_start = startfloor.a_star_shortestPath(start: stair.inter, end: startfloor.inters[startfloor.halls[start.hall].end])
         
         let res1_end = endfloor.a_star_shortestPath(start: stair.inter, end: endfloor.inters[endfloor.halls[end.hall].start])
         let res2_end = endfloor.a_star_shortestPath(start: stair.inter, end: endfloor.inters[endfloor.halls[end.hall].end])
+        
+        if res1_start.dist < min_res1.dist {
+            min_res1 = res1_start
+            min_stair = stair.id
+        } else if res2_start.dist < min_res1.dist {
+            min_res1 = res2_start
+            min_stair = stair.id
+        } else if res1_end.dist < min_res1.dist {
+            min_res1 = res1_end
+            min_stair = stair.id
+        } else if res2_end.dist < min_res1.dist {
+            min_res1 = res2_end
+            min_stair = stair.id
+        }
     }
     
     
-    return (0, [], [], 1, 2, 0)
+    return (0, [], [], [], 0)
 }
 
 
@@ -425,5 +443,5 @@ var floor3 = Floor(halls: halls, inters: intersects, rooms: rooms)
 
 
 var stairs = [
-    Stair(dist: 0, x: 0, y: 0, isFull: false, inter: floor3.inters[0])
+    Stair(dist: 0, x: 0, y: 0, isFull: false, inter: floor3.inters[0], id: 0)
 ]
