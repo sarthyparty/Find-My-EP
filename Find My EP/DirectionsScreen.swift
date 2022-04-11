@@ -12,7 +12,7 @@ struct DirectionsScreen: View {
     var stuff: (Double, [Int])
     var start: Int
     var end: Int
-    @State var first = false
+    @State var first = true
     @State var second = false
     @State var third = false
     
