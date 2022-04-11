@@ -18,6 +18,7 @@ struct Room: Identifiable, Hashable {
     var hall: Int
     var x: Double
     var y: Double
+    var floor = 1
 }
 
 class Intersection {
@@ -47,12 +48,14 @@ struct Hall {
 }
 
 struct Stair {
+    var dist: Double
     var x: Double
     var y: Double
-    var isFullStairs: Bool
+    var isFull: Bool
+    var inter: Intersection
 }
 
-class School {
+class Floor {
     var halls: [Hall]
     var inters: [Intersection]
     var rooms: [Room]
@@ -69,8 +72,8 @@ class School {
             return (abs(start.startDist - end.startDist),[])
         }
         
-        let startHall = halls[start.hall]
-        let endHall = halls[end.hall]
+        let startHall = self.halls[start.hall]
+        let endHall = self.halls[end.hall]
         
 //        // startHall start to endHall start
 //        let res1 = shortestPath(start: inters[startHall.start], end: inters[endHall.start], visited: [])
@@ -248,6 +251,36 @@ class School {
     
 }
 
+func findPath(start: Room, end: Room) -> (dist: Double, inters_start: [Int], inters_end: [Int],  floor_start: Int, floor_end: Int, stair: Int) {
+    var startfloor = floor3
+    var endfloor = floor3
+    
+    if start.floor == 1 {
+        startfloor = floor1
+    } else if start.floor == 2{
+        let startfloor = floor2
+    }
+    
+    if end.floor == 1 {
+        endfloor = floor1
+    } else if end.floor == 2{
+        let endfloor = floor2
+    }
+    
+    for stair in stairs {
+        let res1_start = startfloor.a_star_shortestPath(start: stair.inter, end: startfloor.inters[startfloor.halls[start.hall].start])
+        let res2_start = startfloor.a_star_shortestPath(start: stair.inter, end: startfloor.inters[startfloor.halls[start.hall].end])
+        
+        let res1_end = endfloor.a_star_shortestPath(start: stair.inter, end: endfloor.inters[endfloor.halls[end.hall].start])
+        let res2_end = endfloor.a_star_shortestPath(start: stair.inter, end: endfloor.inters[endfloor.halls[end.hall].end])
+    }
+    
+    
+    return (0, [], [], 1, 2, 0)
+}
+
+
+
 // Room(name: "", startDist: , hall: , x: , y: )
 var rooms = [
     Room(name: "130 Classroom", startDist: 8.71, hall: 0, x: 106.96, y: 378.5),
@@ -347,10 +380,50 @@ var halls = [
 
 var roomsToIDs = [String: Int]()
 
+var rooms2 = [
+    Room(name: "220 Classroom", startDist: 0, hall: 0, x: 70.65, y: 399.06),
+    Room(name: "219 Science Lab", startDist: 0, hall: 0, x: 70.65, y: 399.06),
+    Room(name: "218 Classroom", startDist: 3.06, hall: 0, x: 73.71, y: 399.06),
+    Room(name: "221 Classroom", startDist: 3.06, hall: 0, x: 73.71, y: 399.06),
+    Room(name: "217 Classroom", startDist: 19.38, hall: 0, x: 90.03, y: 399.06),
+    Room(name: "222 Classroom", startDist: 19.38, hall: 0, x: 90.03, y: 399.06),
+]
+
+// Intersection(halls: [], id: , x: , y: ),
+var inters2 = [
+    Intersection(halls: [], id: 0, x: 70.65, y: 399.06),
+    Intersection(halls: [], id: 1, x: 99.38, y: 399.06),
+    Intersection(halls: [], id: 2, x: 99.38, y: 386.07),
+    Intersection(halls: [], id: 3, x: 99.38, y: 404.51),
+    Intersection(halls: [], id: 4, x: 106.48, y: 399.06),
+    Intersection(halls: [], id: 5, x: 106.48, y: 393.04),
+    Intersection(halls: [], id: 6, x: 118.85, y: 393.04),
+    Intersection(halls: [], id: 7, x: 118.85, y: 387.72),
+    Intersection(halls: [], id: 8, x: 118.85, y: 416.22),
+]
+
+// Hall(start: , end: , length: , id: ),
+var halls2 = [
+    Hall(start: 0, end: 1, length: 28.73, id: 0),
+    Hall(start: 1, end: 4, length: 7.10, id: 1),
+    Hall(start: 1, end: 2, length: 12.99, id: 2),
+    Hall(start: 1, end: 3, length: 5.45, id: 3),
+    Hall(start: 4, end: 5, length: 6.02, id: 4),
+    Hall(start: 5, end: 6, length: 12.37, id: 5),
+    Hall(start: 6, end: 7, length: 5.32, id: 6),
+    Hall(start: 6, end: 8, length: 23.18, id: 7),
+]
 
 
 
 
+var school = Floor(halls: halls2, inters: inters2, rooms: rooms2)
 
-var school = School(halls: halls, inters: intersects, rooms: rooms)
+var floor1 = Floor(halls: halls, inters: intersects, rooms: rooms)
+var floor2 = Floor(halls: halls, inters: intersects, rooms: rooms)
+var floor3 = Floor(halls: halls, inters: intersects, rooms: rooms)
 
+
+var stairs = [
+    Stair(dist: 0, x: 0, y: 0, isFull: false, inter: floor3.inters[0])
+]
