@@ -57,11 +57,11 @@ struct DirectionsScreen: View {
         return str
     }
     
-    struct DirectionsScreen_Previews: PreviewProvider {
-        static var previews: some View {
-            DirectionsScreen(stuff: school.findPath(start: rooms[0], end: rooms[3]), start: 0, end: 3)
-        }
-    }
+//    struct DirectionsScreen_Previews: PreviewProvider {
+//        static var previews: some View {
+//            DirectionsScreen(stuff: school.findPath(start: rooms[0], end: rooms[3]), start: 0, end: 3)
+//        }
+//    }
     
     struct ColorButton: View {
         var text: String
