@@ -83,7 +83,7 @@ struct ContentView: View {
                 }
                 
                 
-                NavigationLink(destination: DirectionsScreen(stuff: school.findPath(start: rooms[roomsToIDs[searchText] ?? 4], end: rooms[roomsToIDs[searchText2] ?? 9]), start: roomsToIDs[searchText] ?? 4, end: roomsToIDs[searchText2] ?? 9)) {
+                NavigationLink(destination: DirectionsScreen(stuff: school.findPath(start: roomsToIDs[searchText] ?? rooms[0], end: roomsToIDs[searchText2] ?? rooms[0]), start: (roomsToIDs[searchText] ?? rooms[0]), end: (roomsToIDs[searchText2] ?? rooms[0]))) {
                     HStack {
                         Spacer()
                         Text("Show Map")

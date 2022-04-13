@@ -10,8 +10,8 @@ import SwiftUI
 struct DirectionsScreen: View {
     
     var stuff: (Double, [Int])
-    var start: Int
-    var end: Int
+    var start: Room
+    var end: Room
     @State var first = true
     @State var second = false
     @State var third = false

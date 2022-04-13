@@ -18,7 +18,7 @@ struct Find_My_EPApp: App {
         }
         for i in 1...rooms.count {
             halls[rooms[i-1].hall].rooms.append(rooms[i-1])
-            roomsToIDs[rooms[i-1].name] = i-1
+            roomsToIDs[rooms[i-1].name] = rooms[i-1]
             let hallway = halls[rooms[i-1].hall]
             rooms[i-1].startDist = dist(x1: intersects[hallway.start].x, y1: intersects[hallway.start].y, x2: rooms[i-1].x, y2: rooms[i-1].y)
             print("Room \(i-1): \(rooms[i-1].startDist)")

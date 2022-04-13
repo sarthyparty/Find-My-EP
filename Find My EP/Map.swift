@@ -14,8 +14,8 @@ var screenHeight = screenSize.height
 
 struct Map: View {
     var inters: [Int]
-    var start: Int
-    var end: Int
+    var start: Room
+    var end: Room
     @State var scale: CGFloat = 5.0
     @State private var percentage: CGFloat = .zero
     @State private var offset: CGPoint = .zero
@@ -37,14 +37,14 @@ struct Map: View {
             }
             
             Path { path in
-                path.move(to: CGPoint(x: CGFloat(rooms[start].x/428*screenWidth), y: (CGFloat((rooms[start].y-314)/926*screenHeight))))
+                path.move(to: CGPoint(x: CGFloat(start.x/428*screenWidth), y: (CGFloat((start.y-314)/926*screenHeight))))
                 if inters.count > 0 {
                     for i in 0...inters.count-1 {
                         path.addLine(to: CGPoint(x: CGFloat(intersects[inters[i]].x/428*screenWidth), y: CGFloat((intersects[inters[i]].y-314)/926*screenHeight)))
                         path.move(to: CGPoint(x: CGFloat(intersects[inters[i]].x/428*screenWidth), y: CGFloat((intersects[inters[i]].y-314)/926*screenHeight)))
                     }
                 }
-                path.addLine(to: CGPoint(x: CGFloat(rooms[end].x/428*screenWidth), y: CGFloat((rooms[end].y-314)/926*screenHeight)))
+                path.addLine(to: CGPoint(x: CGFloat(end.x/428*screenWidth), y: CGFloat((end.y-314)/926*screenHeight)))
                 
             }
             .trim(from: 0, to: percentage)
@@ -58,7 +58,7 @@ struct Map: View {
             
         }
         .aspectRatio(contentMode: .fit)
-        ZoomableScrollView(content: map, currentScale: $scale, currentOffset: $offset, start: CGPoint(x: rooms[start].x, y: rooms[start].y))
+        ZoomableScrollView(content: map, currentScale: $scale, currentOffset: $offset, start: CGPoint(x: start.x, y: start.y))
         
         
         //        .offset(x: offset.width, y: offset.height)
