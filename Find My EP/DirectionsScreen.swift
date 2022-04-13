@@ -30,28 +30,13 @@ struct DirectionsScreen: View {
             }
             Text("Time: " + to_min(seconds: stuff.0*0.64))
                 .frame(maxWidth: .infinity, alignment: .center)
-            HStack {
-                Button(action: {
-                    first = true
-                    second = false
-                    third = false
-                }, label: {
-                    Text("1")
-                })
-                Button(action: {
-                    first = false
-                    second = true
-                    third = false
-                }, label: {
-                    Text("2")
-                })
-                Button(action: {
-                    first = false
-                    second = false
-                    third = true
-                }, label: {
-                    Text("3")
-                })
+            HStack(alignment: .center, spacing: 0 ) {
+                Spacer()
+                ColorButton(text: "1", tochange: $first, other1: $second, other2: $third)
+                ColorButton(text: "2", tochange: $second, other1: $first, other2: $third)
+                ColorButton(text: "3", tochange: $third, other1: $second, other2: $first)
+                Spacer()
+                
             }
             
         }
@@ -72,9 +57,34 @@ struct DirectionsScreen: View {
         return str
     }
     
-    //    struct DirectionsScreen_Previews: PreviewProvider {
-    //        static var previews: some View {
-    //            DirectionsScreen(stuff: school.findPath(start: rooms[0], end: rooms[3]), start: 0, end: 3)
-    //        }
-    //    }
+//    struct DirectionsScreen_Previews: PreviewProvider {
+//        static var previews: some View {
+//            DirectionsScreen(stuff: school.findPath(start: rooms[0], end: rooms[3]), start: 0, end: 3)
+//        }
+//    }
+    
+    struct ColorButton: View {
+        var text: String
+        @Binding var tochange: Bool
+        @Binding var other1: Bool
+        @Binding var other2: Bool
+        var body: some View {
+            Button(action: {
+                tochange = true
+                other1 = false
+                other2 = false
+            }, label: {
+                Text(text) .bold().font(.system(size: 30))
+                    .padding(10)
+                    .foregroundColor(tochange ? Color.red : Color.black)
+                //                    .background(tochange ? Color.green : Color.red)
+                //                    .border(Color.black, width: 0.50)
+                //                    .cornerRadius(20)
+                
+                
+            })
+        }
+    }
 }
+
+
