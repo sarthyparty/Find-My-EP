@@ -356,7 +356,7 @@ var rooms = [
     Room(name: "151 Girls Locker", startDist: 10.12, hall: 15, x: 166.51, y: 423.70),
     Room(name: "148 Boys Locker", startDist: 27.41, hall: 15, x: 166.51, y: 440.99),
     Room(name: "150 Girls Locker", startDist: 27.41, hall: 15, x: 166.51, y: 440.99),
-    Room(name: "151A Office", startDist: 7.97, hall: 15, x: 166.51, y: 421.55),
+    Room(name: "151A Office", startDist: 7.97, hall: 15, x: 166.51, y: 421.55)
     
 ]
 
