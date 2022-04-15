@@ -17,9 +17,9 @@ struct DirectionsScreen: View {
     @State var third = false
     
     var body: some View {
-        let map1 = Map(inters: stuff.1, start: start, end: end)
-        let map2 = Map(inters: stuff.1, start: end, end: end)
-        let map3 = Map(inters: stuff.1, start: end, end: start)
+        let map1 = Map(inters: stuff.1, start: start, end: end, mapImageHigh: "EPHS_first_high", mapImageLow: "EPHS_first_low")
+        let map2 = Map(inters: stuff.1, start: start, end: end, mapImageHigh: "EPHS_second_high", mapImageLow: "EPHS_second_low")
+        let map3 = Map(inters: stuff.1, start: start, end: end, mapImageHigh: "EPHS_third_high", mapImageLow: "EPHS_third_low")
         VStack(alignment: .leading) {
             if first {
                 map1
