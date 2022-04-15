@@ -32,7 +32,7 @@ struct Find_My_EPApp: App {
         }
         
         
-        school.a_star_shortestPath(start: intersects[0], end: intersects[3])
+        //school.a_star_shortestPath(start: intersects[0], end: intersects[3])
     }
     
     var body: some Scene {

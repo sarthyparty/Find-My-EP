@@ -16,6 +16,8 @@ struct Map: View {
     var inters: [Int]
     var start: Room
     var end: Room
+    var mapImageHigh: String
+    var mapImageLow: String
     @State var scale: CGFloat = 5.0
     @State private var percentage: CGFloat = .zero
     @State private var offset: CGPoint = .zero
@@ -27,11 +29,11 @@ struct Map: View {
     var body: some View {
         let map = ZStack {
             if scale > 4 {
-                Image("EPHS_first_high")
+                Image(mapImageHigh)
                     .resizable()
                     .background(Color.white)
             } else {
-                Image("EPHS_first_low")
+                Image(mapImageLow)
                     .resizable()
                     .background(Color.white)
             }
