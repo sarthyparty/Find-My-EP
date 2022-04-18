@@ -25,7 +25,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                
+  
                 SearchBar(searchBarText: "Enter start room number", searchText: $searchText, isSearching: $isSearching, isSearchingOther: $isSearching2)
                 
                 if (isSearching) {
