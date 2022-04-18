@@ -51,8 +51,8 @@ struct Hall {
 struct Stair {
     var name: String
     var dist: [Double]
-    var x: Double
-    var y: Double
+    var x: [Double]
+    var y: [Double]
     var allFloors: Bool
     var inters: [Intersection]
     var id: Int
@@ -291,7 +291,6 @@ func findPath(start: Room, end: Room) -> (dist: Double, inters_1: [Int], inters_
     for stair in stairs {
         let res1_start = startfloor.a_star_shortestPath(start: stair.inters[start.floor-1], end: startfloor.inters[startfloor.halls[start.hall].start])
         var start_res = startfloor.a_star_shortestPath(start: stair.inters[start.floor-1], end: startfloor.inters[startfloor.halls[start.hall].end])
-
         if res1_start.dist + start.startDist < start_res.dist + startfloor.halls[start.hall].length - start.startDist {
             start_res = res1_start
             start_res.dist = res1_start.dist + start.startDist
@@ -305,9 +304,9 @@ func findPath(start: Room, end: Room) -> (dist: Double, inters_1: [Int], inters_
         
         if res1_end.dist + end.startDist < end_res.dist + endfloor.halls[end.hall].length - end.startDist {
             end_res = res1_end
-            end_res.dist = res1_start.dist + start.startDist
+            end_res.dist = res1_end.dist + end.startDist
         } else {
-            end_res.dist = start_res.dist + startfloor.halls[start.hall].length - start.startDist
+            end_res.dist = end_res.dist + endfloor.halls[end.hall].length - end.startDist
         }
         
 
@@ -329,35 +328,36 @@ func findPath(start: Room, end: Room) -> (dist: Double, inters_1: [Int], inters_
     
     if start.floor == 1 {
         starts[0] = CGPoint(x: start.x, y: start.y)
-        ends[0] = CGPoint(x: stairs[min_stair].x, y: stairs[min_stair].y)
+        ends[0] = CGPoint(x: stairs[min_stair].x[0], y: stairs[min_stair].y[0])
         firstfloorpath = min_start_floor.inters
     } else if start.floor == 2 {
         starts[1] = CGPoint(x: start.x, y: start.y)
-        ends[1] = CGPoint(x: stairs[min_stair].x, y: stairs[min_stair].y)
+        ends[1] = CGPoint(x: stairs[min_stair].x[1], y: stairs[min_stair].y[1])
         secondfloorpath = min_start_floor.inters
     } else {
         starts[2] = CGPoint(x: start.x, y: start.y)
-        ends[2] = CGPoint(x: stairs[min_stair].x, y: stairs[min_stair].y)
+        ends[2] = CGPoint(x: stairs[min_stair].x[2], y: stairs[min_stair].y[2])
         thirdfloorpath = min_start_floor.inters
     }
 
     if end.floor == 1 {
         ends[0] = CGPoint(x: end.x, y: end.y)
-        starts[0] = CGPoint(x: stairs[min_stair].x, y: stairs[min_stair].y)
+        starts[0] = CGPoint(x: stairs[min_stair].x[0], y: stairs[min_stair].y[0])
         firstfloorpath = min_end_floor.inters
     } else if end.floor == 2 {
         ends[1] = CGPoint(x: end.x, y: end.y)
-        starts[1] = CGPoint(x: stairs[min_stair].x, y: stairs[min_stair].y)
+        starts[1] = CGPoint(x: stairs[min_stair].x[1], y: stairs[min_stair].y[1])
         secondfloorpath = min_end_floor.inters
     } else {
         ends[2] = CGPoint(x: end.x, y: end.y)
-        starts[2] = CGPoint(x: stairs[min_stair].x, y: stairs[min_stair].y)
+        starts[2] = CGPoint(x: stairs[min_stair].x[2], y: stairs[min_stair].y[2])
         thirdfloorpath = min_end_floor.inters
     }
     
     active_floor[start.floor - 1] = true
     
-    return (min_start_floor.dist + min_end_floor.dist, firstfloorpath, secondfloorpath, thirdfloorpath, starts, ends, active_floor)
+    return (min_start_floor.dist + min_end_floor.dist + (18/0.72) * Double(abs(start.floor - end.floor))
+, firstfloorpath, secondfloorpath, thirdfloorpath, starts, ends, active_floor)
 }
 
 
@@ -492,7 +492,7 @@ var rooms3 = [
     Room(name: "315 Classroom", startDist: 0, hall: 0, x: 65.48, y: 399.44),
     Room(name: "316 Application Lab", startDist: 0, hall: 0, x: 65.48, y: 399.44),
     Room(name: "317 Application Lab", startDist: 5.02, hall: 0, x: 70.50, y: 399.44),
-    Room(name: "318 Classroom", startDist: 8.07, hall: 0, x: 73.55, y: 399.44),
+    Room(name: "318 Classroom", startDist: 8.06, hall: 0, x: 73.55, y: 399.44),
     Room(name: "319 Classroom", startDist: 23.93, hall: 0, x: 89.41, y: 399.44),
     Room(name: "320 Computer Programming", startDist: 27.6, hall: 0, x: 93.08, y: 399.44),
     
@@ -529,5 +529,5 @@ var floors = [floor1, floor2, floor3]
 
 // Stair(dist: [], x: , y: , allFloors: true, inter: [floor1.inters[0], floor2.inters[], floor3.inters[]], id: )
 var stairs = [
-    Stair(name: "SW 5", dist: [13.55, 6.86, 6.86], x: 119.13, y: 364.95, allFloors: true, inters: [floor1.inters[1], floor2.inters[9], floor3.inters[6]], id: 0)
+    Stair(name: "SW 5", dist: [13.55, 6.86, 6.86], x: [119.13, 119.13, 119.13], y: [367.13, 367.13, 367.13], allFloors: true, inters: [floor1.inters[1], floor2.inters[9], floor3.inters[6]], id: 0)
 ]

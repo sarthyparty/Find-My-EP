@@ -23,7 +23,7 @@ struct DirectionsScreen: View {
             } else {
                 map3
             }
-            Text("Time: " + to_min(seconds: retval.0*0.64))
+            Text(to_min(seconds: retval.0*0.72))
                 .frame(maxWidth: .infinity, alignment: .center)
             HStack(alignment: .center, spacing: 0 ) {
                 Spacer()
