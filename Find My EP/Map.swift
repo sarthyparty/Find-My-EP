@@ -13,9 +13,10 @@ var screenHeight = screenSize.height
 
 
 struct Map: View {
+    var floor: Floor
     var inters: [Int]
-    var start: Room
-    var end: Room
+    var start: CGPoint
+    var end: CGPoint
     var mapImageHigh: String
     var mapImageLow: String
     @State var scale: CGFloat = 5.0
@@ -41,12 +42,14 @@ struct Map: View {
             Path { path in
                 path.move(to: CGPoint(x: CGFloat(start.x/428*screenWidth), y: (CGFloat((start.y-314)/926*screenHeight))))
                 if inters.count > 0 {
-                    for i in 0...inters.count-1 {
-                        path.addLine(to: CGPoint(x: CGFloat(intersects[inters[i]].x/428*screenWidth), y: CGFloat((intersects[inters[i]].y-314)/926*screenHeight)))
-                        path.move(to: CGPoint(x: CGFloat(intersects[inters[i]].x/428*screenWidth), y: CGFloat((intersects[inters[i]].y-314)/926*screenHeight)))
+                    for i in inters {
+                        path.addLine(to: CGPoint(x: CGFloat(floor.inters[i].x/428*screenWidth), y: CGFloat((floor.inters[i].y-314)/926*screenHeight)))
+                        path.move(to: CGPoint(x: CGFloat(floor.inters[i].x/428*screenWidth), y: CGFloat((floor.inters[i].y-314)/926*screenHeight)))
                     }
                 }
                 path.addLine(to: CGPoint(x: CGFloat(end.x/428*screenWidth), y: CGFloat((end.y-314)/926*screenHeight)))
+                print(start)
+                print(end)
                 
             }
             .trim(from: 0, to: percentage)
