@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct DirectionsScreen: View {
     
     @State var retval: (Double, [Int], [Int], [Int], [CGPoint], [CGPoint], [Bool])
+    
+    @State var heading = CLHeading()
     
     var body: some View {
         let map1 = Map(floor: floors[0], inters: retval.1, start: retval.4[0], end: retval.5[0], mapImageHigh: "EPHS_first_high", mapImageLow: "EPHS_first_low")
@@ -34,6 +37,8 @@ struct DirectionsScreen: View {
                 ColorButton(text: "3", tochange: $retval.6[2], other1: $retval.6[1], other2: $retval.6[0])
                     .disabled(retval.3.isEmpty)
                 Spacer()
+                
+                Button(action: {print(heading.magneticHeading)}, label: {Text("Hi")})
                 
             }
             
