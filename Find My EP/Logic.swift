@@ -470,6 +470,7 @@ var intersects2 = [
     Intersection(halls: [], id: 7, x: 118.85, y: 387.72),
     Intersection(halls: [], id: 8, x: 118.85, y: 416.22),
     Intersection(halls: [], id: 9, x: 118.85, y: 371.81),
+    Intersection(halls: [], id: 10, x: 122.87, y: 371.81),
 ]
 
 // Hall(start: , end: , length: , id: ),
@@ -478,11 +479,12 @@ var halls2 = [
     Hall(start: 1, end: 4, length: 7.10, id: 1),
     Hall(start: 1, end: 2, length: 12.99, id: 2),
     Hall(start: 1, end: 3, length: 5.45, id: 3),
-    Hall(start: 4, end: 5, length: 6.02, id: 4),
-    Hall(start: 5, end: 6, length: 12.37, id: 5),
-    Hall(start: 6, end: 7, length: 5.32, id: 6),
-    Hall(start: 6, end: 8, length: 23.18, id: 7),
+    
+    
+    
+    
     Hall(start: 7, end: 9, length: 15.91, id: 8),
+    Hall(start: 9, end: 10, length: 4.02, id: 9),
 ]
 
 // Room(name: "", startDist: , hall: , x: , y: ),
@@ -507,6 +509,7 @@ var intersects3 = [
     Intersection(halls: [], id: 4, x: 119.13, y: 399.44),
     Intersection(halls: [], id: 5, x: 119.13, y: 387.76),
     Intersection(halls: [], id: 6, x: 119.13, y: 371.81),
+    Intersection(halls: [], id: 7, x: 122.87, y: 371.81),
 ]
 
 // Hall(start: , end: , length: , id: ),
@@ -517,6 +520,7 @@ var halls3 = [
     Hall(start: 3, end: 4, length: 5.17, id: 3),
     Hall(start: 4, end: 5, length: 11.68, id: 4),
     Hall(start: 5, end: 6, length: 15.95, id: 5),
+    Hall(start: 6, end: 7, length: 4.02, id: 6)
 ]
 
 var school = Floor(halls: halls, inters: intersects, rooms: rooms)
@@ -529,5 +533,5 @@ var floors = [floor1, floor2, floor3]
 
 // Stair(dist: [], x: , y: , allFloors: true, inter: [floor1.inters[0], floor2.inters[], floor3.inters[]], id: )
 var stairs = [
-    Stair(name: "SW 5", dist: [13.55, 6.86, 6.86], x: [119.13, 119.13, 119.13], y: [367.13, 367.13, 367.13], allFloors: true, inters: [floor1.inters[1], floor2.inters[9], floor3.inters[6]], id: 0)
+    Stair(name: "SW 5", dist: [13.55, 6.86, 6.86], x: [119.33, 122.87, 122.58], y: [367.29, 365.83, 365.83], allFloors: true, inters: [floor1.inters[1], floor2.inters[10], floor3.inters[7]], id: 0)
 ]
