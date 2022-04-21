@@ -13,23 +13,43 @@ struct Find_My_EPApp: App {
         for i in 1...halls.count {
             intersects[halls[i-1].start].halls.append(halls[i-1])
             intersects[halls[i-1].end].halls.append(halls[i-1])
-            halls[i-1].length = dist(x1: intersects[halls[i-1].start].x, y1: intersects[halls[i-1].start].y, x2: intersects[halls[i-1].end].x, y2: intersects[halls[i-1].end].y)
-            print("Hall \(i-1): \(halls[i-1].length)")
         }
-        for i in 1...rooms.count {
-            halls[rooms[i-1].hall].rooms.append(rooms[i-1])
-            roomsToIDs[rooms[i-1].name] = i-1
-            let hallway = halls[rooms[i-1].hall]
-            rooms[i-1].startDist = dist(x1: intersects[hallway.start].x, y1: intersects[hallway.start].y, x2: rooms[i-1].x, y2: rooms[i-1].y)
-            print("Room \(i-1): \(rooms[i-1].startDist)")
+        for i in 1...halls2.count {
+            intersects2[halls2[i-1].start].halls.append(halls2[i-1])
+            intersects2[halls2[i-1].end].halls.append(halls2[i-1])
         }
         
-        school.a_star_shortestPath(start: intersects[0], end: intersects[3])
+        for i in 1...halls3.count {
+            intersects3[halls3[i-1].start].halls.append(halls3[i-1])
+            intersects3[halls3[i-1].end].halls.append(halls3[i-1])
+        }
+        for i in 1...rooms.count {
+            rooms[i-1].floor = 1
+            halls[rooms[i-1].hall].rooms.append(rooms[i-1])
+            roomsToIDs[rooms[i-1].name] = rooms[i-1]
+        }
+        
+        for i in 1...rooms2.count {
+            rooms2[i-1].floor = 2
+            halls2[rooms2[i-1].hall].rooms.append(rooms2[i-1])
+            roomsToIDs[rooms2[i-1].name] = rooms2[i-1]
+        }
+        for i in 1...rooms3.count {
+            rooms3[i-1].floor = 3
+            halls3[rooms3[i-1].hall].rooms.append(rooms3[i-1])
+            roomsToIDs[rooms3[i-1].name] = rooms3[i-1]
+        }
+        
+        print(findPath(start: rooms3[5], end: rooms[8]))
+//        print(floor3.a_star_shortestPath(start: floor3.inters[0], end: floor3.inters[6]))
+        
+//        school.a_star_shortestPath(start: intersects[0], end: intersects[3])
     }
     
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .preferredColorScheme(.light)
         }
     }
 }

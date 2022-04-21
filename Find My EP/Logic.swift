@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 func dist(x1: Double, y1: Double, x2: Double, y2: Double) -> Double {
     return sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1))
@@ -18,6 +19,7 @@ struct Room: Identifiable, Hashable {
     var hall: Int
     var x: Double
     var y: Double
+    var floor = 1
 }
 
 class Intersection {
@@ -47,12 +49,16 @@ struct Hall {
 }
 
 struct Stair {
-    var x: Double
-    var y: Double
-    var isFullStairs: Bool
+    var name: String
+    var dist: [Double]
+    var x: [Double]
+    var y: [Double]
+    var allFloors: Bool
+    var inters: [Intersection]
+    var id: Int
 }
 
-class School {
+class Floor {
     var halls: [Hall]
     var inters: [Intersection]
     var rooms: [Room]
@@ -69,30 +75,30 @@ class School {
             return (abs(start.startDist - end.startDist),[])
         }
         
-        let startHall = halls[start.hall]
-        let endHall = halls[end.hall]
+        let startHall = self.halls[start.hall]
+        let endHall = self.halls[end.hall]
         
-//        // startHall start to endHall start
-//        let res1 = shortestPath(start: inters[startHall.start], end: inters[endHall.start], visited: [])
-//
-//        // startHall start to endHall end
-//        let res2 = shortestPath(start: inters[startHall.start], end: inters[endHall.end], visited: [])
-//
-//        // startHall end to endHall start
-//        let res3 = shortestPath(start: inters[startHall.end], end: inters[endHall.start], visited: [])
-//
-//        // startHall end to endHall end
-//        let res4 = shortestPath(start: inters[startHall.end], end: inters[endHall.end], visited: [])
+        //        // startHall start to endHall start
+        //        let res1 = shortestPath(start: inters[startHall.start], end: inters[endHall.start], visited: [])
+        //
+        //        // startHall start to endHall end
+        //        let res2 = shortestPath(start: inters[startHall.start], end: inters[endHall.end], visited: [])
+        //
+        //        // startHall end to endHall start
+        //        let res3 = shortestPath(start: inters[startHall.end], end: inters[endHall.start], visited: [])
+        //
+        //        // startHall end to endHall end
+        //        let res4 = shortestPath(start: inters[startHall.end], end: inters[endHall.end], visited: [])
         
         // startHall start to endHall start
         let res1 = a_star_shortestPath(start: inters[startHall.start], end: inters[endHall.start])
-
+        
         // startHall start to endHall end
         let res2 = a_star_shortestPath(start: inters[startHall.start], end: inters[endHall.end])
-
+        
         // startHall end to endHall start
         let res3 = a_star_shortestPath(start: inters[startHall.end], end: inters[endHall.start])
-
+        
         // startHall end to endHall end
         let res4 = a_star_shortestPath(start: inters[startHall.end], end: inters[endHall.end])
         
@@ -102,16 +108,12 @@ class School {
         let dist4 = res4.dist + (startHall.length - start.startDist) + (endHall.length - end.startDist)
         
         if dist1 <= dist2 && dist1 <= dist3 && dist1 <= dist4 {
-            print(res1.inters)
             return (dist1, res1.inters)
         } else if dist2 <= dist1 && dist2 <= dist3 && dist2 <= dist4 {
-            print(res2.inters)
             return (dist2, res2.inters)
         } else if dist3 <= dist1 && dist3 <= dist2 && dist3 <= dist4 {
-            print(res3.inters)
             return (dist3, res3.inters)
         } else {
-            print(res4.inters)
             return (dist4, res4.inters)
         }
     }
@@ -127,7 +129,7 @@ class School {
     
     func a_star_shortestPath(start: Intersection, end: Intersection) -> (dist: Double, inters: [Int]) {
         var open = [Intersection]()
-        var closed = Array(repeating: false, count: intersects.count)
+        var closed = Array(repeating: false, count: inters.count)
         open.append(start)
         
         while !open.isEmpty {
@@ -182,9 +184,8 @@ class School {
                     continue
                 }
                 
-                var node = Intersection(halls: intersects[child].halls, id: child, x: intersects[child].x, y: intersects[child].y)
-                
-                node.h = dist(x1: intersects[child].x, y1: intersects[child].y, x2: end.x, y2: end.y)
+                var node = Intersection(halls: inters[child].halls, id: child, x: inters[child].x, y: inters[child].y)
+                node.h = dist(x1: inters[child].x, y1: inters[child].y, x2: end.x, y2: end.y)
                 node.g = hall.length + curr.g
                 node.f = node.h + node.g
                 node.parent = curr
@@ -248,6 +249,121 @@ class School {
     
 }
 
+
+func findPath(start: Room, end: Room) -> (dist: Double, inters_1: [Int], inters_2: [Int], inters_3: [Int], starts: [CGPoint], ends: [CGPoint], floors: [Bool]) {
+    
+    if start.floor == end.floor {
+        let res = floors[start.floor - 1].findPath(start: start, end: end)
+        var lst: [[Int]] = [[], [], []]
+        var starts: [CGPoint] = [CGPoint(), CGPoint(), CGPoint()]
+        var ends: [CGPoint] = [CGPoint(), CGPoint(), CGPoint()]
+        var active_floor: [Bool] = [false, false, false]
+        lst[start.floor - 1] = res.inters
+        starts[start.floor - 1] = CGPoint(x: start.x, y: start.y)
+        ends[start.floor - 1] = CGPoint(x: end.x, y: end.y)
+        active_floor[start.floor - 1] = true
+        return (res.dist, lst[0], lst[1], lst[2], starts, ends, active_floor)
+    }
+    
+    var startfloor = floor3
+    var endfloor = floor3
+
+    if start.floor == 1 {
+        startfloor = floor1
+    } else if start.floor == 2{
+        startfloor = floor2
+    }
+
+    if end.floor == 1 {
+        endfloor = floor1
+    } else if end.floor == 2{
+        endfloor = floor2
+    }
+    
+
+    var min_start_floor = startfloor.a_star_shortestPath(start: stairs[0].inters[start.floor-1], end: startfloor.inters[startfloor.halls[start.hall].start])
+    min_start_floor.dist += start.startDist
+    var min_end_floor = endfloor.a_star_shortestPath(start: stairs[0].inters[end.floor-1], end: endfloor.inters[endfloor.halls[end.hall].start])
+    min_end_floor.dist += end.startDist
+    var min_stair = 0
+
+
+    for stair in stairs {
+        let res1_start = startfloor.a_star_shortestPath(start: stair.inters[start.floor-1], end: startfloor.inters[startfloor.halls[start.hall].start])
+        var start_res = startfloor.a_star_shortestPath(start: stair.inters[start.floor-1], end: startfloor.inters[startfloor.halls[start.hall].end])
+        if res1_start.dist + start.startDist < start_res.dist + startfloor.halls[start.hall].length - start.startDist {
+            start_res = res1_start
+            start_res.dist = res1_start.dist + start.startDist
+        } else {
+            start_res.dist = start_res.dist + startfloor.halls[start.hall].length - start.startDist
+        }
+        
+
+        let res1_end = endfloor.a_star_shortestPath(start: stair.inters[end.floor-1], end: endfloor.inters[endfloor.halls[end.hall].start])
+        var end_res = endfloor.a_star_shortestPath(start: stair.inters[end.floor-1], end: endfloor.inters[endfloor.halls[end.hall].end])
+        
+        if res1_end.dist + end.startDist < end_res.dist + endfloor.halls[end.hall].length - end.startDist {
+            end_res = res1_end
+            end_res.dist = res1_end.dist + end.startDist
+        } else {
+            end_res.dist = end_res.dist + endfloor.halls[end.hall].length - end.startDist
+        }
+        
+
+        if end_res.dist + start_res.dist < min_start_floor.dist + min_end_floor.dist {
+            min_start_floor = start_res
+            min_end_floor = end_res
+            min_stair = stair.id
+        }
+    }
+    
+    min_start_floor.inters = min_start_floor.inters.reversed()
+
+    var firstfloorpath: [Int] = []
+    var secondfloorpath: [Int] = []
+    var thirdfloorpath: [Int] = []
+    var starts: [CGPoint] = [CGPoint(), CGPoint(), CGPoint()]
+    var ends: [CGPoint] = [CGPoint(), CGPoint(), CGPoint()]
+    var active_floor: [Bool] = [false, false, false]
+    
+    if start.floor == 1 {
+        starts[0] = CGPoint(x: start.x, y: start.y)
+        ends[0] = CGPoint(x: stairs[min_stair].x[0], y: stairs[min_stair].y[0])
+        firstfloorpath = min_start_floor.inters
+    } else if start.floor == 2 {
+        starts[1] = CGPoint(x: start.x, y: start.y)
+        ends[1] = CGPoint(x: stairs[min_stair].x[1], y: stairs[min_stair].y[1])
+        secondfloorpath = min_start_floor.inters
+    } else {
+        starts[2] = CGPoint(x: start.x, y: start.y)
+        ends[2] = CGPoint(x: stairs[min_stair].x[2], y: stairs[min_stair].y[2])
+        thirdfloorpath = min_start_floor.inters
+    }
+
+    if end.floor == 1 {
+        ends[0] = CGPoint(x: end.x, y: end.y)
+        starts[0] = CGPoint(x: stairs[min_stair].x[0], y: stairs[min_stair].y[0])
+        firstfloorpath = min_end_floor.inters
+    } else if end.floor == 2 {
+        ends[1] = CGPoint(x: end.x, y: end.y)
+        starts[1] = CGPoint(x: stairs[min_stair].x[1], y: stairs[min_stair].y[1])
+        secondfloorpath = min_end_floor.inters
+    } else {
+        ends[2] = CGPoint(x: end.x, y: end.y)
+        starts[2] = CGPoint(x: stairs[min_stair].x[2], y: stairs[min_stair].y[2])
+        thirdfloorpath = min_end_floor.inters
+    }
+    
+    active_floor[start.floor - 1] = true
+    
+    return (min_start_floor.dist + min_end_floor.dist + (18/0.72) * Double(abs(start.floor - end.floor))
+, firstfloorpath, secondfloorpath, thirdfloorpath, starts, ends, active_floor)
+}
+
+
+
+var roomsToIDs = [String: Room]()
+
 // Room(name: "", startDist: , hall: , x: , y: )
 var rooms = [
     Room(name: "130 Classroom", startDist: 8.71, hall: 0, x: 106.96, y: 378.5),
@@ -286,7 +402,7 @@ var rooms = [
     Room(name: "151 Girls Locker", startDist: 10.12, hall: 15, x: 166.51, y: 423.70),
     Room(name: "148 Boys Locker", startDist: 27.41, hall: 15, x: 166.51, y: 440.99),
     Room(name: "150 Girls Locker", startDist: 27.41, hall: 15, x: 166.51, y: 440.99),
-    Room(name: "151A Office", startDist: 7.97, hall: 15, x: 166.51, y: 421.55),
+    Room(name: "151A Office", startDist: 7.97, hall: 15, x: 166.51, y: 421.55)
     
 ]
 
@@ -332,25 +448,90 @@ var halls = [
     
 ]
 
-//var halls2 = [
-//
-//]
-//
-//var intersects2 = [
-//
-//]
-//
-//var rooms2 = [
-//
-//]
+// Room(name: "", startDist: , hall: , x: , y: )
+var rooms2 = [
+    Room(name: "220 Classroom", startDist: 0, hall: 0, x: 70.65, y: 399.06),
+    Room(name: "219 Science Lab", startDist: 0, hall: 0, x: 70.65, y: 399.06),
+    Room(name: "218 Classroom", startDist: 3.06, hall: 0, x: 73.71, y: 399.06),
+    Room(name: "221 Classroom", startDist: 3.06, hall: 0, x: 73.71, y: 399.06),
+    Room(name: "217 Classroom", startDist: 19.38, hall: 0, x: 90.03, y: 399.06),
+    Room(name: "222 Classroom", startDist: 19.38, hall: 0, x: 90.03, y: 399.06),
+]
 
+// Intersection(halls: [], id: , x: , y: ),
+var intersects2 = [
+    Intersection(halls: [], id: 0, x: 70.65, y: 399.06),
+    Intersection(halls: [], id: 1, x: 99.38, y: 399.06),
+    Intersection(halls: [], id: 2, x: 99.38, y: 386.07),
+    Intersection(halls: [], id: 3, x: 99.38, y: 404.51),
+    Intersection(halls: [], id: 4, x: 106.48, y: 399.06),
+    Intersection(halls: [], id: 5, x: 106.48, y: 393.04),
+    Intersection(halls: [], id: 6, x: 118.85, y: 393.04),
+    Intersection(halls: [], id: 7, x: 118.85, y: 387.72),
+    Intersection(halls: [], id: 8, x: 118.85, y: 416.22),
+    Intersection(halls: [], id: 9, x: 118.85, y: 371.81),
+    Intersection(halls: [], id: 10, x: 122.87, y: 371.81),
+]
 
-var roomsToIDs = [String: Int]()
+// Hall(start: , end: , length: , id: ),
+var halls2 = [
+    Hall(start: 0, end: 1, length: 28.73, id: 0),
+    Hall(start: 1, end: 4, length: 7.10, id: 1),
+    Hall(start: 1, end: 2, length: 12.99, id: 2),
+    Hall(start: 1, end: 3, length: 5.45, id: 3),
+    
+    
+    
+    
+    Hall(start: 7, end: 9, length: 15.91, id: 8),
+    Hall(start: 9, end: 10, length: 4.02, id: 9),
+]
 
+// Room(name: "", startDist: , hall: , x: , y: ),
+var rooms3 = [
+    Room(name: "313 Math Resource", startDist: 4.52, hall: 1, x: 106.76, y: 394.92),
+    Room(name: "314 Classroom", startDist: 8.07, hall: 0, x: 73.55, y: 399.44),
+    Room(name: "315 Classroom", startDist: 0, hall: 0, x: 65.48, y: 399.44),
+    Room(name: "316 Application Lab", startDist: 0, hall: 0, x: 65.48, y: 399.44),
+    Room(name: "317 Application Lab", startDist: 5.02, hall: 0, x: 70.50, y: 399.44),
+    Room(name: "318 Classroom", startDist: 8.06, hall: 0, x: 73.55, y: 399.44),
+    Room(name: "319 Classroom", startDist: 23.93, hall: 0, x: 89.41, y: 399.44),
+    Room(name: "320 Computer Programming", startDist: 27.6, hall: 0, x: 93.08, y: 399.44),
+    
+]
 
+// Intersection(halls: [], id: , x: , y: ),
+var intersects3 = [
+    Intersection(halls: [], id: 0, x: 65.48, y: 399.44),
+    Intersection(halls: [], id: 1, x: 106.76, y: 399.44),
+    Intersection(halls: [], id: 2, x: 106.76, y: 394.92),
+    Intersection(halls: [], id: 3, x: 113.96, y: 399.44),
+    Intersection(halls: [], id: 4, x: 119.13, y: 399.44),
+    Intersection(halls: [], id: 5, x: 119.13, y: 387.76),
+    Intersection(halls: [], id: 6, x: 119.13, y: 371.81),
+    Intersection(halls: [], id: 7, x: 122.87, y: 371.81),
+]
 
+// Hall(start: , end: , length: , id: ),
+var halls3 = [
+    Hall(start: 0, end: 1, length: 41.28, id: 0),
+    Hall(start: 1, end: 2, length: 4.52, id: 1),
+    Hall(start: 1, end: 3, length: 7.2, id: 2),
+    Hall(start: 3, end: 4, length: 5.17, id: 3),
+    Hall(start: 4, end: 5, length: 11.68, id: 4),
+    Hall(start: 5, end: 6, length: 15.95, id: 5),
+    Hall(start: 6, end: 7, length: 4.02, id: 6)
+]
 
+var school = Floor(halls: halls, inters: intersects, rooms: rooms)
 
+var floor1 = Floor(halls: halls, inters: intersects, rooms: rooms)
+var floor2 = Floor(halls: halls2, inters: intersects2, rooms: rooms2)
+var floor3 = Floor(halls: halls3, inters: intersects3, rooms: rooms3)
 
-var school = School(halls: halls, inters: intersects, rooms: rooms)
+var floors = [floor1, floor2, floor3]
 
+// Stair(dist: [], x: , y: , allFloors: true, inter: [floor1.inters[0], floor2.inters[], floor3.inters[]], id: )
+var stairs = [
+    Stair(name: "SW 5", dist: [13.55, 6.86, 6.86], x: [119.33, 122.87, 122.58], y: [367.29, 365.83, 365.83], allFloors: true, inters: [floor1.inters[1], floor2.inters[10], floor3.inters[7]], id: 0)
+]

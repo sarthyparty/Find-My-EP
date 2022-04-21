@@ -13,9 +13,12 @@ var screenHeight = screenSize.height
 
 
 struct Map: View {
+    var floor: Floor
     var inters: [Int]
-    var start: Int
-    var end: Int
+    var start: CGPoint
+    var end: CGPoint
+    var mapImageHigh: String
+    var mapImageLow: String
     @State var scale: CGFloat = 5.0
     @State private var percentage: CGFloat = .zero
     @State private var offset: CGPoint = .zero
@@ -27,24 +30,26 @@ struct Map: View {
     var body: some View {
         let map = ZStack {
             if scale > 4 {
-                Image("EPHS")
+                Image(mapImageHigh)
                     .resizable()
                     .background(Color.white)
             } else {
-                Image("EPHS_low")
+                Image(mapImageLow)
                     .resizable()
                     .background(Color.white)
             }
             
             Path { path in
-                path.move(to: CGPoint(x: CGFloat(rooms[start].x/428*screenWidth), y: (CGFloat((rooms[start].y-314)/926*screenHeight))))
+                path.move(to: CGPoint(x: CGFloat(start.x/428*screenWidth), y: (CGFloat((start.y-314)/926*screenHeight))))
                 if inters.count > 0 {
-                    for i in 0...inters.count-1 {
-                        path.addLine(to: CGPoint(x: CGFloat(intersects[inters[i]].x/428*screenWidth), y: CGFloat((intersects[inters[i]].y-314)/926*screenHeight)))
-                        path.move(to: CGPoint(x: CGFloat(intersects[inters[i]].x/428*screenWidth), y: CGFloat((intersects[inters[i]].y-314)/926*screenHeight)))
+                    for i in inters {
+                        path.addLine(to: CGPoint(x: CGFloat(floor.inters[i].x/428*screenWidth), y: CGFloat((floor.inters[i].y-314)/926*screenHeight)))
+                        path.move(to: CGPoint(x: CGFloat(floor.inters[i].x/428*screenWidth), y: CGFloat((floor.inters[i].y-314)/926*screenHeight)))
                     }
                 }
-                path.addLine(to: CGPoint(x: CGFloat(rooms[end].x/428*screenWidth), y: CGFloat((rooms[end].y-314)/926*screenHeight)))
+                path.addLine(to: CGPoint(x: CGFloat(end.x/428*screenWidth), y: CGFloat((end.y-314)/926*screenHeight)))
+                print(start)
+                print(end)
                 
             }
             .trim(from: 0, to: percentage)
@@ -58,7 +63,7 @@ struct Map: View {
             
         }
         .aspectRatio(contentMode: .fit)
-        ZoomableScrollView(content: map, currentScale: $scale, currentOffset: $offset, start: CGPoint(x: rooms[start].x, y: rooms[start].y))
+        ZoomableScrollView(content: map, currentScale: $scale, currentOffset: $offset, start: CGPoint(x: start.x, y: start.y))
         
         
         //        .offset(x: offset.width, y: offset.height)

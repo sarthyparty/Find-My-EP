@@ -25,22 +25,22 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                
+  
                 SearchBar(searchBarText: "Enter start room number", searchText: $searchText, isSearching: $isSearching, isSearchingOther: $isSearching2)
                 
                 if (isSearching) {
-                    ForEach(rooms.filter({ "\($0)".contains(searchText)}), id: \.self) { room in
+                    ForEach(roomsToIDs.keys.filter({ "\($0)".contains(searchText)}), id: \.self) { room in
                         
                         HStack {
                             Button(action: {
-                                searchText = room.name
-                                startID = room.name
+                                searchText = room
+                                startID = room
                                 isSearching = false
                                 firstButtonPressed = true
                                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                             }
                                    ,label: {
-                                Text(room.name)
+                                Text(room)
                             })
                         }
                         Spacer()
@@ -59,18 +59,17 @@ struct ContentView: View {
                 SearchBar(searchBarText: "Enter end room number", searchText: $searchText2, isSearching: $isSearching2, isSearchingOther: $isSearching)
                 
                 if(isSearching2) {
-                    ForEach(rooms.filter({ "\($0)".contains(searchText2)}), id: \.self) { room in
+                    ForEach(roomsToIDs.keys.filter({ "\($0)".contains(searchText2)}), id: \.self) { room in
                         
                         HStack {
                             Button(action: {
-                                searchText2 = room.name
-                                endID = room.name
+                                searchText2 = room
                                 isSearching2 = false
                                 secondButtonPressed = true
                                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                             }
                                    ,label: {
-                                Text(room.name)
+                                Text(room)
                             })
                         }
                         Spacer()
@@ -83,7 +82,8 @@ struct ContentView: View {
                 }
                 
                 
-                NavigationLink(destination: DirectionsScreen(stuff: school.findPath(start: rooms[roomsToIDs[searchText] ?? 4], end: rooms[roomsToIDs[searchText2] ?? 9]), start: roomsToIDs[searchText] ?? 4, end: roomsToIDs[searchText2] ?? 9)) {
+//                NavigationLink(destination: DirectionsScreen(stuff: school.findPath(start: roomsToIDs[searchText] ?? rooms[0], end: roomsToIDs[searchText2] ?? rooms[0]), start: (roomsToIDs[searchText] ?? rooms[0]), end: (roomsToIDs[searchText2] ?? rooms[0]))) {
+                NavigationLink(destination: DirectionsScreen(retval: findPath(start: roomsToIDs[searchText] ?? rooms[0], end: roomsToIDs[searchText2] ?? rooms3[0]))) {
                     HStack {
                         Spacer()
                         Text("Show Map")
