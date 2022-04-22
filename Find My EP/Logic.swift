@@ -364,7 +364,7 @@ func findPath(start: Room, end: Room) -> (dist: Double, inters_1: [Int], inters_
 
 var roomsToIDs = [String: Room]()
 
-// Room(name: "", startDist: , hall: , x: , y: )
+//  Room(name: "", startDist: , hall: , x: , y: )
 var rooms = [
     Room(name: "130 Classroom", startDist: 8.71, hall: 0, x: 106.96, y: 378.5),
     Room(name: "129 Classroom", startDist: 11.38, hall: 0, x: 109.63, y: 378.5),
@@ -406,7 +406,7 @@ var rooms = [
     
 ]
 
-// Intersection(halls: [], id: , x: , y: )
+//  Intersection(halls: [], id: , x: , y: )
 var intersects = [
     Intersection(halls: [], id: 0, x: 98.25, y: 378.5),
     Intersection(halls: [], id: 1, x: 119.33, y: 378.5),
@@ -427,7 +427,7 @@ var intersects = [
     
 ]
 
-// Hall(start: , end: , length: , id: )
+//  Hall(start: , end: , length: , id: )
 var halls = [
     Hall(start: 0, end: 1, length: 21.08, id: 0),
     Hall(start: 1, end: 2, length: 9.04, id: 1),
@@ -448,7 +448,7 @@ var halls = [
     
 ]
 
-// Room(name: "", startDist: , hall: , x: , y: )
+//  Room(name: "", startDist: , hall: , x: , y: )
 var rooms2 = [
     Room(name: "220 Classroom", startDist: 0, hall: 0, x: 70.65, y: 399.06),
     Room(name: "219 Science Lab", startDist: 0, hall: 0, x: 70.65, y: 399.06),
@@ -458,33 +458,109 @@ var rooms2 = [
     Room(name: "222 Classroom", startDist: 19.38, hall: 0, x: 90.03, y: 399.06),
 ]
 
-// Intersection(halls: [], id: , x: , y: ),
+//  Intersection(halls: [], id: , x: , y: ),
 var intersects2 = [
     Intersection(halls: [], id: 0, x: 70.65, y: 399.06),
     Intersection(halls: [], id: 1, x: 99.38, y: 399.06),
     Intersection(halls: [], id: 2, x: 99.38, y: 386.07),
     Intersection(halls: [], id: 3, x: 99.38, y: 404.51),
-    Intersection(halls: [], id: 4, x: 106.48, y: 399.06),
-    Intersection(halls: [], id: 5, x: 106.48, y: 393.04),
-    Intersection(halls: [], id: 6, x: 118.85, y: 393.04),
-    Intersection(halls: [], id: 7, x: 118.85, y: 387.72),
-    Intersection(halls: [], id: 8, x: 118.85, y: 416.22),
-    Intersection(halls: [], id: 9, x: 118.85, y: 371.81),
-    Intersection(halls: [], id: 10, x: 122.87, y: 371.81),
+    Intersection(halls: [], id: 4, x: 119.10, y: 399.06),
+    Intersection(halls: [], id: 5, x: 119.10, y: 371.99),
+    Intersection(halls: [], id: 6, x: 122.74, y: 371.99),
+    Intersection(halls: [], id: 7, x: 119.10, y: 387.88),
+    Intersection(halls: [], id: 8, x: 113.74, y: 404.51),
+    Intersection(halls: [], id: 9, x: 119.10, y: 404.51),
+    Intersection(halls: [], id: 10, x: 119.10, y: 417.35),
+    Intersection(halls: [], id: 11, x: 119.10, y: 435.70),
+    Intersection(halls: [], id: 12, x: 115.64, y: 439.07),
+    Intersection(halls: [], id: 13, x: 115.64, y: 468.94),
+    Intersection(halls: [], id: 14, x: 130.81, y: 468.94),
+    Intersection(halls: [], id: 15, x: 146.82, y: 468.94),
+    Intersection(halls: [], id: 16, x: 166.32, y: 468.94),
+    Intersection(halls: [], id: 17, x: 146.82, y: 461.43),
+    Intersection(halls: [], id: 18, x: 166.32, y: 461.43),
+    Intersection(halls: [], id: 19, x: 166.32, y: 458.10),
+    Intersection(halls: [], id: 20, x: 210.59, y: 462.93),
+    Intersection(halls: [], id: 21, x: 210.59, y: 417.35),
+    Intersection(halls: [], id: 22, x: 210.59, y: 428.63),
+    Intersection(halls: [], id: 23, x: 214.64, y: 428.63),
+    Intersection(halls: [], id: 24, x: 218.07, y: 428.63),
+    Intersection(halls: [], id: 25, x: 218.07, y: 417.35),
+    Intersection(halls: [], id: 26, x: 238.97, y: 417.35),
+    Intersection(halls: [], id: 27, x: 210.59, y: 412.39),
+    Intersection(halls: [], id: 28, x: 205.79, y: 417.35),
+    Intersection(halls: [], id: 29, x: 166.26, y: 417.35),
+    Intersection(halls: [], id: 30, x: 166.26, y: 419.93),
+    Intersection(halls: [], id: 31, x: 286.26, y: 412.39),
+    Intersection(halls: [], id: 32, x: 205.79, y: 410.09),
+    Intersection(halls: [], id: 33, x: 260.56, y: 412.39),
+    Intersection(halls: [], id: 34, x: 260.56, y: 444.49),
+    Intersection(halls: [], id: 35, x: 249.13, y: 443.73),
+    Intersection(halls: [], id: 36, x: 260.56, y: 450.69),
+    Intersection(halls: [], id: 37, x: 286.26, y: 444.49),
+    Intersection(halls: [], id: 38, x: 312.18, y: 444.49),
+    Intersection(halls: [], id: 39, x: 299.25, y: 410.80),
+    Intersection(halls: [], id: 40, x: 312.18, y: 410.80),
+    Intersection(halls: [], id: 41, x: 370.28, y: 410.80),
+    Intersection(halls: [], id: 42, x: 299.25, y: 395.11),
+    Intersection(halls: [], id: 43, x: 296.54, y: 395.11),
+    Intersection(halls: [], id: 44, x: 296.54, y: 380.90),
+    Intersection(halls: [], id: 45, x: 299.91, y: 380.90),
+    Intersection(halls: [], id: 46, x: 294.39, y: 390.50),
+    Intersection(halls: [], id: 47, x: 319.31, y: 380.90),
+    Intersection(halls: [], id: 48, x: 272.87, y: 390.50),
+    Intersection(halls: [], id: 49, x: 272.87, y: 392.24),
+    Intersection(halls: [], id: 50, x: 239.06, y: 392.24),
+    Intersection(halls: [], id: 51, x: 239.06, y: 390.50),
+    Intersection(halls: [], id: 52, x: 239.06, y: 412.39),
+    Intersection(halls: [], id: 53, x: 239.06, y: 381.25),
+    Intersection(halls: [], id: 54, x: 234.42, y: 390.50),
+    Intersection(halls: [], id: 55, x: 232.46, y: 365.55),
+    Intersection(halls: [], id: 56, x: 227.54, y: 365.55),
+    Intersection(halls: [], id: 57, x: 227.54, y: 356.48),
+    Intersection(halls: [], id: 58, x: 227.54, y: 362.46),
+    Intersection(halls: [], id: 59, x: 221.96, y: 362.46),
+    Intersection(halls: [], id: 60, x: 210.59, y: 362.46),
+    Intersection(halls: [], id: 61, x: 208.85, y: 353.93),
+    Intersection(halls: [], id: 62, x: 208.85, y: 329.16),
+    Intersection(halls: [], id: 63, x: 198.50, y: 353.93),
+    Intersection(halls: [], id: 64, x: 146.67, y: 417.35),
+    Intersection(halls: [], id: 65, x: 146.67, y: 412.46),
+    Intersection(halls: [], id: 66, x: 188.13, y: 352.71),
+    Intersection(halls: [], id: 67, x: 198.50, y: 352.71),
+    Intersection(halls: [], id: 68, x: 165.73, y: 353.49),
+    Intersection(halls: [], id: 69, x: 154.14, y: 353.49),
+    Intersection(halls: [], id: 70, x: 147.04, y: 353.49),
+    Intersection(halls: [], id: 71, x: 154.14, y: 387.88),
+    Intersection(halls: [], id: 72, x: 166.76, y: 387.88),
+    Intersection(halls: [], id: 73, x: 253.83, y: 390.50),
+    Intersection(halls: [], id: 74, x: 220.90, y: 371.43),
+    Intersection(halls: [], id: 75, x: 65.92, y: 387.13),
+    Intersection(halls: [], id: 76, x: 119.10, y: 415.58),
+    Intersection(halls: [], id: 77, x: 114.01, y: 415.58),
+    Intersection(halls: [], id: 78, x: 154.92, y: 483.21),
+    Intersection(halls: [], id: 79, x: 144.86, y: 493.77),
+    Intersection(halls: [], id: 80, x: 119.53, y: 468.94),
+    Intersection(halls: [], id: 81, x: 115.64, y: 464.98),
+    Intersection(halls: [], id: 82, x: 119.53, y: 464.98),
+    Intersection(halls: [], id: 83, x: 180.19, y: 468.94),
+    Intersection(halls: [], id: 84, x: 190.87, y: 468.94),
+    Intersection(halls: [], id: 85, x: 190.87, y: 462.93),
+    Intersection(halls: [], id: 86, x: 218.07, y: 433.27),
 ]
 
 // Hall(start: , end: , length: , id: ),
 var halls2 = [
     Hall(start: 0, end: 1, length: 28.73, id: 0),
-    Hall(start: 1, end: 4, length: 7.10, id: 1),
     Hall(start: 1, end: 2, length: 12.99, id: 2),
     Hall(start: 1, end: 3, length: 5.45, id: 3),
-    
-    
-    
-    
-    Hall(start: 7, end: 9, length: 15.91, id: 8),
-    Hall(start: 9, end: 10, length: 4.02, id: 9),
+    Hall(start: 1, end: 4, length: 19.72, id: 4),
+    Hall(start: 4, end: 7, length: 11.18, id: 5),
+    Hall(start: 7, end: 5, length: 15.89, id: 6),
+    Hall(start: 5, end: 6, length: 3.64, id: 7),
+    Hall(start: 3, end: 8, length: 14.36, id: 8),
+    Hall(start: 4, end: 9, length: 5.45, id: 9),
+    Hall(start: 9, end: 8, length: 5.36, id: 10),
 ]
 
 // Room(name: "", startDist: , hall: , x: , y: ),
@@ -512,7 +588,7 @@ var intersects3 = [
     Intersection(halls: [], id: 7, x: 122.87, y: 371.81),
 ]
 
-// Hall(start: , end: , length: , id: ),
+//  Hall(start: , end: , length: , id: ),
 var halls3 = [
     Hall(start: 0, end: 1, length: 41.28, id: 0),
     Hall(start: 1, end: 2, length: 4.52, id: 1),
@@ -523,15 +599,13 @@ var halls3 = [
     Hall(start: 6, end: 7, length: 4.02, id: 6)
 ]
 
-var school = Floor(halls: halls, inters: intersects, rooms: rooms)
-
 var floor1 = Floor(halls: halls, inters: intersects, rooms: rooms)
 var floor2 = Floor(halls: halls2, inters: intersects2, rooms: rooms2)
 var floor3 = Floor(halls: halls3, inters: intersects3, rooms: rooms3)
 
 var floors = [floor1, floor2, floor3]
 
-// Stair(dist: [], x: , y: , allFloors: true, inter: [floor1.inters[0], floor2.inters[], floor3.inters[]], id: )
+//  Stair(dist: [], x: , y: , allFloors: true, inter: [floor1.inters[0], floor2.inters[], floor3.inters[]], id: )
 var stairs = [
-    Stair(name: "SW 5", dist: [13.55, 6.86, 6.86], x: [119.33, 122.87, 122.58], y: [367.29, 365.83, 365.83], allFloors: true, inters: [floor1.inters[1], floor2.inters[10], floor3.inters[7]], id: 0)
+    Stair(name: "SW 5", dist: [13.55, 6.86, 6.86], x: [119.33, 122.87, 122.58], y: [367.29, 365.83, 365.83], allFloors: true, inters: [floor1.inters[1], floor2.inters[0], floor3.inters[7]], id: 0)
 ]
