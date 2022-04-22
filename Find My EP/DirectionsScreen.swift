@@ -62,7 +62,7 @@ struct DirectionsScreen: View {
     
 //    struct DirectionsScreen_Previews: PreviewProvider {
 //        static var previews: some View {
-//            DirectionsScreen(stuff: school.findPath(start: rooms[0], end: rooms[3]), start: 0, end: 3)
+//            DirectionsScreen(retval: (0.0, [0], [0], [20,21,22,28,27,29,30], [CGPoint(x: 0,y: 0), CGPoint(x: 0,y: 0), CGPoint(x: 0,y: 0)], [CGPoint(x: 0,y: 0), CGPoint(x: 0,y: 0), CGPoint(x: 0,y: 0)], [false, false, true]))
 //        }
 //    }
     
