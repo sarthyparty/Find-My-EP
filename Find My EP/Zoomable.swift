@@ -46,9 +46,9 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
                                              action: #selector(Coordinator.tapped))
         scrollView.addSubview(hostedView)
         hostedView.addGestureRecognizer(gesture)
-        scrollView.setZoomScale(6, animated: true)
+//        scrollView.setZoomScale(6, animated: true)
         
-        //scrollView.zoom(to: CGRect(x: (start.x-23)/428*screenWidth, y: (start.y-10)/926*screenHeight, width: 40/428*screenWidth, height: 40/926*screenHeight), animated: true)
+        scrollView.zoom(to: CGRect(x: (start.x-23)/428*screenWidth, y: (start.y-10)/926*screenHeight, width: 40/428*screenWidth, height: 40/926*screenHeight), animated: true)
         
         return scrollView
     }
@@ -114,13 +114,13 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         
     
         func scrollViewDidScroll(_ sv: UIScrollView){
-            sv.setValue(0.10, forKeyPath: "contentOffsetAnimationDuration")
-            if sv.contentOffset.y <= scaleFac * Double(parent.currentScale * 267.1 - 203.2) {
-                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: scaleFac * Double(parent.currentScale * 270.2 + 9.5) ), animated: true)
-            }
-            else if sv.contentOffset.y >= scaleFac * Double(parent.currentScale * 510.7 - 357.0) {
-                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: scaleFac * Double(parent.currentScale * 512.5 - 641.4)), animated: true)
-            }
+//            sv.setValue(0.10, forKeyPath: "contentOffsetAnimationDuration")
+//            if sv.contentOffset.y <= scaleFac * Double(parent.currentScale * 267.1 - 203.2) {
+//                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: scaleFac * Double(parent.currentScale * 270.2 + 9.5) ), animated: true)
+//            }
+//            else if sv.contentOffset.y >= scaleFac * Double(parent.currentScale * 510.7 - 357.0) {
+//                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: scaleFac * Double(parent.currentScale * 512.5 - 641.4)), animated: true)
+//            }
 
 //            if sv.contentOffset.y <= forceminy {
 //                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: miny * parent.currentScale / 6 ), animated: true)
@@ -156,32 +156,32 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         
         
         
-        func scrollViewWillBeginDecelerating(_ sv: UIScrollView) {
-            if sv.contentOffset.y <= Double(parent.currentScale * 270.2 + 9.5) * scaleFac && sv.contentOffset.x <= 0 {
-                sv.setContentOffset(CGPoint(x: 0, y: scaleFac * Double(parent.currentScale * 270.2 + 9.5)), animated: true)
-            }
-
-            else if sv.contentOffset.y <= scaleFac * Double(parent.currentScale * 270.2 + 9.5) && sv.contentOffset.x >= 0 && sv.contentOffset.x <= screenSize.width * (parent.currentScale-1) {
-                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: scaleFac * Double(parent.currentScale * 270.2 + 9.5)), animated: true)
-            }
-
-            else if sv.contentOffset.y <= scaleFac * Double(parent.currentScale * 270.2 + 9.5) && sv.contentOffset.x >= screenSize.width * (parent.currentScale-1) {
-                sv.setContentOffset(CGPoint(x: screenSize.width * (parent.currentScale-1), y: scaleFac * Double(parent.currentScale * 270.2 + 9.5)), animated: true)
-            }
-
-            else if sv.contentOffset.y >= scaleFac * Double(parent.currentScale * 512.5 - 641.4) && sv.contentOffset.x <= 0 {
-                sv.setContentOffset(CGPoint(x: 0, y: scaleFac * Double(parent.currentScale * 512.5 - 641.4)), animated: true)
-            }
-
-            else if sv.contentOffset.y >= scaleFac * Double(parent.currentScale * 512.5 - 641.4) && sv.contentOffset.x >= screenSize.width * (parent.currentScale-1) {
-                sv.setContentOffset(CGPoint(x: screenSize.width * (parent.currentScale-1), y: scaleFac * Double(parent.currentScale * 512.5 - 641.4)), animated: true)
-            }
-
-            else if sv.contentOffset.y >= scaleFac * Double(parent.currentScale * 512.5 - 641.4) && sv.contentOffset.x <= screenSize.width * (parent.currentScale-1) && sv.contentOffset.x >= 0 {
-                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: scaleFac * Double(parent.currentScale * 512.5 - 641.4)), animated: true)
-            }
-            self.parent.currentOffset = sv.contentOffset
-        }
+//        func scrollViewWillBeginDecelerating(_ sv: UIScrollView) {
+//            if sv.contentOffset.y <= Double(parent.currentScale * 270.2 + 9.5) * scaleFac && sv.contentOffset.x <= 0 {
+//                sv.setContentOffset(CGPoint(x: 0, y: scaleFac * Double(parent.currentScale * 270.2 + 9.5)), animated: true)
+//            }
+//
+//            else if sv.contentOffset.y <= scaleFac * Double(parent.currentScale * 270.2 + 9.5) && sv.contentOffset.x >= 0 && sv.contentOffset.x <= screenSize.width * (parent.currentScale-1) {
+//                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: scaleFac * Double(parent.currentScale * 270.2 + 9.5)), animated: true)
+//            }
+//
+//            else if sv.contentOffset.y <= scaleFac * Double(parent.currentScale * 270.2 + 9.5) && sv.contentOffset.x >= screenSize.width * (parent.currentScale-1) {
+//                sv.setContentOffset(CGPoint(x: screenSize.width * (parent.currentScale-1), y: scaleFac * Double(parent.currentScale * 270.2 + 9.5)), animated: true)
+//            }
+//
+//            else if sv.contentOffset.y >= scaleFac * Double(parent.currentScale * 512.5 - 641.4) && sv.contentOffset.x <= 0 {
+//                sv.setContentOffset(CGPoint(x: 0, y: scaleFac * Double(parent.currentScale * 512.5 - 641.4)), animated: true)
+//            }
+//
+//            else if sv.contentOffset.y >= scaleFac * Double(parent.currentScale * 512.5 - 641.4) && sv.contentOffset.x >= screenSize.width * (parent.currentScale-1) {
+//                sv.setContentOffset(CGPoint(x: screenSize.width * (parent.currentScale-1), y: scaleFac * Double(parent.currentScale * 512.5 - 641.4)), animated: true)
+//            }
+//
+//            else if sv.contentOffset.y >= scaleFac * Double(parent.currentScale * 512.5 - 641.4) && sv.contentOffset.x <= screenSize.width * (parent.currentScale-1) && sv.contentOffset.x >= 0 {
+//                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: scaleFac * Double(parent.currentScale * 512.5 - 641.4)), animated: true)
+//            }
+//            self.parent.currentOffset = sv.contentOffset
+//        }
 
         
         
