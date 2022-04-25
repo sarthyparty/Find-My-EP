@@ -656,5 +656,5 @@ var floors = [floor1, floor2, floor3]
 
 //  Stair(dist: [], x: , y: , allFloors: true, inter: [floor1.inters[0], floor2.inters[], floor3.inters[]], id: )
 var stairs = [
-    Stair(name: "SW 5", dist: [13.55, 6.86, 6.86], x: [119.33, 122.87, 122.58], y: [367.29, 365.83, 365.83], allFloors: true, inters: [floor1.inters[1], floor2.inters[0], floor3.inters[7]], id: 0)
+    Stair(name: "SW 5", dist: [13.55, 6.86, 6.86], x: [119.33, 122.87, 122.58], y: [367.29, 365.83, 365.83], allFloors: true, inters: [floor1.inters[1], floor2.inters[6], floor3.inters[7]], id: 0)
 ]

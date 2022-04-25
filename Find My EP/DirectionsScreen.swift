@@ -1,5 +1,5 @@
 //
-//  Map.swift
+//  DirectionsScreen.swift
 //  Find My EP
 //
 //  Created by 64000774 on 2/14/22.
@@ -30,15 +30,15 @@ struct DirectionsScreen: View {
                 .frame(maxWidth: .infinity, alignment: .center)
             HStack(alignment: .center, spacing: 0 ) {
                 Spacer()
-                ColorButton(text: "1", tochange: $retval.6[0], other1: $retval.6[1], other2: $retval.6[2])
+                ColorButton(text: "1", tochange: $retval.6[0], other1: $retval.6[1], other2: $retval.6[2], isDisabled: retval.1.isEmpty)
                     .disabled(retval.1.isEmpty)
-                ColorButton(text: "2", tochange: $retval.6[1], other1: $retval.6[0], other2: $retval.6[2])
+                ColorButton(text: "2", tochange: $retval.6[1], other1: $retval.6[0], other2: $retval.6[2], isDisabled: retval.2.isEmpty)
                     .disabled(retval.2.isEmpty)
-                ColorButton(text: "3", tochange: $retval.6[2], other1: $retval.6[1], other2: $retval.6[0])
+                ColorButton(text: "3", tochange: $retval.6[2], other1: $retval.6[1], other2: $retval.6[0], isDisabled: retval.3.isEmpty)
                     .disabled(retval.3.isEmpty)
                 Spacer()
                 
-                Button(action: {print(heading.magneticHeading)}, label: {Text("Hi")})
+                //Button(action: {print(heading.magneticHeading)}, label: {Text("Hi")})
                 
             }
             
@@ -62,7 +62,7 @@ struct DirectionsScreen: View {
     
 //    struct DirectionsScreen_Previews: PreviewProvider {
 //        static var previews: some View {
-//            DirectionsScreen(retval: (0.0, [0], [0], [20,21,22,28,27,29,30], [CGPoint(x: 0,y: 0), CGPoint(x: 0,y: 0), CGPoint(x: 0,y: 0)], [CGPoint(x: 0,y: 0), CGPoint(x: 0,y: 0), CGPoint(x: 0,y: 0)], [false, false, true]))
+//            DirectionsScreen(stuff: school.findPath(start: rooms[0], end: rooms[3]), start: 0, end: 3)
 //        }
 //    }
     
@@ -71,15 +71,23 @@ struct DirectionsScreen: View {
         @Binding var tochange: Bool
         @Binding var other1: Bool
         @Binding var other2: Bool
+        var isDisabled: Bool
         var body: some View {
             Button(action: {
                 tochange = true
                 other1 = false
                 other2 = false
             }, label: {
-                Text(text) .bold().font(.system(size: 30))
-                    .padding(10)
-                    .foregroundColor(tochange ? Color.red : Color.black)
+                if isDisabled {
+                    Text(text) .bold().font(.system(size: 30))
+                        .padding(10)
+                        .foregroundColor(Color.gray)
+                } else {
+                    Text(text) .bold().font(.system(size: 30))
+                        .padding(10)
+                        .foregroundColor(tochange ? Color.green : Color.white)
+                }
+                
                 //                    .background(tochange ? Color.green : Color.red)
                 //                    .border(Color.black, width: 0.50)
                 //                    .cornerRadius(20)
@@ -89,5 +97,3 @@ struct DirectionsScreen: View {
         }
     }
 }
-
-
