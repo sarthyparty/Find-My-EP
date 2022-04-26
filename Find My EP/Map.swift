@@ -25,6 +25,14 @@ struct Map: View {
     
     @State var dragLocation: CGPoint?
     
+    func fixX(x: Double) -> CGFloat {
+        return CGFloat(x/428*screenWidth)
+    }
+    
+    func fixY(y: Double) -> CGFloat {
+        return CGFloat((y-282)/926*screenHeight)
+    }
+    
     
     
     var body: some View {
@@ -40,14 +48,15 @@ struct Map: View {
             }
             
             Path { path in
-                path.move(to: CGPoint(x: CGFloat((start.x-12)/428*screenWidth), y: (CGFloat((start.y-308)/926*screenHeight))))
+                
+                path.move(to: CGPoint(x: fixX(x: start.x), y: fixY(y: start.y)))
                 if inters.count > 0 {
                     for i in inters {
-                        path.addLine(to: CGPoint(x: CGFloat((floor.inters[i].x-12)/428*screenWidth), y: CGFloat((floor.inters[i].y-308)/926*screenHeight)))
-                        path.move(to: CGPoint(x: CGFloat((floor.inters[i].x-12)/428*screenWidth), y: CGFloat((floor.inters[i].y-308)/926*screenHeight)))
+                        path.addLine(to: CGPoint(x: fixX(x: floor.inters[i].x), y: fixY(y: floor.inters[i].y)))
+                        path.move(to: CGPoint(x: fixX(x: floor.inters[i].x), y: fixY(y: floor.inters[i].y)))
                     }
                 }
-                path.addLine(to: CGPoint(x: CGFloat((end.x-12)/428*screenWidth), y: CGFloat((end.y-308)/926*screenHeight)))
+                path.addLine(to: CGPoint(x: fixX(x: end.x), y: fixY(y: end.y)))
                 print(start)
                 print(end)
                 
