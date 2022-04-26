@@ -8,6 +8,7 @@
 import UIKit
 import SwiftUI
 
+
 struct ZoomableScrollView<Content: View>: UIViewRepresentable {
     var content: Content
     @Binding var currentScale: CGFloat
@@ -40,15 +41,13 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
          }
          scrollView.contentSize = contentRect.size */
         
-        
-        
         let gesture = UITapGestureRecognizer(target: context.coordinator,
                                              action: #selector(Coordinator.tapped))
         scrollView.addSubview(hostedView)
         hostedView.addGestureRecognizer(gesture)
-//        scrollView.setZoomScale(6, animated: true)
         
         scrollView.zoom(to: CGRect(x: (start.x-23)/428*screenWidth, y: (start.y-10)/926*screenHeight, width: 40/428*screenWidth, height: 40/926*screenHeight), animated: true)
+        
         
         return scrollView
     }
@@ -63,10 +62,6 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         assert(context.coordinator.hostingController.view.superview == uiView)
     }
     
-    func setInitialZoom() {
-        
-        
-    }
     
     
     // MARK: - Coordinator
@@ -86,6 +81,8 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         var forceminy: CGFloat
         var forcemaxy: CGFloat
         
+        var isZooming = false
+        
         init(parent_: ZoomableScrollView, hostingController: UIHostingController<Content>) {
             self.parent = parent_
             self.hostingController = hostingController
@@ -104,53 +101,54 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
             return hostingController.view
         }
         
-//        func scrollView(_ sv: UIScrollView){
-//            self.parent.currentScale = sv.zoomScale
-//        }
         
         func scrollViewDidZoom(_ sv:UIScrollView) {
+            self.isZooming = true
             self.parent.currentScale = sv.zoomScale
+        }
+        
+        func scrollViewDidEndZooming(_ sv: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+            self.isZooming = false
+            
+            let forceLower = scaleFac * Double(sv.zoomScale * 267.1 - 203.2)
+            let forceHigher = scaleFac * Double(sv.zoomScale * 510.7 - 357.0)
+            
+            let lowerBound = scaleFac * Double(sv.zoomScale * 270.2 + 9.5)
+            let higherBound = scaleFac * Double(sv.zoomScale * 512.5 - 641.4)
+
+            
+            sv.setValue(0.15, forKeyPath: "contentOffsetAnimationDuration")
+            if sv.contentOffset.y <= forceLower {
+                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: lowerBound), animated: true)
+            }
+            else if sv.contentOffset.y >= forceHigher {
+                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: higherBound), animated: true)
+            }
+            
         }
         
     
         func scrollViewDidScroll(_ sv: UIScrollView){
-//            sv.setValue(0.10, forKeyPath: "contentOffsetAnimationDuration")
-//            if sv.contentOffset.y <= scaleFac * Double(parent.currentScale * 267.1 - 203.2) {
-//                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: scaleFac * Double(parent.currentScale * 270.2 + 9.5) ), animated: true)
-//            }
-//            else if sv.contentOffset.y >= scaleFac * Double(parent.currentScale * 510.7 - 357.0) {
-//                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: scaleFac * Double(parent.currentScale * 512.5 - 641.4)), animated: true)
-//            }
 
-//            if sv.contentOffset.y <= forceminy {
-//                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: miny * parent.currentScale / 6 ), animated: true)
-//            }
-//            else if sv.contentOffset.y >= forcemaxy {
-//                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: maxy * parent.currentScale / 6), animated: true)
-//            }
+            if self.isZooming {
+                return
+            }
+            let forceLower = scaleFac * Double(sv.zoomScale * 267.1 - 203.2)
+            let forceHigher = scaleFac * Double(sv.zoomScale * 510.7 - 357.0)
+            
+            let lowerBound = scaleFac * Double(sv.zoomScale * 270.2 + 9.5)
+            let higherBound = scaleFac * Double(sv.zoomScale * 512.5 - 641.4)
 
-         //self.parent.currentOffset = sv.contentOffset
+            
+            sv.setValue(0.15, forKeyPath: "contentOffsetAnimationDuration")
+            if sv.contentOffset.y <= forceLower {
+                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: lowerBound), animated: true)
+            }
+            else if sv.contentOffset.y >= forceHigher {
+                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: higherBound), animated: true)
+            }
+
         }
-        
-//        func scrollViewWillEndDragging(_ sv: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//
-//            if sv.contentOffset.y <= 1625 && sv.contentOffset.x <= 0 {
-//                targetContentOffset.pointee = CGPoint(x: 0, y: 1625)
-//            }
-//
-//            else if sv.contentOffset.y <= 1625 && sv.contentOffset.x >= 0 && sv.contentOffset.x <= 1875 {
-//                targetContentOffset.pointee = CGPoint(x: targetContentOffset.pointee.x, y: 1625)
-//            }
-//
-//            else if sv.contentOffset.y >= 2434 && sv.contentOffset.x >= 1875 {
-//                targetContentOffset.pointee = CGPoint(x: 1875, y: 2434)
-//            }
-//
-//            else if sv.contentOffset.y >= 2434 && sv.contentOffset.x <= 1875 && sv.contentOffset.x >= 0 {
-//                targetContentOffset.pointee = CGPoint(x: targetContentOffset.pointee.x, y: 2434)
-//            }
-//        }
-        
         
         
         
@@ -188,56 +186,7 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         
         
         
-        
-//        func scrollViewWillBeginDecelerating(_ sv: UIScrollView) {
-//            if sv.contentOffset.y <= miny * parent.currentScale / 6 && sv.contentOffset.x <= 0 {
-//                sv.setContentOffset(CGPoint(x: 0, y: miny * parent.currentScale / 6), animated: true)
-//            }
-//
-//            else if sv.contentOffset.y <= miny * parent.currentScale / 6 && sv.contentOffset.x >= 0 && sv.contentOffset.x <= screenSize.width * parent.currentScale {
-//                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: miny * parent.currentScale / 6), animated: true)
-//            }
-//
-//            else if sv.contentOffset.y >= maxy * parent.currentScale / 6 && sv.contentOffset.x >= screenSize.width * parent.currentScale {
-//                sv.setContentOffset(CGPoint(x: screenSize.width * parent.currentScale, y: maxy * parent.currentScale / 6), animated: true)
-//            }
-//
-//            else if sv.contentOffset.y >= maxy * parent.currentScale / 6 && sv.contentOffset.x <= screenSize.width * parent.currentScale && sv.contentOffset.x >= 0 {
-//                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: maxy * parent.currentScale / 6), animated: true)
-//            }
-//            self.parent.currentOffset = sv.contentOffset
-//        }
 
-//        func scrollViewWillBeginDecelerating(_ sv: UIScrollView) {
-//            if sv.contentOffset.y <= 1625 && sv.contentOffset.x <= 0 {
-//                sv.setContentOffset(CGPoint(x: 0, y: 1625), animated: true)
-//            }
-//
-//            else if sv.contentOffset.y <= 1625 && sv.contentOffset.x >= 0 && sv.contentOffset.x <= (1875/1875*screenSize.width) {
-//                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: 1625), animated: true)
-//            }
-//
-//            else if sv.contentOffset.y >= 2434 && sv.contentOffset.x >= (1875/1875*screenSize.width) {
-//                sv.setContentOffset(CGPoint(x: (1875/1875*screenSize.width), y: 2434), animated: true)
-//            }
-//
-//            else if sv.contentOffset.y >= 2434 && sv.contentOffset.x <= (1875/1875*screenSize.width) && sv.contentOffset.x >= 0 {
-//                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: 2434), animated: true)
-//            }
-//            self.parent.currentOffset = sv.contentOffset
-//        }
-        
-//        func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//            if targetContentOffset.pointee.y <= 1625 {
-//                print("above")
-//                targetContentOffset.pointee = CGPoint(x: targetContentOffset.pointee.x, y: 1625)
-//            }
-//            else if targetContentOffset.pointee.y >= 2434{
-//                print("under")
-//                targetContentOffset.pointee = CGPoint(x: targetContentOffset.pointee.x, y: 2434)
-//            }
-//
-//        }
         
         @objc func tapped(gesture:UITapGestureRecognizer) {
             let point = gesture.location(in: gesture.view)
@@ -252,5 +201,3 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         }
     }
 }
-
-
