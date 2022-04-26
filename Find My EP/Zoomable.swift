@@ -241,13 +241,14 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         
         @objc func tapped(gesture:UITapGestureRecognizer) {
             let point = gesture.location(in: gesture.view)
-            print(self.parent.currentOffset)
-            print(screenSize)
+            print(point)
+            //print(self.parent.currentOffset)
+            //print(screenSize)
             //print(maxy)
             //print(miny)
             //print(forceminy)
             //print(forcemaxy)
-            print(parent.currentScale)
+            //print(parent.currentScale)
         }
     }
 }
