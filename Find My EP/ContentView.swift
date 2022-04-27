@@ -82,8 +82,8 @@ struct ContentView: View {
                 }
                 
                 
-                NavigationLink(destination: DirectionsScreen(retval: (0.0, [0], [75,0,1,4,7,71,69, 68,66,67,61,60,59,58,56,55,88,54,51,53,50,52,33,31,39,40,38,37,34,83,33,52,27,21,28,29,64,10], [0], [CGPoint(x: 0,y: 0), CGPoint(x: 0,y: 0), CGPoint(x: 0,y: 0)], [CGPoint(x: 0,y: 0), CGPoint(x: 0,y: 0), CGPoint(x: 0,y: 0)], [false, true, false]))) {
-//                NavigationLink(destination: DirectionsScreen(retval: findPath(start: roomsToIDs[searchText] ?? rooms[0], end: roomsToIDs[searchText2] ?? rooms3[0]))) {
+//                NavigationLink(destination: DirectionsScreen(retval: (0.0, [0], [75,0,1,4,7,71,69, 68,66,67,61,60,59,58,56,55,88,54,51,53,50,52,33,31,39,40,38,37,34,83,33,52,27,21,28,29,64,10], [0], [CGPoint(x: 0,y: 0), CGPoint(x: 0,y: 0), CGPoint(x: 0,y: 0)], [CGPoint(x: 0,y: 0), CGPoint(x: 0,y: 0), CGPoint(x: 0,y: 0)], [false, true, false]))) {
+                NavigationLink(destination: DirectionsScreen(retval: findPath(start: roomsToIDs[searchText] ?? rooms[0], end: roomsToIDs[searchText2] ?? rooms3[0]))) {
                     HStack {
                         Spacer()
                         Text("Show Map")
