@@ -20,7 +20,7 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         // set up the UIScrollView
         scrollView.delegate = context.coordinator  // for viewForZooming(in:)
         scrollView.maximumZoomScale = 15
-        scrollView.minimumZoomScale = 6
+        scrollView.minimumZoomScale = 4
         scrollView.bouncesZoom = true
         scrollView.bounces = true
         //scrollView.clipsToBounds = true
@@ -107,48 +107,48 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
             self.parent.currentScale = sv.zoomScale
         }
         
-        func scrollViewDidEndZooming(_ sv: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
-            self.isZooming = false
-            
-            let forceLower = scaleFac * Double(sv.zoomScale * 267.1 - 203.2)
-            let forceHigher = scaleFac * Double(sv.zoomScale * 510.7 - 357.0)
-            
-            let lowerBound = scaleFac * Double(sv.zoomScale * 270.2 + 9.5)
-            let higherBound = scaleFac * Double(sv.zoomScale * 512.5 - 641.4)
-
-            
-            sv.setValue(0.15, forKeyPath: "contentOffsetAnimationDuration")
-            if sv.contentOffset.y <= forceLower {
-                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: lowerBound), animated: true)
-            }
-            else if sv.contentOffset.y >= forceHigher {
-                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: higherBound), animated: true)
-            }
-            
-        }
+//        func scrollViewDidEndZooming(_ sv: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+//            self.isZooming = false
+//
+//            let forceLower = scaleFac * Double(sv.zoomScale * 267.1 - 203.2)
+//            let forceHigher = scaleFac * Double(sv.zoomScale * 510.7 - 357.0)
+//
+//            let lowerBound = scaleFac * Double(sv.zoomScale * 270.2 + 9.5)
+//            let higherBound = scaleFac * Double(sv.zoomScale * 512.5 - 641.4)
+//
+//
+//            sv.setValue(0.15, forKeyPath: "contentOffsetAnimationDuration")
+//            if sv.contentOffset.y <= forceLower {
+//                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: lowerBound), animated: true)
+//            }
+//            else if sv.contentOffset.y >= forceHigher {
+//                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: higherBound), animated: true)
+//            }
+//
+//        }
         
     
-        func scrollViewDidScroll(_ sv: UIScrollView){
-
-            if self.isZooming {
-                return
-            }
-            let forceLower = scaleFac * Double(sv.zoomScale * 267.1 - 203.2)
-            let forceHigher = scaleFac * Double(sv.zoomScale * 510.7 - 357.0)
-            
-            let lowerBound = scaleFac * Double(sv.zoomScale * 270.2 + 9.5)
-            let higherBound = scaleFac * Double(sv.zoomScale * 512.5 - 641.4)
-
-            
-            sv.setValue(0.15, forKeyPath: "contentOffsetAnimationDuration")
-            if sv.contentOffset.y <= forceLower {
-                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: lowerBound), animated: true)
-            }
-            else if sv.contentOffset.y >= forceHigher {
-                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: higherBound), animated: true)
-            }
-
-        }
+//        func scrollViewDidScroll(_ sv: UIScrollView){
+//
+//            if self.isZooming {
+//                return
+//            }
+//            let forceLower = scaleFac * Double(sv.zoomScale * 267.1 - 203.2)
+//            let forceHigher = scaleFac * Double(sv.zoomScale * 510.7 - 357.0)
+//
+//            let lowerBound = scaleFac * Double(sv.zoomScale * 270.2 + 9.5)
+//            let higherBound = scaleFac * Double(sv.zoomScale * 512.5 - 641.4)
+//
+//
+//            sv.setValue(0.15, forKeyPath: "contentOffsetAnimationDuration")
+//            if sv.contentOffset.y <= forceLower {
+//                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: lowerBound), animated: true)
+//            }
+//            else if sv.contentOffset.y >= forceHigher {
+//                sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: higherBound), animated: true)
+//            }
+//
+//        }
         
         
         
