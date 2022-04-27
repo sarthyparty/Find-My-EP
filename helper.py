@@ -138,7 +138,7 @@ def dist(x1, x2, y1, y2):
 
 for i in intersects:
   i.x = i.x*1.197-42.64
-  i.y = i.y*1.2-95.33
+  i.y = i.y*1.2-95.33+364.48598035770806-358.87
   print(f'Intersection(halls: [], id: {i.id}, x: {round(i.x,2)}, y: {round(i.y,2)}),')
 
 for h in halls:
@@ -150,7 +150,7 @@ for h in halls:
 
 for i in rooms:
   i.x = i.x*1.197-42.64
-  i.y = i.y*1.2-95.33
+  i.y = i.y*1.2-95.33+364.48598035770806-358.87
   s = intersects[halls[i.hall].start]
   i.startDist = round(dist(i.x, s.x, i.y, s.y),2)
   print(f'Room(name: "{i.name}", startDist: {i.startDist}, hall: {i.hall}, x: {round(i.x,2)}, y: {round(i.y,2)}),')

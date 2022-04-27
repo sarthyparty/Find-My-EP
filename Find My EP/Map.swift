@@ -30,7 +30,7 @@ struct Map: View {
     }
     
     func fixY(y: Double) -> CGFloat {
-        return CGFloat((y-282)/926*screenHeight)
+        return CGFloat((y-287.616)/926*screenHeight)
     }
     
     
