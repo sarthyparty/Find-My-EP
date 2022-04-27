@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D342698A2819A391001BAF60 /* CompassHeading.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34269892819A391001BAF60 /* CompassHeading.swift */; };
 		D34490EB27AACF580018CF91 /* Find_My_EPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34490EA27AACF580018CF91 /* Find_My_EPApp.swift */; };
 		D34490ED27AACF580018CF91 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34490EC27AACF580018CF91 /* ContentView.swift */; };
 		D34490EF27AACF5B0018CF91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D34490EE27AACF5B0018CF91 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D34269892819A391001BAF60 /* CompassHeading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassHeading.swift; sourceTree = "<group>"; };
 		D34490E727AACF580018CF91 /* Find My EP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Find My EP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34490EA27AACF580018CF91 /* Find_My_EPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Find_My_EPApp.swift; sourceTree = "<group>"; };
 		D34490EC27AACF580018CF91 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				D3AB3F4E27CE804A004C587A /* Zoomable.swift */,
 				D3AB3F5027D27C3E004C587A /* PanGesture.swift */,
 				D3E3D7C627DA6B32004EDF77 /* SearchBar.swift */,
+				D34269892819A391001BAF60 /* CompassHeading.swift */,
 				D3CAB68E27E3950C00BD9CF6 /* ScrollableView.swift */,
 			);
 			path = "Find My EP";
@@ -284,6 +287,7 @@
 				D3D43C1127BABDFB00E16880 /* DirectionsScreen.swift in Sources */,
 				D3AB3F5127D27C3E004C587A /* PanGesture.swift in Sources */,
 				D34490ED27AACF580018CF91 /* ContentView.swift in Sources */,
+				D342698A2819A391001BAF60 /* CompassHeading.swift in Sources */,
 				D3AB3F4F27CE804A004C587A /* Zoomable.swift in Sources */,
 				D3D43C0B27AC31D900E16880 /* Logic.swift in Sources */,
 				D3CAB68F27E3950C00BD9CF6 /* ScrollableView.swift in Sources */,
