@@ -81,11 +81,12 @@ struct DirectionsScreen: View {
                 if isDisabled {
                     Text(text) .bold().font(.system(size: 30))
                         .padding(10)
-                        .foregroundColor(Color.gray)
+                        .opacity(0)
+//                        .foregroundColor(Color.black)
                 } else {
                     Text(text) .bold().font(.system(size: 30))
                         .padding(10)
-                        .foregroundColor(tochange ? Color.green : Color.white)
+                        .foregroundColor(tochange ? Color.red : Color.black)
                 }
                 
                 //                    .background(tochange ? Color.green : Color.red)

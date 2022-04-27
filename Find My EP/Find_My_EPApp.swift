@@ -49,7 +49,7 @@ struct Find_My_EPApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .preferredColorScheme(.dark)
+                .preferredColorScheme(.light)
         }
     }
 }

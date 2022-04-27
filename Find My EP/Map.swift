@@ -40,14 +40,14 @@ struct Map: View {
             }
             
             Path { path in
-                path.move(to: CGPoint(x: CGFloat((start.x-12)/428*screenWidth), y: (CGFloat((start.y-308)/926*screenHeight))))
+                path.move(to: CGPoint(x: CGFloat((start.x)/428*screenWidth), y: (CGFloat((start.y-314)/926*screenHeight))))
                 if inters.count > 0 {
                     for i in inters {
-                        path.addLine(to: CGPoint(x: CGFloat((floor.inters[i].x-12)/428*screenWidth), y: CGFloat((floor.inters[i].y-308)/926*screenHeight)))
-                        path.move(to: CGPoint(x: CGFloat((floor.inters[i].x-12)/428*screenWidth), y: CGFloat((floor.inters[i].y-308)/926*screenHeight)))
+                        path.addLine(to: CGPoint(x: CGFloat((floor.inters[i].x)/428*screenWidth), y: CGFloat((floor.inters[i].y-314)/926*screenHeight)))
+                        path.move(to: CGPoint(x: CGFloat((floor.inters[i].x)/428*screenWidth), y: CGFloat((floor.inters[i].y-314)/926*screenHeight)))
                     }
                 }
-                path.addLine(to: CGPoint(x: CGFloat((end.x-12)/428*screenWidth), y: CGFloat((end.y-308)/926*screenHeight)))
+                path.addLine(to: CGPoint(x: CGFloat((end.x)/428*screenWidth), y: CGFloat((end.y-314)/926*screenHeight)))
                 print(start)
                 print(end)
                 
