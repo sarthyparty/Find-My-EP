@@ -466,7 +466,7 @@ var intersects2 = [
     Intersection(halls: [], id: 3, x: 76.32, y: 394.2),
     Intersection(halls: [], id: 4, x: 99.92, y: 387.66),
     Intersection(halls: [], id: 5, x: 99.92, y: 355.17),
-    Intersection(halls: [], id: 6, x: 104.28, y: 355.17),
+    Intersection(halls: [], id: 6, x: 103.43, y: 355.17),
     Intersection(halls: [], id: 7, x: 99.92, y: 374.24),
     Intersection(halls: [], id: 8, x: 93.51, y: 394.2),
     Intersection(halls: [], id: 9, x: 99.92, y: 394.2),
@@ -682,7 +682,7 @@ var intersects3 = [
     Intersection(halls: [], id: 4, x: 102.7, y: 390.21),
     Intersection(halls: [], id: 5, x: 102.7, y: 376.19),
     Intersection(halls: [], id: 6, x: 102.7, y: 357.05),
-    Intersection(halls: [], id: 7, x: 107.18, y: 357.05),
+    Intersection(halls: [], id: 7, x: 105.48, y: 357.05),
     Intersection(halls: [], id: 8, x: 102.7, y: 411.59),
     Intersection(halls: [], id: 9, x: 135.51, y: 411.59),
     Intersection(halls: [], id: 10, x: 135.51, y: 405.83),
@@ -753,5 +753,5 @@ var floors = [floor1, floor2, floor3]
 
 //  Stair(dist: [], x: , y: , allFloors: true, inter: [floor1.inters[0], floor2.inters[], floor3.inters[]], id: )
 var stairs = [
-    Stair(name: "SW 5", dist: [13.55, 6.86, 6.86], x: [119.33, 122.87, 122.58], y: [367.29, 365.83, 365.83], allFloors: true, inters: [floor1.inters[1], floor2.inters[6], floor3.inters[7]], id: 0)
+    Stair(name: "SW 5", dist: [14.99, 7.38, 7.11], x: [100.20, 103.43, 105.48], y: [349.50, 347.79, 349.94], allFloors: true, inters: [floor1.inters[1], floor2.inters[6], floor3.inters[7]], id: 0)
 ]
