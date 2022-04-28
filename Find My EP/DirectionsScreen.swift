@@ -12,33 +12,45 @@ struct DirectionsScreen: View {
     
     @State var retval: (Double, [Int], [Int], [Int], [CGPoint], [CGPoint], [Bool])
     
-    @State var heading = CLHeading()
+    @ObservedObject var heading = CompassHeading()
     
     var body: some View {
         let map1 = Map(floor: floors[0], inters: retval.1, start: retval.4[0], end: retval.5[0], mapImageHigh: "EPHS_first_high", mapImageLow: "EPHS_first_low")
         let map2 = Map(floor: floors[1], inters: retval.2, start: retval.4[1], end: retval.5[1], mapImageHigh: "EPHS_second_high", mapImageLow: "EPHS_second_low")
         let map3 = Map(floor: floors[2], inters: retval.3, start: retval.4[2], end: retval.5[2], mapImageHigh: "EPHS_third_high", mapImageLow: "EPHS_third_low")
         VStack(alignment: .leading) {
-            if retval.6[0] {
-                map1
-            } else if retval.6[1] {
-                map2
-            } else {
-                map3
+            ZStack {
+                if retval.6[0] {
+                    map1
+                } else if retval.6[1] {
+                    map2
+                } else {
+                    map3
+                }
+                HStack {
+                    Spacer()
+                    VStack {
+                        Image("arrow")
+                            .resizable()
+                            .frame(width: screenWidth/4, height: screenHeight/10)
+                            .rotationEffect(Angle(degrees: self.heading.degrees + 153.54287719726562))
+                        Spacer()
+                    }
+                }
             }
             Text(to_min(seconds: retval.0*0.72))
                 .frame(maxWidth: .infinity, alignment: .center)
             HStack(alignment: .center, spacing: 0 ) {
                 Spacer()
-                ColorButton(text: "1", tochange: $retval.6[0], other1: $retval.6[1], other2: $retval.6[2], isDisabled: retval.1.isEmpty)
-                    .disabled(retval.1.isEmpty)
-                ColorButton(text: "2", tochange: $retval.6[1], other1: $retval.6[0], other2: $retval.6[2], isDisabled: retval.2.isEmpty)
-                    .disabled(retval.2.isEmpty)
-                ColorButton(text: "3", tochange: $retval.6[2], other1: $retval.6[1], other2: $retval.6[0], isDisabled: retval.3.isEmpty)
-                    .disabled(retval.3.isEmpty)
+                ColorButton(text: "1", tochange: $retval.6[0], other1: $retval.6[1], other2: $retval.6[2], isDisabled: retval.1.isEmpty && !retval.6[0])
+                    .disabled(retval.1.isEmpty && !retval.6[0])
+                ColorButton(text: "2", tochange: $retval.6[1], other1: $retval.6[0], other2: $retval.6[2], isDisabled: retval.2.isEmpty && !retval.6[1])
+                    .disabled(retval.2.isEmpty && !retval.6[1])
+                ColorButton(text: "3", tochange: $retval.6[2], other1: $retval.6[1], other2: $retval.6[0], isDisabled: retval.3.isEmpty && !retval.6[2])
+                    .disabled(retval.3.isEmpty && !retval.6[2])
                 Spacer()
                 
-                //Button(action: {print(heading.magneticHeading)}, label: {Text("Hi")})
+                Button(action: {print(heading.degrees)}, label: {Text("Hi")})
                 
             }
             
@@ -81,12 +93,12 @@ struct DirectionsScreen: View {
                 if isDisabled {
                     Text(text) .bold().font(.system(size: 30))
                         .padding(10)
-                        .opacity(0)
+                        .opacity(50)
 //                        .foregroundColor(Color.black)
                 } else {
                     Text(text) .bold().font(.system(size: 30))
                         .padding(10)
-                        .foregroundColor(tochange ? Color.red : Color.black)
+                        .foregroundColor(tochange ? Color.green : Color.white)
                 }
                 
                 //                    .background(tochange ? Color.green : Color.red)
