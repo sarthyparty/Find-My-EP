@@ -403,7 +403,6 @@ var rooms = [
     Room(name: "148 Boys Locker", startDist: 29.35, hall: 15, x: 156.67, y: 439.47),
     Room(name: "150 Girls Locker", startDist: 29.35, hall: 15, x: 156.67, y: 439.47),
     Room(name: "151A Office", startDist: 6.02, hall: 15, x: 156.67, y: 416.15),
-    
 ]
 
 //  Intersection(halls: [], id: , x: , y: )
@@ -448,14 +447,44 @@ var halls = [
     
 ]
 
-//  Room(name: "", startDist: , hall: , x: , y: )
+//  Room(name: "", startDist: , hall: , x: , y: ),
 var rooms2 = [
-    Room(name: "220 Classroom", startDist: 57.99, hall: 0, x: 41.93, y: 387.66),
-    Room(name: "219 Science Lab", startDist: 57.99, hall: 0, x: 41.93, y: 387.66),
-    Room(name: "218 Classroom", startDist: 54.33, hall: 0, x: 45.59, y: 387.66),
-    Room(name: "221 Classroom", startDist: 54.33, hall: 0, x: 45.59, y: 387.66),
-    Room(name: "217 Classroom", startDist: 34.8, hall: 0, x: 65.13, y: 387.66),
-    Room(name: "222 Classroom", startDist: 34.8, hall: 0, x: 65.13, y: 387.66),
+    Room(name: "220", startDist: 57.99, hall: 0, x: 41.93, y: 387.66),
+    Room(name: "219", startDist: 57.99, hall: 0, x: 41.93, y: 387.66),
+    Room(name: "218", startDist: 54.33, hall: 0, x: 45.59, y: 387.66),
+    Room(name: "221", startDist: 54.33, hall: 0, x: 45.59, y: 387.66),
+    Room(name: "217", startDist: 34.8, hall: 0, x: 65.13, y: 387.66),
+    Room(name: "222", startDist: 34.8, hall: 0, x: 65.13, y: 387.66),
+    Room(name: "214", startDist: 2.39, hall: 101, x: 102.31, y: 374.24),
+    Room(name: "212", startDist: 20.55, hall: 101, x: 120.47, y: 374.24),
+    Room(name: "215", startDist: 2.39, hall: 101, x: 102.31, y: 374.24),
+    Room(name: "213", startDist: 20.55, hall: 101, x: 120.47, y: 374.24),
+    Room(name: "211", startDist: 33.04, hall: 101, x: 132.96, y: 374.24),
+    Room(name: "209", startDist: 3.48, hall: 102, x: 141.87, y: 336.45),
+    Room(name: "210", startDist: 24.51, hall: 102, x: 141.87, y: 357.48),
+    Room(name: "208", startDist: 20.74, hall: 102, x: 141.87, y: 353.71),
+    Room(name: "206", startDist: 11.75, hall: 99, x: 143.99, y: 332.97),
+    Room(name: "205", startDist: 9.23, hall: 99, x: 146.51, y: 332.97),
+    Room(name: "203", startDist: 4.37, hall: 93, x: 190.59, y: 332.04),
+    Room(name: "204", startDist: 0, hall: 105, x: 194.96, y: 333.50),
+    Room(name: "201", startDist: 21.48, hall: 94, x: 207.35, y: 312.02),
+    Room(name: "207", startDist: 9.17, hall: 99, x: 146.57, y: 332.97),
+    Room(name: "200", startDist: 23.78, hall: 94, x: 207.35, y: 309.72),
+    Room(name: "202 English Resource Center", startDist: 6.24, hall: 89, x: 223.49, y: 343.74),
+    Room(name: "270", startDist: 7.18, hall: 88, x: 229.73, y: 336.56),
+    Room(name: "269", startDist: 4.02, hall: 85, x: 231.59, y: 347.45),
+    Room(name: "268 Business & Marketing", startDist: 11.81, hall: 79, x: 249.38, y: 377.39),
+    Room(name: "267", startDist: 18.88, hall: 78, x: 265.11, y: 377.39),
+    Room(name: "266", startDist: 7.29, hall: 78, x: 276.70, y: 377.39),
+    Room(name: "265", startDist: 21.27, hall: 73, x: 288.47, y: 377.39),
+    Room(name: "264", startDist: 9.34, hall: 73, x: 300.40, y: 377.39),
+    Room(name: "259", startDist: 11.83, hall: 73, x: 297.91, y: 377.39),
+    Room(name: "258", startDist: 23.29, hall: 73, x: 286.45, y: 377.39),
+    Room(name: "257", startDist: 2.09, hall: 74, x: 283.99, y: 379.47),
+    Room(name: "263", startDist: 5.02, hall: 72, x: 321.37, y: 365.87),
+    Room(name: "262", startDist: 6.24, hall: 72, x: 332.59, y: 365.87),
+    Room(name: "227 Student Center East", startDist: 0, hall: 16, x: 95.78, y: 435.67),
+    Room(name: "227I Career Resource Center", startDist: 25.86, hall: 16, x: 95.78, y: 461.53),
 ]
 
 //  Intersection(halls: [], id: , x: , y: ),
