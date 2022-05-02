@@ -84,6 +84,8 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         var forceminy: CGFloat
         var forcemaxy: CGFloat
         
+        var prevTap = CGPoint(x: 0, y: 0)
+        
         var isZooming = false
         
         init(parent_: ZoomableScrollView, hostingController: UIHostingController<Content>) {
@@ -241,7 +243,9 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         
         @objc func tapped(gesture:UITapGestureRecognizer) {
             let point = gesture.location(in: gesture.view)
-            print(point)
+            
+            print("\(point) \(dist(x1: point.x, y1: point.y, x2: prevTap.x, y2: prevTap.y))")
+            prevTap = point
             //print(self.parent.currentOffset)
             //print(screenSize)
             //print(maxy)
