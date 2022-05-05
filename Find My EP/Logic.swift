@@ -289,6 +289,23 @@ func findPath(start: Room, end: Room) -> (dist: Double, inters_1: [Int], inters_
 
 
     for stair in stairs {
+        if !stair.allFloors {
+            if start.floor + end.floor > 3 {
+                continue
+            }
+        }
+        
+        if stair.name == "SW 6 (3)" {
+            if (start.floor == 1 || end.floor == 1) && (start.floor == 2 || end.floor == 2) {
+                continue
+            }
+        }
+        
+        if stair.name == "SW 6 (1)" {
+            if (start.floor == 3 || end.floor == 3) && (start.floor == 2 || end.floor == 2) {
+                continue
+            }
+        }
         let res1_start = startfloor.a_star_shortestPath(start: stair.inters[start.floor-1], end: startfloor.inters[startfloor.halls[start.hall].start])
         var start_res = startfloor.a_star_shortestPath(start: stair.inters[start.floor-1], end: startfloor.inters[startfloor.halls[start.hall].end])
         if res1_start.dist + start.startDist < start_res.dist + startfloor.halls[start.hall].length - start.startDist {
@@ -650,7 +667,7 @@ var intersects2 = [
     Intersection(halls: [], id: 74, x: 221.78, y: 354.5),
     Intersection(halls: [], id: 75, x: 36.27, y: 373.34),
     Intersection(halls: [], id: 76, x: 99.92, y: 407.48),
-    Intersection(halls: [], id: 77, x: 93.83, y: 407.48),
+    Intersection(halls: [], id: 77, x: 93.51, y: 407.48),
     Intersection(halls: [], id: 78, x: 142.8, y: 488.64),
     Intersection(halls: [], id: 79, x: 130.76, y: 501.31),
     Intersection(halls: [], id: 80, x: 100.44, y: 471.51),
@@ -924,4 +941,6 @@ var stairs = [
     Stair(name: "SW 17", dist: [5.26, 4.963, 7.11], x: [262.34, 261.19, 260.25], y: [356.04, 355.26, 358.1], allFloors: true, inters: [floor1.inters[49], floor2.inters[73], floor3.inters[35]], id: 1),
     Stair(name: "SW 4", dist: [5.11, 5.11, 5.11], x: [129.25, 133.37, 134.48], y: [328.88, 328.88, 328.88], allFloors: true, inters: [floor1.inters[50], floor2.inters[70], floor3.inters[15]], id: 2),
     Stair(name: "SW 1", dist: [0, 4, 11.25], x: [207.82, 207.35, 206.76], y: [307.32, 299.25, 304.24], allFloors: true, inters: [floor1.inters[34], floor2.inters[62], floor3.inters[34]], id: 3),
+    Stair(name: "SW 6 (3)", dist: [5.8, 4.45, 11.25], x: [95.54, 93.51, 96.51], y: [410.12, 400.49, 400.3], allFloors: true, inters: [floor1.inters[10], floor2.inters[77], floor3.inters[3]], id: 4),
+    Stair(name: "SW 6 (1)", dist: [5.8, 4.45, 6.36], x: [95.54, 93.51, 96.51], y: [410.12, 400.49, 400.3], allFloors: true, inters: [floor1.inters[10], floor2.inters[8], floor3.inters[3]], id: 4),
 ]
