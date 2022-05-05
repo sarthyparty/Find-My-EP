@@ -293,9 +293,9 @@ func findPath(start: Room, end: Room) -> (dist: Double, inters_1: [Int], inters_
         var start_res = startfloor.a_star_shortestPath(start: stair.inters[start.floor-1], end: startfloor.inters[startfloor.halls[start.hall].end])
         if res1_start.dist + start.startDist < start_res.dist + startfloor.halls[start.hall].length - start.startDist {
             start_res = res1_start
-            start_res.dist = res1_start.dist + start.startDist
+            start_res.dist = res1_start.dist + start.startDist + stair.dist[start.floor-1]
         } else {
-            start_res.dist = start_res.dist + startfloor.halls[start.hall].length - start.startDist
+            start_res.dist = start_res.dist + startfloor.halls[start.hall].length - start.startDist + stair.dist[start.floor-1]
         }
         
 
@@ -304,16 +304,18 @@ func findPath(start: Room, end: Room) -> (dist: Double, inters_1: [Int], inters_
         
         if res1_end.dist + end.startDist < end_res.dist + endfloor.halls[end.hall].length - end.startDist {
             end_res = res1_end
-            end_res.dist = res1_end.dist + end.startDist
+            end_res.dist = res1_end.dist + end.startDist + stair.dist[end.floor-1]
         } else {
-            end_res.dist = end_res.dist + endfloor.halls[end.hall].length - end.startDist
+            end_res.dist = end_res.dist + endfloor.halls[end.hall].length - end.startDist + stair.dist[end.floor-1]
         }
         
+        print(min_stair)
 
         if end_res.dist + start_res.dist < min_start_floor.dist + min_end_floor.dist {
             min_start_floor = start_res
             min_end_floor = end_res
             min_stair = stair.id
+            print(min_stair)
         }
     }
     
@@ -423,7 +425,6 @@ var intersects = [
     Intersection(halls: [], id: 13, x: 100.2, y: 453.83),
     Intersection(halls: [], id: 14, x: 156.67, y: 410.12),
     Intersection(halls: [], id: 15, x: 156.67, y: 459.96),
-    
     Intersection(halls: [], id: 16, x: 154.05, y: 375.33),
     Intersection(halls: [], id: 17, x: 160.69, y: 375.33),
     Intersection(halls: [], id: 18, x: 160.69, y: 372.12),
@@ -920,6 +921,7 @@ var floors = [floor1, floor2, floor3]
 //  Stair(dist: [], x: , y: , allFloors: true, inter: [floor1.inters[0], floor2.inters[], floor3.inters[]], id: )
 var stairs = [
     Stair(name: "SW 5", dist: [14.99, 7.38, 7.11], x: [100.20, 103.43, 105.48], y: [349.50, 347.79, 349.94], allFloors: true, inters: [floor1.inters[1], floor2.inters[6], floor3.inters[7]], id: 0),
-//    Stair(name: "SW 17", dist: [5.26, 7.38, 7.11], x: [100.20, 103.43, 105.48], y: [356.04, 347.79, 349.94], allFloors: true, inters: [floor1.inters[1], floor2.inters[6], floor3.inters[7]], id: 0),
-    
+    Stair(name: "SW 17", dist: [5.26, 4.963, 7.11], x: [262.34, 261.19, 260.25], y: [356.04, 355.26, 358.1], allFloors: true, inters: [floor1.inters[49], floor2.inters[73], floor3.inters[35]], id: 1),
+    Stair(name: "SW 4", dist: [5.11, 5.11, 5.11], x: [129.25, 133.37, 134.48], y: [328.88, 328.88, 328.88], allFloors: true, inters: [floor1.inters[50], floor2.inters[70], floor3.inters[15]], id: 2),
+    Stair(name: "SW 1", dist: [0, 4, 11.25], x: [207.82, 207.35, 206.76], y: [307.32, 299.25, 304.24], allFloors: true, inters: [floor1.inters[34], floor2.inters[62], floor3.inters[34]], id: 3),
 ]
