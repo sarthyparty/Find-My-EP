@@ -4,9 +4,9 @@
 //
 //  Created by 64000774 on 2/2/22.
 //
-
+ 
 import SwiftUI
-
+ 
 struct ContentView: View {
     
     @State var startID = ""
@@ -26,10 +26,10 @@ struct ContentView: View {
         NavigationView {
             ScrollView {
   
-                SearchBar(searchBarText: "Enter start room number", searchText: $searchText, isSearching: $isSearching, isSearchingOther: $isSearching2)
+                SearchBar(searchBarText: "Enter start room...", searchText: $searchText, isSearching: $isSearching, isSearchingOther: $isSearching2)
                 
                 if (isSearching) {
-                    ForEach(roomsToIDs.keys.filter({ "\($0)".contains(searchText)}), id: \.self) { room in
+                    ForEach(roomsToIDs.keys.filter({ "\($0)".contains(searchText.lowercased())}), id: \.self) { room in
                         
                         HStack {
                             Button(action: {
@@ -40,7 +40,7 @@ struct ContentView: View {
                                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                             }
                                    ,label: {
-                                Text(room)
+                                Text(roomsToIDs[room]!.name)
                             })
                         }
                         Spacer()
@@ -56,10 +56,10 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                SearchBar(searchBarText: "Enter end room number", searchText: $searchText2, isSearching: $isSearching2, isSearchingOther: $isSearching)
+                SearchBar(searchBarText: "Enter end room...", searchText: $searchText2, isSearching: $isSearching2, isSearchingOther: $isSearching)
                 
                 if(isSearching2) {
-                    ForEach(roomsToIDs.keys.filter({ "\($0)".contains(searchText2)}), id: \.self) { room in
+                    ForEach(roomsToIDs.keys.filter({ "\($0)".contains(searchText2.lowercased())}), id: \.self) { room in
                         
                         HStack {
                             Button(action: {
@@ -69,7 +69,7 @@ struct ContentView: View {
                                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                             }
                                    ,label: {
-                                Text(room)
+                                Text(roomsToIDs[room]!.name)
                             })
                         }
                         Spacer()
@@ -99,8 +99,8 @@ struct ContentView: View {
     }
     
 }
-
-
+ 
+ 
 //struct ContentView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        HStack {

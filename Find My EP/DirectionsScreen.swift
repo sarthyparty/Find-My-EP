@@ -4,10 +4,10 @@
 //
 //  Created by 64000774 on 2/14/22.
 //
-
+ 
 import SwiftUI
 import CoreLocation
-
+ 
 struct DirectionsScreen: View {
     
     @State var retval: (Double, [Int], [Int], [Int], [CGPoint], [CGPoint], [Bool])
@@ -49,8 +49,6 @@ struct DirectionsScreen: View {
                 ColorButton(text: "3", tochange: $retval.6[2], other1: $retval.6[1], other2: $retval.6[0], isDisabled: retval.3.isEmpty && !retval.6[2])
                     .disabled(retval.3.isEmpty && !retval.6[2])
                 Spacer()
-                
-                Button(action: {print(heading.degrees)}, label: {Text("Hi")})
                 
             }
             
@@ -98,7 +96,7 @@ struct DirectionsScreen: View {
                 } else {
                     Text(text) .bold().font(.system(size: 30))
                         .padding(10)
-                        .foregroundColor(tochange ? Color.red : Color.white)
+                        .foregroundColor(tochange ? Color.green : Color.white)
                 }
                 
                 //                    .background(tochange ? Color.green : Color.red)

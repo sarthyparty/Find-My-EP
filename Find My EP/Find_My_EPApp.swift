@@ -4,9 +4,9 @@
 //
 //  Created by 64000774 on 2/2/22.
 //
-
+ 
 import SwiftUI
-
+ 
 @main
 struct Find_My_EPApp: App {
     init() {
@@ -26,18 +26,18 @@ struct Find_My_EPApp: App {
         for i in 1...rooms.count {
             rooms[i-1].floor = 1
             halls[rooms[i-1].hall].rooms.append(rooms[i-1])
-            roomsToIDs[rooms[i-1].name] = rooms[i-1]
+            roomsToIDs[rooms[i-1].name.lowercased()] = rooms[i-1]
         }
         
         for i in 1...rooms2.count {
             rooms2[i-1].floor = 2
             halls2[rooms2[i-1].hall].rooms.append(rooms2[i-1])
-            roomsToIDs[rooms2[i-1].name] = rooms2[i-1]
+            roomsToIDs[rooms2[i-1].name.lowercased()] = rooms2[i-1]
         }
         for i in 1...rooms3.count {
             rooms3[i-1].floor = 3
             halls3[rooms3[i-1].hall].rooms.append(rooms3[i-1])
-            roomsToIDs[rooms3[i-1].name] = rooms3[i-1]
+            roomsToIDs[rooms3[i-1].name.lowercased()] = rooms3[i-1]
         }
         
         print(findPath(start: rooms2[0], end: rooms[8]))

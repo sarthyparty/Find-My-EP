@@ -4,11 +4,11 @@
 //
 //  Created by 64000774 on 3/1/22.
 //
-
+ 
 import UIKit
 import SwiftUI
-
-
+ 
+ 
 struct ZoomableScrollView<Content: View>: UIViewRepresentable {
     var content: Content
     @Binding var currentScale: CGFloat
@@ -20,7 +20,7 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         // set up the UIScrollView
         scrollView.delegate = context.coordinator  // for viewForZooming(in:)
         scrollView.maximumZoomScale = 15
-        scrollView.minimumZoomScale = 6
+        scrollView.minimumZoomScale = 5
         scrollView.bouncesZoom = true
         scrollView.bounces = true
         //scrollView.clipsToBounds = true
@@ -114,14 +114,14 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         
         func scrollViewDidEndZooming(_ sv: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
             self.isZooming = false
-
+ 
             let forceLower = scaleFac * Double(sv.zoomScale * 247.8 - 235.5)
             let forceHigher = scaleFac * Double(sv.zoomScale * 532.3 - 315.0)
-
+ 
             let lowerBound = scaleFac * Double(sv.zoomScale * 250 + 37.54)
             let higherBound = scaleFac * Double(sv.zoomScale * 540 - 572.1)
-
-
+ 
+ 
             sv.setValue(0.15, forKeyPath: "contentOffsetAnimationDuration")
             if sv.contentOffset.y <= forceLower {
                 sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: lowerBound), animated: true)
@@ -129,21 +129,21 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
             else if sv.contentOffset.y >= forceHigher {
                 sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: higherBound), animated: true)
             }
-
+ 
         }
-
+ 
         func scrollViewDidScroll(_ sv: UIScrollView){
-
+ 
             if self.isZooming {
                 return
             }
             let forceLower = scaleFac * Double(sv.zoomScale * 247.8 - 235.5)
             let forceHigher = scaleFac * Double(sv.zoomScale * 532.3 - 315.0)
-
+ 
             let lowerBound = scaleFac * Double(sv.zoomScale * 250 + 37.54)
             let higherBound = scaleFac * Double(sv.zoomScale * 540 - 572.1)
-
-
+ 
+ 
             sv.setValue(0.15, forKeyPath: "contentOffsetAnimationDuration")
             if sv.contentOffset.y <= forceLower {
                 sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: lowerBound), animated: true)
@@ -151,7 +151,7 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
             else if sv.contentOffset.y >= forceHigher {
                 sv.setContentOffset(CGPoint(x: sv.contentOffset.x, y: higherBound), animated: true)
             }
-
+ 
         }
         
 //        func scrollViewDidEndZooming(_ sv: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
@@ -233,13 +233,13 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
 //            }
 //            self.parent.currentOffset = sv.contentOffset
 //        }
-
+ 
         
         
         
         
         
-
+ 
         
         @objc func tapped(gesture:UITapGestureRecognizer) {
             let point = gesture.location(in: gesture.view)
