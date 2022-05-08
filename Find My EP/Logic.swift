@@ -267,27 +267,27 @@ func findPath(start: Room, end: Room) -> (dist: Double, inters_1: [Int], inters_
     
     var startfloor = floor3
     var endfloor = floor3
- 
+    
     if start.floor == 1 {
         startfloor = floor1
     } else if start.floor == 2{
         startfloor = floor2
     }
- 
+    
     if end.floor == 1 {
         endfloor = floor1
     } else if end.floor == 2{
         endfloor = floor2
     }
     
- 
+    
     var min_start_floor = startfloor.a_star_shortestPath(start: stairs[0].inters[start.floor-1], end: startfloor.inters[startfloor.halls[start.hall].start])
     min_start_floor.dist += start.startDist
     var min_end_floor = endfloor.a_star_shortestPath(start: stairs[0].inters[end.floor-1], end: endfloor.inters[endfloor.halls[end.hall].start])
     min_end_floor.dist += end.startDist
     var min_stair = 0
- 
- 
+    
+    
     for stair in stairs {
         if !stair.allFloors {
             if start.floor + end.floor > 3 {
@@ -315,7 +315,7 @@ func findPath(start: Room, end: Room) -> (dist: Double, inters_1: [Int], inters_
             start_res.dist = start_res.dist + startfloor.halls[start.hall].length - start.startDist + stair.dist[start.floor-1]
         }
         
- 
+        
         let res1_end = endfloor.a_star_shortestPath(start: stair.inters[end.floor-1], end: endfloor.inters[endfloor.halls[end.hall].start])
         var end_res = endfloor.a_star_shortestPath(start: stair.inters[end.floor-1], end: endfloor.inters[endfloor.halls[end.hall].end])
         
@@ -327,7 +327,7 @@ func findPath(start: Room, end: Room) -> (dist: Double, inters_1: [Int], inters_
         }
         
         print(min_stair)
- 
+        
         if end_res.dist + start_res.dist < min_start_floor.dist + min_end_floor.dist {
             min_start_floor = start_res
             min_end_floor = end_res
@@ -337,7 +337,7 @@ func findPath(start: Room, end: Room) -> (dist: Double, inters_1: [Int], inters_
     }
     
     min_start_floor.inters = min_start_floor.inters.reversed()
- 
+    
     var firstfloorpath: [Int] = []
     var secondfloorpath: [Int] = []
     var thirdfloorpath: [Int] = []
@@ -358,7 +358,7 @@ func findPath(start: Room, end: Room) -> (dist: Double, inters_1: [Int], inters_
         ends[2] = CGPoint(x: stairs[min_stair].x[2], y: stairs[min_stair].y[2])
         thirdfloorpath = min_start_floor.inters
     }
- 
+    
     if end.floor == 1 {
         ends[0] = CGPoint(x: end.x, y: end.y)
         starts[0] = CGPoint(x: stairs[min_stair].x[0], y: stairs[min_stair].y[0])
@@ -376,7 +376,7 @@ func findPath(start: Room, end: Room) -> (dist: Double, inters_1: [Int], inters_
     active_floor[start.floor - 1] = true
     
     return (min_start_floor.dist + min_end_floor.dist + (18/0.72) * Double(abs(start.floor - end.floor))
-, firstfloorpath, secondfloorpath, thirdfloorpath, starts, ends, active_floor)
+            , firstfloorpath, secondfloorpath, thirdfloorpath, starts, ends, active_floor)
 }
 
 
@@ -384,6 +384,9 @@ var roomsToIDs = [String: Room]()
 
 //  Room(name: "", startDist: , hall: , x: , y: )
 var rooms = [
+    Room(name: "South Entrance", startDist: 8.95, hall: 29, x: 214.86, y: 302.55),
+    Room(name: "Performing Arts Center Entrance Floor 1 (PAC)", startDist: 0, hall: 56, x: 407.51, y: 402.06),
+    
     Room(name: "130", startDist: 10.43, hall: 0, x: 85.39, y: 364.49),
     Room(name: "129", startDist: 13.62, hall: 0, x: 88.59, y: 364.49),
     Room(name: "131", startDist: 9.7, hall: 1, x: 100.2, y: 374.18),
@@ -420,6 +423,15 @@ var rooms = [
     Room(name: "151 Locker Room A", startDist: 8.6, hall: 15, x: 156.67, y: 418.73),
     Room(name: "148 Locker Room D", startDist: 29.35, hall: 15, x: 156.67, y: 439.47),
     Room(name: "150 Locker Room C", startDist: 29.35, hall: 15, x: 156.67, y: 439.47),
+    Room(name: "171", startDist: 0, hall: 36, x: 263.77, y: 360.65),
+    Room(name: "169", startDist: 0, hall: 42, x: 287.38, y: 366.16),
+    Room(name: "168", startDist: 0, hall: 42, x: 301.15, y: 367.63),
+    Room(name: "167", startDist: 0, hall: 44, x: 313, y: 366.1),
+    Room(name: "166", startDist: 0, hall: 44, x: 333.61, y: 366.1),
+    Room(name: "165", startDist: 0, hall: 44, x: 343.24, y: 365.8),
+    Room(name: "162", startDist: 0, hall: 42, x: 262.93, y: 369.53),
+    Room(name: "163", startDist: 0, hall: 42, x: 289.28, y: 369.53),
+    Room(name: "164", startDist: 0, hall: 42, x: 301.21, y: 369.53),
 ]
 
 //  Intersection(halls: [], id: , x: , y: )
@@ -455,7 +467,7 @@ var intersects = [
     Intersection(halls: [], id: 28, x: 214.86, y: 342.46),
     Intersection(halls: [], id: 29, x: 221.53, y: 342.46),
     Intersection(halls: [], id: 30, x: 214.86, y: 311.50),
-    Intersection(halls: [], id: 31, x: 214.86, y: 305.36),
+    Intersection(halls: [], id: 31, x: 214.86, y: 302.55),
     Intersection(halls: [], id: 32, x: 207.82, y: 311.50),
     Intersection(halls: [], id: 33, x: 207.82, y: 327.32),
     Intersection(halls: [], id: 34, x: 207.82, y: 307.32),
@@ -476,6 +488,8 @@ var intersects = [
     Intersection(halls: [], id: 49, x: 262.34, y: 361.18),
     Intersection(halls: [], id: 50, x: 129.25, y: 335.22),
     Intersection(halls: [], id: 51, x: 160.69, y: 383.30),
+    Intersection(halls: [], id: 52, x: 407.51, y: 402.06),
+    Intersection(halls: [], id: 53, x: 401.56, y: 402.06),
 ]
 
 //  Hall(start: , end: , length: , id: )
@@ -536,12 +550,16 @@ var halls = [
     Hall(start: 14, end: 47, length: 52.38, id: 53),
     Hall(start: 21, end: 22, length: 4.37, id: 54),
     Hall(start: 41, end: 48, length: 11.53, id: 55),
-    
-    
+    Hall(start: 52, end: 53, length: 5.95, id: 56),
 ]
 
 //  Room(name: "", startDist: , hall: , x: , y: ),
 var rooms2 = [
+    Room(name: "East Entrance", startDist: 0, hall: 131, x: 72.65, y: 419.88),
+    Room(name: "Student Activities Entrance (Activity Center)", startDist: 0, hall: 141, x: 150.90, y: 496.70),
+    Room(name: "North Entrance", startDist: 9.06, hall: 110, x: 208.26, y: 473.36),
+    Room(name: "Performing Arts Center Entrance Floor 2 (PAC)", startDist: 30.17, hall: 144, x: 389.22, y: 455.23),
+    
     Room(name: "220", startDist: 57.99, hall: 0, x: 41.93, y: 387.66),
     Room(name: "219", startDist: 57.99, hall: 0, x: 41.93, y: 387.66),
     Room(name: "218", startDist: 54.33, hall: 0, x: 45.59, y: 387.66),
@@ -717,6 +735,17 @@ var intersects2 = [
     Intersection(halls: [], id: 100, x: 148.88, y: 404.74),
     Intersection(halls: [], id: 101, x: 148.88, y: 408.38),
     Intersection(halls: [], id: 102, x: 208.26, y: 429.47),
+    Intersection(halls: [], id: 103, x: 72.65, y: 419.88),
+    Intersection(halls: [], id: 104, x: 77.88, y: 418.13),
+    Intersection(halls: [], id: 105, x: 82.46, y: 418.13),
+    Intersection(halls: [], id: 106, x: 95.78, y: 418.13),
+    Intersection(halls: [], id: 107, x: 82.46, y: 411.03),
+    Intersection(halls: [], id: 108, x: 82.46, y: 394.20),
+    Intersection(halls: [], id: 109, x: 150.90, y: 496.70),
+    Intersection(halls: [], id: 110, x: 208.26, y: 473.36),
+    Intersection(halls: [], id: 111, x: 393.12, y: 401.75),
+    Intersection(halls: [], id: 112, x: 396.36, y: 425.92),
+    Intersection(halls: [], id: 113, x: 389.22, y: 455.23),
 ]
 
 // Hall(start: , end: , length: , id: ),
@@ -738,7 +767,7 @@ var halls2 = [
     Hall(start: 10, end: 11, length: 22.02, id: 14),
     Hall(start: 11, end: 12, length: 5.79, id: 15),
     Hall(start: 12, end: 81, length: 31.09, id: 16),
-    Hall(start: 81, end: 82, length: 4.66, id: 17),
+    Hall(start: 81, end: 82, length: 5.00, id: 17),
     Hall(start: 81, end: 13, length: 4.75, id: 18),
     Hall(start: 13, end: 80, length: 4.66, id: 19),
     Hall(start: 80, end: 82, length: 4.75, id: 20),
@@ -852,6 +881,22 @@ var halls2 = [
     Hall(start: 22, end: 102, length: 6.33, id: 128),
     Hall(start: 20, end: 102, length: 34.83, id: 129),
     Hall(start: 86, end: 102, length: 10.13, id: 130),
+    Hall(start: 103, end: 104, length: 5.52, id: 131),
+    Hall(start: 104, end: 105, length: 4.58, id: 132),
+    Hall(start: 105, end: 106, length: 13.32, id: 133),
+    Hall(start: 12, end: 106, length: 17.54, id: 134),
+    Hall(start: 10, end: 106, length: 10.22, id: 135),
+    Hall(start: 105, end: 107, length: 7.10, id: 136),
+    Hall(start: 77, end: 107, length: 11.91, id: 137),
+    Hall(start: 107, end: 108, length: 16.83, id: 138),
+    Hall(start: 3, end: 108, length: 7.54, id: 139),
+    Hall(start: 8, end: 108, length: 11.05, id: 140),
+    Hall(start: 78, end: 109, length: 11.43, id: 141),
+    Hall(start: 20, end: 110, length: 9.06, id: 142),
+    Hall(start: 111, end: 112, length: 24.39, id: 143),
+    Hall(start: 112, end: 113, length: 30.17, id: 144),
+    Hall(start: 40, end: 111, length: 62.08, id: 145),
+    Hall(start: 41, end: 111, length: 7.47, id: 146),
 ]
 // Room(name: "", startDist: , hall: , x: , y: ),
 var rooms3 = [
@@ -948,8 +993,8 @@ var intersects3 = [
     Intersection(halls: [], id: 33, x: 210.37, y: 327.85),
     Intersection(halls: [], id: 34, x: 206.76, y: 315.2),
     Intersection(halls: [], id: 35, x: 260.25, y: 362.88),
-
-
+    
+    
 ]
 
 //  Hall(start: , end: , length: , id: ),
