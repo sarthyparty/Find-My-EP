@@ -557,7 +557,7 @@ var halls = [
 var rooms2 = [
     Room(name: "East Entrance", startDist: 0, hall: 131, x: 72.65, y: 419.88),
     Room(name: "Student Activities Entrance (Activity Center)", startDist: 0, hall: 141, x: 150.90, y: 496.70),
-    Room(name: "North Entrance", startDist: 9.06, hall: 110, x: 208.26, y: 473.36),
+    Room(name: "North Entrance", startDist: 9.06, hall: 142, x: 208.26, y: 473.36),
     Room(name: "Performing Arts Center Entrance Floor 2 (PAC)", startDist: 30.17, hall: 144, x: 389.22, y: 455.23),
     
     Room(name: "220", startDist: 57.99, hall: 0, x: 41.93, y: 387.66),
