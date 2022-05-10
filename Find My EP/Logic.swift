@@ -423,15 +423,37 @@ var rooms = [
     Room(name: "151 Locker Room A", startDist: 8.6, hall: 15, x: 156.67, y: 418.73),
     Room(name: "148 Locker Room D", startDist: 29.35, hall: 15, x: 156.67, y: 439.47),
     Room(name: "150 Locker Room C", startDist: 29.35, hall: 15, x: 156.67, y: 439.47),
-    Room(name: "171", startDist: 0, hall: 36, x: 263.77, y: 360.65),
-    Room(name: "169", startDist: 0, hall: 42, x: 287.38, y: 366.16),
-    Room(name: "168", startDist: 0, hall: 42, x: 301.15, y: 367.63),
-    Room(name: "167", startDist: 0, hall: 44, x: 313, y: 366.1),
-    Room(name: "166", startDist: 0, hall: 44, x: 333.61, y: 366.1),
-    Room(name: "165", startDist: 0, hall: 44, x: 343.24, y: 365.8),
-    Room(name: "162", startDist: 0, hall: 42, x: 262.93, y: 369.53),
-    Room(name: "163", startDist: 0, hall: 42, x: 289.28, y: 369.53),
-    Room(name: "164", startDist: 0, hall: 42, x: 301.21, y: 369.53),
+    Room(name: "171", startDist: 8.54, hall: 36, x: 263.77, y: 360.65),
+    Room(name: "169", startDist: 24.05, hall: 42, x: 287.38, y: 366.16),
+    Room(name: "168", startDist: 10.2, hall: 42, x: 301.15, y: 367.63),
+    Room(name: "167", startDist: 1.75, hall: 44, x: 313, y: 366.1),
+    Room(name: "166", startDist: 22.36, hall: 44, x: 333.61, y: 366.1),
+    Room(name: "165", startDist: 31.99, hall: 44, x: 343.24, y: 365.8),
+    Room(name: "162", startDist: 48.32, hall: 42, x: 262.93, y: 369.53),
+    Room(name: "163", startDist: 21.97, hall: 42, x: 289.28, y: 369.53),
+    Room(name: "164", startDist: 10.05, hall: 42, x: 301.21, y: 369.53),
+    Room(name: "171 Art", startDist: 8.54, hall: 36, x: 263.77, y: 360.65),
+    Room(name: "169 Art", startDist: 24.05, hall: 42, x: 287.38, y: 366.16),
+    Room(name: "168 Classroom", startDist: 10.2, hall: 42, x: 301.15, y: 367.63),
+    Room(name: "167 Classroom", startDist: 1.75, hall: 44, x: 313, y: 366.1),
+    Room(name: "166 Classroom", startDist: 22.36, hall: 44, x: 333.61, y: 366.1),
+    Room(name: "165 Classroom", startDist: 31.99, hall: 44, x: 343.24, y: 365.8),
+    Room(name: "162 Classroom", startDist: 48.32, hall: 42, x: 262.93, y: 369.53),
+    Room(name: "163 Classroom", startDist: 21.97, hall: 42, x: 289.28, y: 369.53),
+    Room(name: "164 Classroom", startDist: 10.05, hall: 42, x: 301.21, y: 369.53),
+    Room(name: "101 Main Office", startDist: 18.62, hall: 28, x: 217.35, y: 324.01),
+    Room(name: "100 Student Center South", startDist: 16.57, hall: 32, x: 206.6, y: 328.03),
+    Room(name: "104 Health", startDist: 26.89, hall: 32, x: 207.07, y: 338.38),
+    Room(name: "106 Classroom", startDist: 0.83, hall: 21, x: 183.02, y: 361.59),
+    Room(name: "107 Special Ed Office", startDist: 4.99, hall: 18, x: 165.67, y: 371.83),
+    Room(name: "112 Special Ed Resources", startDist: 8.5, hall: 17, x: 160, y: 383.8),
+    Room(name: "111 Classroom", startDist: 8.0, hall: 17, x: 162.15, y: 383.2),
+    Room(name: "113 Classroom", startDist: 2.91, hall: 17, x: 159.19, y: 377.82),
+    Room(name: "110 Classroom", startDist: 1.52, hall: 17, x: 162.08, y: 375.95),
+    Room(name: "109 Classroom", startDist: 14.6, hall: 18, x: 175.2, y: 373.77),
+    Room(name: "154A South Common Collab", startDist: 18.64, hall: 52, x: 206.63, y: 380.96),
+    Room(name: "152 Wrestling Room", startDist: 22.96, hall: 53, x: 179.62, y: 410.87),
+    Room(name: "155 Registration Office", startDist: 6.81, hall: 52, x: 206.85, y: 369.07)
 ]
 
 //  Intersection(halls: [], id: , x: , y: )
@@ -499,24 +521,24 @@ var intersects = [
     Intersection(halls: [], id: 60, x: 93.83, y: 410.12)
     
 ]
- 
+
 //  Hall(start: , end: , length: , id: ),
 var halls = [
     Hall(start: 0, end: 1, length: 25.23, id: 0),
-    Hall(start: 1, end: 2, length: 10.85, id: 1),
+    Hall(start: 1, end: 2, length: 10.84, id: 1),
     Hall(start: 2, end: 3, length: 19.85, id: 2),
     Hall(start: 3, end: 4, length: 41.6, id: 3),
-    Hall(start: 4, end: 5, length: 5.8, id: 4),
-    Hall(start: 5, end: 6, length: 16.81, id: 5),
+    Hall(start: 4, end: 5, length: 5.79, id: 4),
+    Hall(start: 5, end: 6, length: 16.8, id: 5),
     Hall(start: 2, end: 7, length: 42.0, id: 6),
     Hall(start: 7, end: 8, length: 6.43, id: 7),
     Hall(start: 8, end: 9, length: 34.79, id: 8),
-    Hall(start: 10, end: 53, length: 33.84, id: 9),
+    Hall(start: 10, end: 53, length: 33.82, id: 9),
     Hall(start: 10, end: 3, length: 14.94, id: 10),
-    Hall(start: 7, end: 11, length: 40.12, id: 11),
+    Hall(start: 7, end: 11, length: 40.11, id: 11),
     Hall(start: 11, end: 12, length: 15.07, id: 12),
-    Hall(start: 10, end: 13, length: 43.7, id: 13),
-    Hall(start: 9, end: 58, length: 5.00, id: 14),
+    Hall(start: 10, end: 13, length: 43.71, id: 13),
+    Hall(start: 9, end: 58, length: 4.83, id: 14),
     Hall(start: 14, end: 15, length: 49.84, id: 15),
     Hall(start: 11, end: 50, length: 12.95, id: 16),
     Hall(start: 17, end: 51, length: 7.97, id: 17),
@@ -531,7 +553,7 @@ var halls = [
     Hall(start: 27, end: 28, length: 13.27, id: 26),
     Hall(start: 28, end: 29, length: 6.67, id: 27),
     Hall(start: 28, end: 30, length: 30.96, id: 28),
-    Hall(start: 30, end: 31, length: 6.14, id: 29),
+    Hall(start: 30, end: 31, length: 8.95, id: 29),
     Hall(start: 30, end: 32, length: 7.04, id: 30),
     Hall(start: 32, end: 34, length: 4.18, id: 31),
     Hall(start: 32, end: 33, length: 15.82, id: 32),
@@ -546,7 +568,7 @@ var halls = [
     Hall(start: 36, end: 37, length: 8.04, id: 41),
     Hall(start: 38, end: 48, length: 48.91, id: 42),
     Hall(start: 38, end: 39, length: 3.0, id: 43),
-    Hall(start: 39, end: 57, length: 23.27, id: 44),
+    Hall(start: 39, end: 57, length: 25.07, id: 44),
     Hall(start: 41, end: 42, length: 23.48, id: 45),
     Hall(start: 42, end: 43, length: 35.2, id: 46),
     Hall(start: 43, end: 44, length: 94.7, id: 47),
@@ -555,18 +577,18 @@ var halls = [
     Hall(start: 45, end: 47, length: 111.0, id: 50),
     Hall(start: 44, end: 45, length: 6.86, id: 51),
     Hall(start: 25, end: 45, length: 64.54, id: 52),
-    Hall(start: 14, end: 55, length: 47.73, id: 53),
+    Hall(start: 14, end: 55, length: 47.87, id: 53),
     Hall(start: 21, end: 22, length: 4.37, id: 54),
     Hall(start: 41, end: 48, length: 11.53, id: 55),
-    Hall(start: 6, end: 52, length: 15.02, id: 56),
-    Hall(start: 9, end: 53, length: 14.36, id: 57),
-    Hall(start: 47, end: 55, length: 4.18, id: 58),
-    Hall(start: 55, end: 56, length: 7.20, id: 59),
-    Hall(start: 53, end: 54, length: 7.80, id: 60),
-    Hall(start: 40, end: 57, length: 16.57, id: 61),
-    Hall(start: 14, end: 58, length: 3.43, id: 62),
-    Hall(start: 58, end: 59, length: 6.24, id: 63),
-    Hall(start: 10, end: 60, length: 6.57, id: 64)
+    Hall(start: 6, end: 52, length: 15.66, id: 56),
+    Hall(start: 9, end: 53, length: 14.61, id: 57),
+    Hall(start: 47, end: 55, length: 4.51, id: 58),
+    Hall(start: 55, end: 56, length: 7.45, id: 59),
+    Hall(start: 53, end: 54, length: 9.19, id: 60),
+    Hall(start: 40, end: 57, length: 17.23, id: 61),
+    Hall(start: 14, end: 58, length: 3.21, id: 62),
+    Hall(start: 58, end: 59, length: 5.61, id: 63),
+    Hall(start: 10, end: 60, length: 6.37, id: 64)
     
 ]
 
@@ -574,7 +596,7 @@ var halls = [
 var rooms2 = [
     Room(name: "East Entrance", startDist: 0, hall: 131, x: 72.65, y: 419.88),
     Room(name: "Student Activities Entrance (Activity Center)", startDist: 0, hall: 141, x: 150.90, y: 496.70),
-    Room(name: "North Entrance", startDist: 9.06, hall: 110, x: 208.26, y: 473.36),
+    Room(name: "North Entrance", startDist: 9.06, hall: 142, x: 208.26, y: 473.36),
     Room(name: "Performing Arts Center Entrance Floor 2 (PAC)", startDist: 30.17, hall: 144, x: 389.22, y: 455.23),
     
     Room(name: "220", startDist: 57.99, hall: 0, x: 41.93, y: 387.66),
@@ -986,7 +1008,7 @@ var intersects3 = [
     Intersection(halls: [], id: 9, x: 135.51, y: 411.59),
     Intersection(halls: [], id: 10, x: 135.51, y: 405.83),
     Intersection(halls: [], id: 11, x: 143.08, y: 376.19),
-    Intersection(halls: [], id: 12, x: 159.34, y: 376.19),
+    Intersection(halls: [], id: 12, x: 157.17, y: 376.19),
     Intersection(halls: [], id: 13, x: 160.75, y: 376.19),
     Intersection(halls: [], id: 14, x: 143.08, y: 336),
     Intersection(halls: [], id: 15, x: 134.48, y: 336),
@@ -1063,13 +1085,19 @@ var floor3 = Floor(halls: halls3, inters: intersects3, rooms: rooms3)
 
 var floors = [floor1, floor2, floor3]
 
-//  Stair(dist: [], x: , y: , allFloors: true, inter: [floor1.inters[0], floor2.inters[], floor3.inters[]], id: )
+//  Stair(name: "", dist: [], x: [], y: [], allFloors: true, inters: [floor1.inters[], floor2.inters[], floor3.inters[]], id: )
 var stairs = [
     Stair(name: "SW 5", dist: [14.99, 7.38, 7.11], x: [100.20, 103.43, 105.48], y: [349.50, 347.79, 349.94], allFloors: true, inters: [floor1.inters[1], floor2.inters[6], floor3.inters[7]], id: 0),
     Stair(name: "SW 17", dist: [5.26, 4.963, 7.11], x: [262.34, 261.19, 260.25], y: [356.04, 355.26, 358.1], allFloors: true, inters: [floor1.inters[49], floor2.inters[73], floor3.inters[35]], id: 1),
     Stair(name: "SW 4", dist: [5.11, 5.11, 5.11], x: [129.25, 133.37, 134.48], y: [328.88, 328.88, 328.88], allFloors: true, inters: [floor1.inters[50], floor2.inters[70], floor3.inters[15]], id: 2),
     Stair(name: "SW 1", dist: [0, 4, 11.25], x: [207.82, 207.35, 206.76], y: [307.32, 299.25, 304.24], allFloors: true, inters: [floor1.inters[34], floor2.inters[62], floor3.inters[34]], id: 3),
     Stair(name: "SW 6 (3)", dist: [5.8, 4.45, 11.25], x: [95.54, 93.51, 96.51], y: [410.12, 400.49, 400.3], allFloors: true, inters: [floor1.inters[10], floor2.inters[77], floor3.inters[3]], id: 4),
-    Stair(name: "SW 6 (1)", dist: [5.8, 4.45, 6.36], x: [95.54, 93.51, 96.51], y: [410.12, 400.49, 400.3], allFloors: true, inters: [floor1.inters[10], floor2.inters[8], floor3.inters[3]], id: 4),
+    Stair(name: "SW 6 (1)", dist: [5.8, 4.45, 6.36], x: [95.54, 93.51, 96.51], y: [410.12, 400.49, 400.3], allFloors: true, inters: [floor1.inters[10], floor2.inters[8], floor3.inters[3]], id: 5),
+    Stair(name: "SW 7", dist: [10.47, 5.79, 3.71], x: [30.97, 28.82, 33.52], y: [373.73, 373.34, 378.47], allFloors: true, inters: [floor1.inters[52], floor2.inters[75], floor3.inters[36]], id: 6),
+    Stair(name: "SW 3", dist: [2.55, 2.93, 2.80], x: [154.05, 156.97, 157.17], y: [371.78, 371.25, 372.83], allFloors: true, inters: [floor1.inters[16], floor2.inters[72], floor3.inters[12]], id: 7),
+    Stair(name: "SW 15", dist: [1.84, 1.56, 4.68], x: [202.77, 201.71, 201.99], y: [401.40, 400.89, 402.65], allFloors: true, inters: [floor1.inters[56], floor2.inters[32], floor3.inters[25]], id: 8)
+    Stair(name: "SW 16", dist: [3.17, 2.26, 0], x: [215.61, 214.28, 0], y: [414.73, 415.88, 0], allFloors: false, inters: [floor1.inters[46], floor2.inters[23], floor3.inters[0]], id: 9),
+    
+    
 ]
 
