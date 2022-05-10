@@ -385,7 +385,7 @@ var roomsToIDs = [String: Room]()
 //  Room(name: "", startDist: , hall: , x: , y: )
 var rooms = [
     Room(name: "South Entrance", startDist: 8.95, hall: 29, x: 214.86, y: 302.55),
-    Room(name: "Performing Arts Center Entrance Floor 1 (PAC)", startDist: 0, hall: 56, x: 407.51, y: 402.06),
+//    Room(name: "Performing Arts Center Entrance Floor 1 (PAC)", startDist: 0, hall: 56, x: 407.51, y: 402.06),
     
     Room(name: "130", startDist: 10.43, hall: 0, x: 85.39, y: 364.49),
     Room(name: "129", startDist: 13.62, hall: 0, x: 88.59, y: 364.49),
@@ -1095,7 +1095,7 @@ var stairs = [
     Stair(name: "SW 6 (1)", dist: [5.8, 4.45, 6.36], x: [95.54, 93.51, 96.51], y: [410.12, 400.49, 400.3], allFloors: true, inters: [floor1.inters[10], floor2.inters[8], floor3.inters[3]], id: 5),
     Stair(name: "SW 7", dist: [10.47, 5.79, 3.71], x: [30.97, 28.82, 33.52], y: [373.73, 373.34, 378.47], allFloors: true, inters: [floor1.inters[52], floor2.inters[75], floor3.inters[36]], id: 6),
     Stair(name: "SW 3", dist: [2.55, 2.93, 2.80], x: [154.05, 156.97, 157.17], y: [371.78, 371.25, 372.83], allFloors: true, inters: [floor1.inters[16], floor2.inters[72], floor3.inters[12]], id: 7),
-    Stair(name: "SW 15", dist: [1.84, 1.56, 4.68], x: [202.77, 201.71, 201.99], y: [401.40, 400.89, 402.65], allFloors: true, inters: [floor1.inters[56], floor2.inters[32], floor3.inters[25]], id: 8)
+    Stair(name: "SW 15", dist: [1.84, 1.56, 4.68], x: [202.77, 201.71, 201.99], y: [401.40, 400.89, 402.65], allFloors: true, inters: [floor1.inters[56], floor2.inters[32], floor3.inters[25]], id: 8),
     Stair(name: "SW 16", dist: [3.17, 2.26, 0], x: [215.61, 214.28, 0], y: [414.73, 415.88, 0], allFloors: false, inters: [floor1.inters[46], floor2.inters[23], floor3.inters[0]], id: 9),
     
     
