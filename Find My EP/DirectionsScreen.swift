@@ -27,16 +27,16 @@ struct DirectionsScreen: View {
                 } else {
                     map3
                 }
-                HStack {
-                    Spacer()
-                    VStack {
-                        Image("arrow")
-                            .resizable()
-                            .frame(width: screenWidth/4, height: screenHeight/10)
-                            .rotationEffect(Angle(degrees: self.heading.degrees + 153.54287719726562))
-                        Spacer()
-                    }
-                }
+//                HStack {
+//                    Spacer()
+//                    VStack {
+//                        Image("arrow")
+//                            .resizable()
+//                            .frame(width: screenWidth/4, height: screenHeight/10)
+//                            .rotationEffect(Angle(degrees: self.heading.degrees + 153.54287719726562))
+//                        Spacer()
+//                    }
+//                }
             }
             Text(to_min(seconds: retval.0*0.72))
                 .frame(maxWidth: .infinity, alignment: .center)
@@ -45,7 +45,7 @@ struct DirectionsScreen: View {
                 ColorButton(text: "1", tochange: $retval.6[0], other1: $retval.6[1], other2: $retval.6[2], isDisabled: retval.1.isEmpty && !retval.6[0])
                     .disabled(retval.1.isEmpty && !retval.6[0])
                 ColorButton(text: "2", tochange: $retval.6[1], other1: $retval.6[0], other2: $retval.6[2], isDisabled: retval.2.isEmpty && !retval.6[1])
-//                    .disabled(retval.2.isEmpty && !retval.6[1])
+                    .disabled(retval.2.isEmpty && !retval.6[1])
                 ColorButton(text: "3", tochange: $retval.6[2], other1: $retval.6[1], other2: $retval.6[0], isDisabled: retval.3.isEmpty && !retval.6[2])
                     .disabled(retval.3.isEmpty && !retval.6[2])
                 Spacer()
@@ -91,7 +91,7 @@ struct DirectionsScreen: View {
                 if isDisabled {
                     Text(text) .bold().font(.system(size: 30))
                         .padding(10)
-                        .opacity(0)
+                        .opacity(50)
 //                        .foregroundColor(Color.black)
                 } else {
                     Text(text) .bold().font(.system(size: 30))
