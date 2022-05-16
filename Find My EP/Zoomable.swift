@@ -20,7 +20,7 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         // set up the UIScrollView
         scrollView.delegate = context.coordinator  // for viewForZooming(in:)
         scrollView.maximumZoomScale = 15
-        scrollView.minimumZoomScale = 5
+        scrollView.minimumZoomScale = 4
         scrollView.bouncesZoom = true
         scrollView.bounces = true
         //scrollView.clipsToBounds = true
@@ -247,7 +247,7 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
             print("\(point) \(dist(x1: point.x, y1: point.y, x2: prevTap.x, y2: prevTap.y))")
             prevTap = point
             //print(self.parent.currentOffset)
-            //print(screenSize)
+            print(screenSize)
             //print(maxy)
             //print(miny)
             //print(forceminy)
