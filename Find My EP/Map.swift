@@ -23,6 +23,7 @@ struct Map: View {
     @State private var percentage: CGFloat = .zero
     @State private var offset: CGPoint = .zero
     
+    
     @State var dragLocation: CGPoint?
     
     func fixX(x: Double) -> CGFloat {
@@ -30,7 +31,13 @@ struct Map: View {
     }
     
     func fixY(y: Double) -> CGFloat {
+        if screenHeight < 812 {
+            return CGFloat((y-287.616)/760*screenHeight)
+        }
+        
         return CGFloat((y-287.616)/926*screenHeight)
+        
+        
     }
     
     

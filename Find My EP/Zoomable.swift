@@ -247,7 +247,7 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
             print("\(point) \(dist(x1: point.x, y1: point.y, x2: prevTap.x, y2: prevTap.y))")
             prevTap = point
             //print(self.parent.currentOffset)
-            //print(screenSize)
+            print(screenSize)
             //print(maxy)
             //print(miny)
             //print(forceminy)
