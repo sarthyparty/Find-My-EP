@@ -1098,6 +1098,6 @@ var stairs = [
     Stair(name: "SW 3", dist: [2.55, 2.93, 2.80], x: [154.05, 156.97, 157.17], y: [371.78, 371.25, 372.83], allFloors: true, inters: [floor1.inters[16], floor2.inters[72], floor3.inters[12]], id: 7),
     Stair(name: "SW 15", dist: [1.84, 1.56, 4.68], x: [202.77, 201.71, 201.99], y: [401.40, 400.89, 402.65], allFloors: true, inters: [floor1.inters[56], floor2.inters[32], floor3.inters[25]], id: 8),
     Stair(name: "SW 16", dist: [3.17, 2.26, 0], x: [215.61, 214.28, 0], y: [414.73, 415.88, 0], allFloors: false, inters: [floor1.inters[46], floor2.inters[23], floor3.inters[0]], id: 9),
-    Stair(name: "SW 18", dist: [3.21, 3.21, 3.21], x: [336.32, 339.57, 337.507], y: [366.573, 360.78, 363.08], allFloors: true, inters: [floor1.inters[57], floor2.inters[47], floor3.inters[31]], id: 10),
+    Stair(name: "SW 18", dist: [3.21, 3.21, 3.21], x: [336.32, 339.57, 337.507], y: [361.03, 360.78, 363.08], allFloors: true, inters: [floor1.inters[57], floor2.inters[47], floor3.inters[31]], id: 10),
 ]
 
