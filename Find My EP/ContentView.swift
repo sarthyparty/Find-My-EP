@@ -8,9 +8,6 @@
 import SwiftUI
  
 struct ContentView: View {
-    
-    @State var startID = ""
-    @State var endID = ""
     @State var dist = 0
     @State var hallways = ""
     @State var inters = ""
@@ -33,8 +30,7 @@ struct ContentView: View {
                         
                         HStack {
                             Button(action: {
-                                searchText = room
-                                startID = room
+                                searchText = roomsToIDs[room]!.name
                                 isSearching = false
                                 firstButtonPressed = true
                                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -63,7 +59,7 @@ struct ContentView: View {
                         
                         HStack {
                             Button(action: {
-                                searchText2 = room
+                                searchText2 = roomsToIDs[room]!.name
                                 isSearching2 = false
                                 secondButtonPressed = true
                                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -83,14 +79,14 @@ struct ContentView: View {
                 
                 
 //                NavigationLink(destination: DirectionsScreen(retval: (0.0, [0], [75,0,1,4,7,71,69, 68,66,67,61,60,59,58,56,55,88,54,51,53,50,52,33,31,39,40,38,37,34,83,33,52,27,21,28,29,64,10], [0], [CGPoint(x: 0,y: 0), CGPoint(x: 0,y: 0), CGPoint(x: 0,y: 0)], [CGPoint(x: 0,y: 0), CGPoint(x: 0,y: 0), CGPoint(x: 0,y: 0)], [false, true, false]))) {
-                NavigationLink(destination: DirectionsScreen(retval: findPath(start: roomsToIDs[searchText] ?? rooms[0], end: roomsToIDs[searchText2] ?? rooms3[0]))) {
+                NavigationLink(destination: DirectionsScreen(retval: findPath(start: roomsToIDs[searchText.lowercased()] ?? rooms[0], end: roomsToIDs[searchText2.lowercased()] ?? rooms3[0]))) {
                     HStack {
                         Spacer()
                         Text("Show Map")
                         Spacer()
                     }
                 }
-                .disabled(roomsToIDs[searchText] == nil || roomsToIDs[searchText2] == nil)
+                .disabled(roomsToIDs[searchText.lowercased()] == nil || roomsToIDs[searchText2.lowercased()] == nil)
                 
             }.navigationTitle("Find My EP")
             
