@@ -473,7 +473,7 @@ var intersects = [
     Intersection(halls: [], id: 12, x: 157.27, y: 335.22),
     Intersection(halls: [], id: 13, x: 100.2, y: 453.83),
     Intersection(halls: [], id: 14, x: 156.67, y: 410.12),
-    Intersection(halls: [], id: 15, x: 156.67, y: 459.96),
+    Intersection(halls: [], id: 15, x: 156.67, y: 456.30),
     Intersection(halls: [], id: 16, x: 154.05, y: 375.33),
     Intersection(halls: [], id: 17, x: 160.69, y: 375.33),
     Intersection(halls: [], id: 18, x: 160.69, y: 372.12),
@@ -665,7 +665,7 @@ var rooms2 = [
     Room(name: "East Side Deli", startDist: 0.0, hall: 124, x: 111.46, y: 406.07),
     Room(name: "Prairie Grounds Coffee", startDist: 15.59, hall: 2, x: 74.92, y: 372.07),
     Room(name: "New American Grille", startDist: 6.54, hall: 3, x: 74.92, y: 394.2),
-    Room(name: "236 ACE", startDist: 3.64, hall: 127, x: 148.88, y: 408.38),
+    Room(name: "236 ACE", startDist: 3.64, hall: 127, x: 148.88, y: 404.74),
     Room(name: "237 Media Center", startDist: 6.32, hall: 118, x: 171.53, y: 402.06),
     Room(name: "224", startDist: 0.01, hall: 11, x: 98.85, y: 394.21),
 ]
@@ -772,8 +772,8 @@ var intersects2 = [
     Intersection(halls: [], id: 97, x: 107.48, y: 476.88),
     Intersection(halls: [], id: 98, x: 111.46, y: 406.07),
     Intersection(halls: [], id: 99, x: 111.46, y: 408.38),
-    Intersection(halls: [], id: 100, x: 148.88, y: 404.74),
-    Intersection(halls: [], id: 101, x: 148.88, y: 408.38),
+    Intersection(halls: [], id: 100, x: 148.88, y: 408.38),
+    Intersection(halls: [], id: 101, x: 148.88, y: 404.74),
     Intersection(halls: [], id: 102, x: 208.26, y: 429.47),
     Intersection(halls: [], id: 103, x: 72.65, y: 419.88),
     Intersection(halls: [], id: 104, x: 77.88, y: 418.13),
@@ -1099,5 +1099,11 @@ var stairs = [
     Stair(name: "SW 15", dist: [1.84, 1.56, 4.68], x: [202.77, 201.71, 201.99], y: [401.40, 400.89, 402.65], allFloors: true, inters: [floor1.inters[56], floor2.inters[32], floor3.inters[25]], id: 8),
     Stair(name: "SW 16", dist: [3.17, 2.26, 0], x: [215.61, 214.28, 0], y: [414.73, 415.88, 0], allFloors: false, inters: [floor1.inters[46], floor2.inters[23], floor3.inters[0]], id: 9),
     Stair(name: "SW 18", dist: [3.21, 3.21, 3.21], x: [336.32, 339.57, 337.507], y: [361.03, 360.78, 363.08], allFloors: true, inters: [floor1.inters[57], floor2.inters[47], floor3.inters[31]], id: 10),
+    Stair(name: "SW 13", dist: [1.47, 4.01, 9.26], x: [150.56, 149.16, 150.53], y: [415.73, 412.70, 415.55], allFloors: true, inters: [floor1.inters[59], floor2.inters[30], floor3.inters[17]], id: 11),
+    Stair(name: "SW 14", dist: [3.40, 3.24, 2.96], x: [128.44, 127.29, 128.60], y: [400.93, 403.74, 405.83], allFloors: true, inters: [floor1.inters[54], floor2.inters[65], floor3.inters[10]], id: 12),
+    Stair(name: "SW 12", dist: [2.31, 3.18, 0], x: [152.37, 150.00, 0], y: [456.30, 458.51, 0], allFloors: false, inters: [floor1.inters[15], floor2.inters[19], floor3.inters[0]], id: 13),
+    Stair(name: "SW 8", dist: [4.18, 2.84, 0], x: [100.2, 99.38, 0], y: [459.88, 462.77, 0], allFloors: false, inters: [floor1.inters[13], floor2.inters[82], floor3.inters[0]], id: 14),
+    Stair(name: "SW 2", dist: [3.61, 0, 0], x: [221.53, 220.78, 0], y: [350.56, 350.09, 0], allFloors: false, inters: [floor1.inters[29], floor2.inters[74], floor3.inters[0]], id: 15),
+
 ]
 
