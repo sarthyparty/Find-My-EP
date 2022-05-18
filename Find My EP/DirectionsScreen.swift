@@ -45,7 +45,7 @@ struct DirectionsScreen: View {
                 ColorButton(text: "1", tochange: $retval.6[0], other1: $retval.6[1], other2: $retval.6[2], isDisabled: retval.1.isEmpty && !retval.6[0])
                     .disabled(retval.1.isEmpty && !retval.6[0])
                 ColorButton(text: "2", tochange: $retval.6[1], other1: $retval.6[0], other2: $retval.6[2], isDisabled: retval.2.isEmpty && !retval.6[1])
-                    //.disabled(retval.2.isEmpty && !retval.6[1])
+                    .disabled(retval.2.isEmpty && !retval.6[1])
                 ColorButton(text: "3", tochange: $retval.6[2], other1: $retval.6[1], other2: $retval.6[0], isDisabled: retval.3.isEmpty && !retval.6[2])
                     .disabled(retval.3.isEmpty && !retval.6[2])
                 Spacer()
