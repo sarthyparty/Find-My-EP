@@ -1,5 +1,8 @@
 # Find-My-EP
 
+# Privacy Policy
+We do not collect any data from users. 
+
 # Version History
 
 ### Version 1.4
