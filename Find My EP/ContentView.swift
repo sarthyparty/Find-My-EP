@@ -88,7 +88,7 @@ struct ContentView: View {
                 }
                 .disabled(roomsToIDs[searchText.lowercased()] == nil || roomsToIDs[searchText2.lowercased()] == nil)
                 
-            }.navigationTitle("Find My EP")
+            }.navigationTitle("EPHS Maps")
             
         }
         

@@ -425,7 +425,7 @@ var rooms = [
     Room(name: "148 Locker Room D", startDist: 29.35, hall: 15, x: 156.67, y: 439.47),
     Room(name: "150 Locker Room C", startDist: 29.35, hall: 15, x: 156.67, y: 439.47),
     Room(name: "170 Art Facs Health", startDist: 33.52, hall: 42, x: 277.73, y: 369.07),
-    Room(name: "171", startDist: 8.54, hall: 36, x: 263.77, y: 360.65),
+    Room(name: "171", startDist: 8.54, hall: 36, x: 262.34, y: 361.18),
     Room(name: "169", startDist: 24.05, hall: 42, x: 287.38, y: 366.16),
     Room(name: "168", startDist: 10.2, hall: 42, x: 301.15, y: 367.63),
     Room(name: "167", startDist: 1.75, hall: 44, x: 313, y: 366.95),
@@ -436,7 +436,7 @@ var rooms = [
     Room(name: "164", startDist: 10.05, hall: 42, x: 301.21, y: 369.07),
     Room(name: "West Side Deli", startDist: 10.24, hall: 45, x: 250.81, y: 379.31),
     Room(name: "101 Main Office", startDist: 12.64, hall: 68, x: 215.61, y: 324.14),
-    Room(name: "100 Student Center South (SCS)", startDist: 16.57, hall: 32, x: 207.82, y: 327.94),
+    Room(name: "100 Student Center South (SCS)", startDist: 16.57, hall: 32, x: 207.82, y: 327.32),
     Room(name: "104 Health", startDist: 8.82, hall: 69, x: 206.79, y: 338.54),
     Room(name: "106", startDist: 0, hall: 21, x: 183.24, y: 362.39),
     Room(name: "107 Educational Services", startDist: 4.99, hall: 18, x: 165.67, y: 371.83),
@@ -517,6 +517,7 @@ var intersects = [
     Intersection(halls: [], id: 61, x: 215.61, y: 377.07),
     Intersection(halls: [], id: 62, x: 215.61, y: 338.54),
     Intersection(halls: [], id: 63, x: 206.79, y: 338.54),
+    Intersection(halls: [], id: 64, x: 215.61, y: 327.32),
 ]
 
 //  Hall(start: , end: , length: , id: ),
@@ -591,6 +592,9 @@ var halls = [
     Hall(start: 28, end: 62, length: 3.93, id: 67),
     Hall(start: 30, end: 62, length: 27.04, id: 68),
     Hall(start: 62, end: 63, length: 8.82, id: 69),
+    Hall(start: 62, end: 64, length: 11.22, id: 70),
+    Hall(start: 30, end: 64, length: 15.82, id: 71),
+    Hall(start: 33, end: 64, length: 7.79, id: 72),
 ]
 
 //  Room(name: "", startDist: , hall: , x: , y: ),
@@ -1034,9 +1038,7 @@ var intersects3 = [
     Intersection(halls: [], id: 33, x: 210.37, y: 327.85),
     Intersection(halls: [], id: 34, x: 206.76, y: 315.2),
     Intersection(halls: [], id: 35, x: 260.25, y: 362.88),
-    Intersection(halls: [], id: 36, x: 38.48, y: 378.47)
-    
-    
+    Intersection(halls: [], id: 36, x: 38.48, y: 378.47),
 ]
 
 //  Hall(start: , end: , length: , id: ),
