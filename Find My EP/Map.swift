@@ -44,16 +44,19 @@ struct Map: View {
     
     var body: some View {
         let map = ZStack {
-            if scale > 4 {
-                Image(mapImageHigh)
-                    .resizable()
-                    .background(Color.white)
-            } else {
-                Image(mapImageLow)
-                    .resizable()
-                    .background(Color.white)
-            }
-            
+            Image(mapImageHigh)
+                .resizable()
+                .background(Color.white)
+//            if scale > 4 {
+//                Image(mapImageHigh)
+//                    .resizable()
+//                    .background(Color.white)
+//            } else {
+//                Image(mapImageLow)
+//                    .resizable()
+//                    .background(Color.white)
+//            }
+//
             Path { path in
                 
                 path.move(to: CGPoint(x: fixX(x: start.x), y: fixY(y: start.y)))
@@ -64,8 +67,6 @@ struct Map: View {
                     }
                 }
                 path.addLine(to: CGPoint(x: fixX(x: end.x), y: fixY(y: end.y)))
-                print(start)
-                print(end)
                 
             }
             .trim(from: 0, to: percentage)
@@ -79,7 +80,7 @@ struct Map: View {
             
         }
         .aspectRatio(contentMode: .fit)
-        ZoomableScrollView(content: map, currentScale: $scale, currentOffset: $offset, start: CGPoint(x: start.x, y: start.y))
+        ZoomableScrollView(content: map, currentScale: $scale, currentOffset: $offset, start: CGPoint(x: start.x, y: start.y), rect: createRectangle(floor: floor, inters: inters, start: start, end: end))
         
         
         //        .offset(x: offset.width, y: offset.height)
@@ -119,5 +120,47 @@ struct Map: View {
 }
 
 
-
+func createRectangle(floor: Floor, inters: [Int], start: CGPoint, end: CGPoint) -> CGRect {
+    var minx = start.x
+    var miny = start.y
+    var maxx = start.x
+    var maxy = start.y
+    
+    for i in inters {
+        if floor.inters[i].x < minx {
+            minx = floor.inters[i].x
+        }
+        if floor.inters[i].y < miny {
+            miny = floor.inters[i].y
+        }
+        if floor.inters[i].x > maxx {
+            maxx = floor.inters[i].x
+        }
+        if floor.inters[i].y > maxy {
+            maxy = floor.inters[i].x
+        }
+    }
+    
+    if end.x < minx {
+        minx = end.x
+    }
+    if end.y < miny {
+        miny = end.y
+    }
+    if end.x > maxx {
+        maxx = end.x
+    }
+    if end.y > maxy {
+        maxy = end.y
+    }
+    
+    minx-=10
+    miny-=10
+    maxx+=10
+    maxy+=10
+    
+    return CGRect(x: minx/428*screenWidth, y: miny/926*screenHeight, width: (maxx-minx)/428*screenWidth, height: (maxy-miny)/926*screenHeight)
+    
+    
+}
 

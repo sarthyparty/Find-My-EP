@@ -40,7 +40,7 @@ struct Find_My_EPApp: App {
             roomsToIDs[rooms3[i-1].name.lowercased()] = rooms3[i-1]
         }
         
-        print(findPath(start: rooms2[0], end: rooms[8]))
+//        print(findPath(start: rooms2[0], end: rooms[8]))
 //        print(floor3.a_star_shortestPath(start: floor3.inters[0], end: floor3.inters[6]))
         
 //        school.a_star_shortestPath(start: intersects[0], end: intersects[3])

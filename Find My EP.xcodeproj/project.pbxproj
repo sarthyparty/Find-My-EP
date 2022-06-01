@@ -43,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AD2B4C1D2837F37A00D37C5F /* Find-My-EP-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Find-My-EP-Info.plist"; sourceTree = SOURCE_ROOT; };
 		D34269892819A391001BAF60 /* CompassHeading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassHeading.swift; sourceTree = "<group>"; };
 		D34490E727AACF580018CF91 /* Find My EP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Find My EP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34490EA27AACF580018CF91 /* Find_My_EPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Find_My_EPApp.swift; sourceTree = "<group>"; };
@@ -112,6 +113,7 @@
 		D34490E927AACF580018CF91 /* Find My EP */ = {
 			isa = PBXGroup;
 			children = (
+				AD2B4C1D2837F37A00D37C5F /* Find-My-EP-Info.plist */,
 				D34490EA27AACF580018CF91 /* Find_My_EPApp.swift */,
 				D34490EC27AACF580018CF91 /* ContentView.swift */,
 				D3D43C0E27BABDEB00E16880 /* Home.swift */,
@@ -458,6 +460,9 @@
 				DEVELOPMENT_TEAM = 883DK65VTV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Find-My-EP-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "EPHS Maps";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to enable the realtime tracking on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -488,6 +493,9 @@
 				DEVELOPMENT_TEAM = 883DK65VTV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Find-My-EP-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "EPHS Maps";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to enable the realtime tracking on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

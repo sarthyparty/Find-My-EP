@@ -12,7 +12,7 @@ struct DirectionsScreen: View {
     
     @State var retval: (Double, [Int], [Int], [Int], [CGPoint], [CGPoint], [Bool])
     
-    @ObservedObject var heading = CompassHeading()
+//    @ObservedObject var heading = CompassHeading()
     
     var body: some View {
         let map1 = Map(floor: floors[0], inters: retval.1, start: retval.4[0], end: retval.5[0], mapImageHigh: "EPHS_first_high", mapImageLow: "EPHS_first_low")
@@ -38,7 +38,7 @@ struct DirectionsScreen: View {
 //                    }
 //                }
             }
-            Text("\(heading.latitude)")
+//            Text("\(heading.latitude)")
             Text(to_min(seconds: retval.0*0.72))
                 .frame(maxWidth: .infinity, alignment: .center)
             HStack(alignment: .center, spacing: 0 ) {

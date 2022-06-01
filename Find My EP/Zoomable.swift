@@ -15,12 +15,13 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
     @Binding var currentOffset: CGPoint
     var scrollView = UIScrollView()
     var start: CGPoint
+    var rect: CGRect
     
     func makeUIView(context: Context) -> UIScrollView {
         // set up the UIScrollView
         scrollView.delegate = context.coordinator  // for viewForZooming(in:)
         scrollView.maximumZoomScale = 15
-        scrollView.minimumZoomScale = 4
+        scrollView.minimumZoomScale = 2
         scrollView.bouncesZoom = true
         scrollView.bounces = true
         //scrollView.clipsToBounds = true
@@ -46,7 +47,9 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         scrollView.addSubview(hostedView)
         hostedView.addGestureRecognizer(gesture)
         
-        scrollView.zoom(to: CGRect(x: (start.x-23)/428*screenWidth, y: (start.y-10)/926*screenHeight, width: 40/428*screenWidth, height: 40/926*screenHeight), animated: true)
+//        scrollView.zoom(to: CGRect(x: (start.x-23)/428*screenWidth, y: (start.y-10)/926*screenHeight, width: 40/428*screenWidth, height: 40/926*screenHeight), animated: true)
+        
+        scrollView.zoom(to: rect, animated: true)
         
         //scrollView.setZoomScale(scrollView.minimumZoomScale, animated: false)
         
@@ -115,11 +118,14 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         func scrollViewDidEndZooming(_ sv: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
             self.isZooming = false
  
-            let forceLower = scaleFac * Double(sv.zoomScale * 247.8 - 235.5)
+            var forceLower = scaleFac * Double(sv.zoomScale * 247.8 - 235.5)
             let forceHigher = scaleFac * Double(sv.zoomScale * 532.3 - 315.0)
- 
-            let lowerBound = scaleFac * Double(sv.zoomScale * 250 + 37.54)
             let higherBound = scaleFac * Double(sv.zoomScale * 540 - 572.1)
+            var lowerBound = scaleFac * Double(sv.zoomScale * 250 + 37.54)
+            if screenHeight < 812 {
+                lowerBound = scaleFac * Double(sv.zoomScale * 230 - 100)
+                forceLower = scaleFac * Double(sv.zoomScale * 227.8 - 235.5)
+            }
  
  
             sv.setValue(0.15, forKeyPath: "contentOffsetAnimationDuration")
@@ -137,11 +143,14 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
             if self.isZooming {
                 return
             }
-            let forceLower = scaleFac * Double(sv.zoomScale * 247.8 - 235.5)
+            var forceLower = scaleFac * Double(sv.zoomScale * 247.8 - 235.5)
             let forceHigher = scaleFac * Double(sv.zoomScale * 532.3 - 315.0)
- 
-            let lowerBound = scaleFac * Double(sv.zoomScale * 250 + 37.54)
             let higherBound = scaleFac * Double(sv.zoomScale * 540 - 572.1)
+            var lowerBound = scaleFac * Double(sv.zoomScale * 250 + 37.54)
+            if screenHeight < 812 {
+                lowerBound = scaleFac * Double(sv.zoomScale * 230 - 100)
+                forceLower = scaleFac * Double(sv.zoomScale * 227.8 - 235.5)
+            }
  
  
             sv.setValue(0.15, forKeyPath: "contentOffsetAnimationDuration")
@@ -244,10 +253,10 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         @objc func tapped(gesture:UITapGestureRecognizer) {
             let point = gesture.location(in: gesture.view)
             
-            print("\(point) \(dist(x1: point.x, y1: point.y, x2: prevTap.x, y2: prevTap.y))")
+            //print("\(point) \(dist(x1: point.x, y1: point.y, x2: prevTap.x, y2: prevTap.y))")
             prevTap = point
             //print(self.parent.currentOffset)
-            print(screenSize)
+            //print(screenSize)
             //print(maxy)
             //print(miny)
             //print(forceminy)
