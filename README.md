@@ -8,15 +8,18 @@ We do not collect any data from users.
 ### Version 2.2
 - Fixed room issues
 - Zoom into path
+<img src="https://github.com/sarthyparty/Find-My-EP/blob/main/2.2.png" width="321" height="695" />
 
 ### Version 2.1
 - Optimized algorithm
 - Fully mapped out every room
+<img src="https://github.com/sarthyparty/Find-My-EP/blob/main/2.1.png" width="321" height="695" />
 
 ### Version 2.0
 - Now introducing mulitple floors
 - Hall and room tweaks
 - Bug fixes
+<img src="https://github.com/sarthyparty/Find-My-EP/blob/main/2.0.png" width="321" height="695" />
 
 ### Version 1.4
 - Set initial zoom to starting point
