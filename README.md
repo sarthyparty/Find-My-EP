@@ -5,6 +5,19 @@ We do not collect any data from users.
 
 # Version History
 
+### Version 2.2
+- Fixed room issues
+- Zoom into path
+
+### Version 2.1
+- Optimized algorithm
+- Fully mapped out every room
+
+### Version 2.0
+- Now introducing mulitple floors
+- Hall and room tweaks
+- Bug fixes
+
 ### Version 1.4
 - Set initial zoom to starting point
 - Switched from dfs to a star algorithm
