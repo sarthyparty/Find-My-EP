@@ -1,4 +1,4 @@
-# Find-My-EP
+# [EPHS Maps](https://apps.apple.com/kg/app/ephs-maps/id1609652746)
 
 # Privacy Policy
 We do not collect any data from users. 
