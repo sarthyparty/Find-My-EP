@@ -16,7 +16,7 @@ We designed and implemented our own version of the A star algorithm to work with
 
 ### Version 2.2
 - Fixed room issues
-- Zoom into path
+- Auto Zoom into path
 <img src="https://github.com/sarthyparty/Find-My-EP/blob/main/2.2.png" width="321" height="695" />
 
 ### Version 2.1
