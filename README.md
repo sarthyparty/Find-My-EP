@@ -3,6 +3,15 @@
 # Privacy Policy
 We do not collect any data from users. 
 
+# Overview
+This is a GPS-like app built for our highschool. The UI was built using SwiftUI and UIKit, and we used python for testing and school layout integration. 
+
+We designed and implemented our own version of the A star algorithm to work with multiple floors. The layout is organized into a graph as follows:
+- Intersections of hallways are treated like nodes
+- Hallways are treated like edges
+- Classrooms, auditoriums, entrances, and libraries are separate from intersections, and hallways can contain multiple of them
+- Staircases are treated completely different and these connect 3 intersections (one for each floor)
+
 # Version History
 
 ### Version 2.2
