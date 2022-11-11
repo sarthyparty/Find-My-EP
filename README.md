@@ -9,8 +9,8 @@ This is a GPS-like app built for our highschool. The UI was built using SwiftUI 
 We designed and implemented our own version of the A star algorithm to work with multiple floors. The layout is organized into a graph as follows:
 - Intersections of hallways are treated like nodes
 - Hallways are treated like edges
-- Classrooms, auditoriums, entrances, and libraries are separate from intersections, and hallways can contain multiple of them
-- Staircases are treated completely different and these connect 3 intersections (one for each floor)
+- Classrooms, auditoriums, entrances, and libraries are treated differently than intersections. Hallways can contain multiple of these
+- Staircases are a completely different struct and these connect to 3 intersections (one for each floor). One complication with staircases arose when we discovered that some staircases have different entrances/exits depending on whether the person is coming from above or below. The way we resolved this was by treating the different entrances are separate staricases.
 
 # Version History
 
